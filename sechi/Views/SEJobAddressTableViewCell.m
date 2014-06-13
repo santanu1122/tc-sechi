@@ -21,7 +21,7 @@
     CGRect infoLabelHeight = [self.addressLabel.text boundingRectWithSize:CGSizeMake(self.addressLabel.frame.size.width - self.addressLabel.font.pointSize, CGFLOAT_MAX)
                                                                   options:NSStringDrawingUsesLineFragmentOrigin
                                                                attributes:@{
-                                                                            NSFontAttributeName: [SEConstants textFieldFont],
+                                                                            NSFontAttributeName: TextFieldFont,
                                                                             NSParagraphStyleAttributeName: paragraphStyle,
                                                                             }
                                                                   context:nil];
@@ -29,7 +29,7 @@
     CGRect singleLineInfoLabelHeight = [@"a" boundingRectWithSize:CGSizeMake(self.addressLabel.frame.size.width - self.addressLabel.font.pointSize, CGFLOAT_MAX)
                                                           options:NSStringDrawingUsesLineFragmentOrigin
                                                        attributes:@{
-                                                                    NSFontAttributeName: [SEConstants textFieldFont],
+                                                                    NSFontAttributeName: TextFieldFont,
                                                                     NSParagraphStyleAttributeName: paragraphStyle,
                                                                     }
                                                           context:nil];

@@ -93,11 +93,8 @@
 		0DA9BFFA191C3D4000B0AFA1 /* SEJobHoursTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9BFF9191C3D4000B0AFA1 /* SEJobHoursTableViewCell.m */; };
 		0DA9BFFD191C539200B0AFA1 /* SEJobClientInfoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9BFFC191C539200B0AFA1 /* SEJobClientInfoEditViewController.m */; };
 		0DA9C000191C54AD00B0AFA1 /* SETextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9BFFF191C54AD00B0AFA1 /* SETextFieldTableViewCell.m */; };
-		0DA9C003191C5D6000B0AFA1 /* SETextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9C002191C5D6000B0AFA1 /* SETextView.m */; };
 		0DB84CC51922CB710099FA64 /* UIAlertView+CLErrorMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB84CC41922CB710099FA64 /* UIAlertView+CLErrorMessages.m */; };
 		0DBD8AD4191D7F0900A5C859 /* values.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DBD8AD3191D7F0900A5C859 /* values.plist */; };
-		0DC460FD191BC716004B26B7 /* SETextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC460FC191BC716004B26B7 /* SETextField.m */; };
-		0DC46101191BC8B0004B26B7 /* SEConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC46100191BC8B0004B26B7 /* SEConstants.m */; };
 		0DC46105191BCA1D004B26B7 /* SESignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC46104191BCA1D004B26B7 /* SESignInViewController.m */; };
 		0DC46108191BD13C004B26B7 /* SEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC46107191BD13C004B26B7 /* SEViewController.m */; };
 		0DC4610F191BD1E0004B26B7 /* SEMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4610E191BD1E0004B26B7 /* SEMainMenuViewController.m */; };
@@ -110,6 +107,12 @@
 		0DC902FB191C2FB60056254A /* SERestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC902FA191C2FB60056254A /* SERestClient.m */; };
 		0DC902FE191C2FC60056254A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DC902FC191C2FC60056254A /* Model.xcdatamodeld */; };
 		0DC90303191C32740056254A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC90302191C32740056254A /* CoreData.framework */; };
+		624365B2194AB15D00B212D1 /* UIImage+FixOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365B1194AB15D00B212D1 /* UIImage+FixOrientation.swift */; };
+		624365B4194AB1A700B212D1 /* UIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365B3194AB1A700B212D1 /* UIView+Hierarchy.swift */; };
+		624365B6194AB23500B212D1 /* SETextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365B5194AB23500B212D1 /* SETextView.swift */; };
+		62B71C73194A7A7600EB80C7 /* SETextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B71C72194A7A7600EB80C7 /* SETextField.swift */; };
+		62E2A403194A8DC30038BBF8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62E2A402194A8DC30038BBF8 /* CoreLocation.framework */; };
+		62E2A409194AA4A20038BBF8 /* SEConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E2A408194AA4A20038BBF8 /* SEConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -288,15 +291,9 @@
 		0DA9BFFC191C539200B0AFA1 /* SEJobClientInfoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEJobClientInfoEditViewController.m; path = ViewControllers/SEJobClientInfoEditViewController.m; sourceTree = "<group>"; };
 		0DA9BFFE191C54AD00B0AFA1 /* SETextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SETextFieldTableViewCell.h; path = Views/SETextFieldTableViewCell.h; sourceTree = "<group>"; };
 		0DA9BFFF191C54AD00B0AFA1 /* SETextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SETextFieldTableViewCell.m; path = Views/SETextFieldTableViewCell.m; sourceTree = "<group>"; };
-		0DA9C001191C5D6000B0AFA1 /* SETextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SETextView.h; path = Views/SETextView.h; sourceTree = "<group>"; };
-		0DA9C002191C5D6000B0AFA1 /* SETextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SETextView.m; path = Views/SETextView.m; sourceTree = "<group>"; };
 		0DB84CC31922CB710099FA64 /* UIAlertView+CLErrorMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertView+CLErrorMessages.h"; path = "Utils/UIAlertView+CLErrorMessages.h"; sourceTree = "<group>"; };
 		0DB84CC41922CB710099FA64 /* UIAlertView+CLErrorMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertView+CLErrorMessages.m"; path = "Utils/UIAlertView+CLErrorMessages.m"; sourceTree = "<group>"; };
 		0DBD8AD3191D7F0900A5C859 /* values.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = values.plist; sourceTree = "<group>"; };
-		0DC460FB191BC716004B26B7 /* SETextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SETextField.h; path = Views/SETextField.h; sourceTree = "<group>"; };
-		0DC460FC191BC716004B26B7 /* SETextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SETextField.m; path = Views/SETextField.m; sourceTree = "<group>"; };
-		0DC460FF191BC8B0004B26B7 /* SEConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEConstants.h; path = Utils/SEConstants.h; sourceTree = "<group>"; };
-		0DC46100191BC8B0004B26B7 /* SEConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEConstants.m; path = Utils/SEConstants.m; sourceTree = "<group>"; };
 		0DC46103191BCA1D004B26B7 /* SESignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SESignInViewController.h; path = ViewControllers/SESignInViewController.h; sourceTree = "<group>"; };
 		0DC46104191BCA1D004B26B7 /* SESignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SESignInViewController.m; path = ViewControllers/SESignInViewController.m; sourceTree = "<group>"; };
 		0DC46106191BD13C004B26B7 /* SEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEViewController.h; path = ViewControllers/SEViewController.h; sourceTree = "<group>"; };
@@ -317,6 +314,13 @@
 		0DC902FA191C2FB60056254A /* SERestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SERestClient.m; path = Networking/SERestClient.m; sourceTree = "<group>"; };
 		0DC902FD191C2FC60056254A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		0DC90302191C32740056254A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		624365B1194AB15D00B212D1 /* UIImage+FixOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+FixOrientation.swift"; path = "Utils/UIImage+FixOrientation.swift"; sourceTree = "<group>"; };
+		624365B3194AB1A700B212D1 /* UIView+Hierarchy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Hierarchy.swift"; path = "Utils/UIView+Hierarchy.swift"; sourceTree = "<group>"; };
+		624365B5194AB23500B212D1 /* SETextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SETextView.swift; path = Views/SETextView.swift; sourceTree = "<group>"; };
+		62B71C71194A7A7500EB80C7 /* sechi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sechi-Bridging-Header.h"; sourceTree = "<group>"; };
+		62B71C72194A7A7600EB80C7 /* SETextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SETextField.swift; path = Views/SETextField.swift; sourceTree = "<group>"; };
+		62E2A402194A8DC30038BBF8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		62E2A408194AA4A20038BBF8 /* SEConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEConstants.swift; path = Utils/SEConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +328,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62E2A403194A8DC30038BBF8 /* CoreLocation.framework in Frameworks */,
 				0D01630E19212C4200C819E0 /* libxml2.dylib in Frameworks */,
 				0D383999191D051700CC615D /* QuartzCore.framework in Frameworks */,
 				0D01630C19212C3100C819E0 /* SystemConfiguration.framework in Frameworks */,
@@ -503,6 +508,7 @@
 		0D6F80D1191B26F3005E7975 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				62E2A402194A8DC30038BBF8 /* CoreLocation.framework */,
 				0D01630D19212C4200C819E0 /* libxml2.dylib */,
 				0D01630B19212C3100C819E0 /* SystemConfiguration.framework */,
 				0D01630919212C2B00C819E0 /* Security.framework */,
@@ -547,6 +553,7 @@
 				0D6F80DB191B26F3005E7975 /* InfoPlist.strings */,
 				0D6F80DE191B26F3005E7975 /* main.m */,
 				0D6F80E0191B26F3005E7975 /* sechi-Prefix.pch */,
+				62B71C71194A7A7500EB80C7 /* sechi-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -609,14 +616,12 @@
 				0D38399D191D1ADE00CC615D /* Products */,
 				0D383982191CF32B00CC615D /* Client */,
 				0D38396B191CE86800CC615D /* Job */,
-				0DC460FB191BC716004B26B7 /* SETextField.h */,
-				0DC460FC191BC716004B26B7 /* SETextField.m */,
-				0DA9C001191C5D6000B0AFA1 /* SETextView.h */,
-				0DA9C002191C5D6000B0AFA1 /* SETextView.m */,
 				0DC4611D191C13E1004B26B7 /* SESwipeableTableViewCell.h */,
 				0DC4611E191C13E1004B26B7 /* SESwipeableTableViewCell.m */,
 				0DA9BFFE191C54AD00B0AFA1 /* SETextFieldTableViewCell.h */,
 				0DA9BFFF191C54AD00B0AFA1 /* SETextFieldTableViewCell.m */,
+				62B71C72194A7A7600EB80C7 /* SETextField.swift */,
+				624365B5194AB23500B212D1 /* SETextView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -624,8 +629,9 @@
 		0DC460FE191BC89A004B26B7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				0DC460FF191BC8B0004B26B7 /* SEConstants.h */,
-				0DC46100191BC8B0004B26B7 /* SEConstants.m */,
+				62E2A408194AA4A20038BBF8 /* SEConstants.swift */,
+				624365B1194AB15D00B212D1 /* UIImage+FixOrientation.swift */,
+				624365B3194AB1A700B212D1 /* UIView+Hierarchy.swift */,
 				0D5D0654191C605B002598A9 /* UIView+Hierarchy.h */,
 				0D5D0655191C605B002598A9 /* UIView+Hierarchy.m */,
 				0D1DC41A191C7B8D000367E2 /* UIImage+FixOrientation.h */,
@@ -876,13 +882,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				624365B2194AB15D00B212D1 /* UIImage+FixOrientation.swift in Sources */,
 				0DA9BFF1191C3CFB00B0AFA1 /* SEJobAddressTableViewCell.m in Sources */,
 				0D383995191D030400CC615D /* SEProductsScannerViewController.m in Sources */,
-				0DC460FD191BC716004B26B7 /* SETextField.m in Sources */,
 				0DA9BFFD191C539200B0AFA1 /* SEJobClientInfoEditViewController.m in Sources */,
-				0DC46101191BC8B0004B26B7 /* SEConstants.m in Sources */,
 				0D383991191D012800CC615D /* SEClientMapViewController.m in Sources */,
-				0DA9C003191C5D6000B0AFA1 /* SETextView.m in Sources */,
 				0DC46113191BD2B6004B26B7 /* SEPushNoAnimationSegue.m in Sources */,
 				0DA9BFEB191C3C7700B0AFA1 /* SEJobViewController.m in Sources */,
 				0D6F80E3191B26F3005E7975 /* SEAppDelegate.m in Sources */,
@@ -896,6 +900,7 @@
 				0D383975191CED0E00CC615D /* SEClientAddViewController.m in Sources */,
 				0D383972191CED0500CC615D /* SEClientViewController.m in Sources */,
 				0D3839AA191D618B00CC615D /* SEPaymentViewController.m in Sources */,
+				62E2A409194AA4A20038BBF8 /* SEConstants.swift in Sources */,
 				0D1DC41C191C7B8D000367E2 /* UIImage+FixOrientation.m in Sources */,
 				0D38397B191CEF5C00CC615D /* SEClient.m in Sources */,
 				0D1DC414191C784D000367E2 /* SEJobPhotoInfo.m in Sources */,
@@ -903,6 +908,7 @@
 				0DA9C000191C54AD00B0AFA1 /* SETextFieldTableViewCell.m in Sources */,
 				0DC46105191BCA1D004B26B7 /* SESignInViewController.m in Sources */,
 				0D38397E191CEF5D00CC615D /* SEProduct.m in Sources */,
+				624365B6194AB23500B212D1 /* SETextView.swift in Sources */,
 				0DC4611C191BFE9E004B26B7 /* SEJobTableViewCell.m in Sources */,
 				0DC902FB191C2FB60056254A /* SERestClient.m in Sources */,
 				0D383978191CED1800CC615D /* SEClientEditViewController.m in Sources */,
@@ -913,6 +919,7 @@
 				0D1DC411191C784D000367E2 /* SEJob.m in Sources */,
 				0DA9BFF7191C3D3000B0AFA1 /* SEJobPhotosTableViewCell.m in Sources */,
 				0D3839B4191D632200CC615D /* SEPaymentInfoTableViewCell.m in Sources */,
+				624365B4194AB1A700B212D1 /* UIView+Hierarchy.swift in Sources */,
 				0D383981191CEF5D00CC615D /* SEPayment.m in Sources */,
 				0D5D0656191C605B002598A9 /* UIView+Hierarchy.m in Sources */,
 				0DA9BFF4191C3D1300B0AFA1 /* SEJobNotesTableViewCell.m in Sources */,
@@ -921,6 +928,7 @@
 				0D383985191CF34400CC615D /* SEClientTableViewCell.m in Sources */,
 				0DA9BFEE191C3CE400B0AFA1 /* SEJobClientInfoTableViewCell.m in Sources */,
 				0DC4611F191C13E1004B26B7 /* SESwipeableTableViewCell.m in Sources */,
+				62B71C73194A7A7600EB80C7 /* SETextField.swift in Sources */,
 				0D38396F191CECFA00CC615D /* SEClientsViewController.m in Sources */,
 				0D3839A7191D613E00CC615D /* SEPaymentAddViewController.m in Sources */,
 				0D1DC417191C7AA2000367E2 /* SENoStatusBarImagePickerController.m in Sources */,
@@ -1059,6 +1067,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sechi/sechi-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1068,8 +1077,11 @@
 				);
 				INFOPLIST_FILE = "sechi/sechi-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "sechi/sechi-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1078,6 +1090,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sechi/sechi-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1087,8 +1100,10 @@
 				);
 				INFOPLIST_FILE = "sechi/sechi-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "sechi/sechi-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
