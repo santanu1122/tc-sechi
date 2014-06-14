@@ -31,10 +31,8 @@
 		0D383981191CEF5D00CC615D /* SEPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D383980191CEF5D00CC615D /* SEPayment.m */; };
 		0D38398E191CF93000CC615D /* SEClientAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D38398D191CF93000CC615D /* SEClientAddressViewController.m */; };
 		0D383991191D012800CC615D /* SEClientMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D383990191D012800CC615D /* SEClientMapViewController.m */; };
-		0D383995191D030400CC615D /* SEProductsScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D383994191D030400CC615D /* SEProductsScannerViewController.m */; };
 		0D383997191D03C100CC615D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D383996191D03C100CC615D /* AVFoundation.framework */; };
 		0D383999191D051700CC615D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D383998191D051700CC615D /* QuartzCore.framework */; };
-		0D38399C191D1AB800CC615D /* SEPartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D38399B191D1AB800CC615D /* SEPartsViewController.m */; };
 		0D6F80D3191B26F3005E7975 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6F80D2191B26F3005E7975 /* Foundation.framework */; };
 		0D6F80D5191B26F3005E7975 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6F80D4191B26F3005E7975 /* CoreGraphics.framework */; };
 		0D6F80D7191B26F3005E7975 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6F80D6191B26F3005E7975 /* UIKit.framework */; };
@@ -83,6 +81,8 @@
 		0DC90303191C32740056254A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC90302191C32740056254A /* CoreData.framework */; };
 		0E934CC6194D048E007139B1 /* SEPaymentAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E934CC5194D048E007139B1 /* SEPaymentAddViewController.swift */; };
 		0E934CC8194D089C007139B1 /* SEPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E934CC7194D089C007139B1 /* SEPaymentViewController.swift */; };
+		0E934CCA194D092E007139B1 /* SEProductsScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E934CC9194D092E007139B1 /* SEProductsScannerViewController.swift */; };
+		0EAFABDD194D148000371DB3 /* SEPartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFABDC194D148000371DB3 /* SEPartsViewController.swift */; };
 		624365B2194AB15D00B212D1 /* UIImage+FixOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365B1194AB15D00B212D1 /* UIImage+FixOrientation.swift */; };
 		624365B4194AB1A700B212D1 /* UIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365B3194AB1A700B212D1 /* UIView+Hierarchy.swift */; };
 		624365B6194AB23500B212D1 /* SETextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365B5194AB23500B212D1 /* SETextView.swift */; };
@@ -199,12 +199,8 @@
 		0D38398D191CF93000CC615D /* SEClientAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEClientAddressViewController.m; path = ViewControllers/SEClientAddressViewController.m; sourceTree = "<group>"; };
 		0D38398F191D012800CC615D /* SEClientMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEClientMapViewController.h; sourceTree = "<group>"; };
 		0D383990191D012800CC615D /* SEClientMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SEClientMapViewController.m; sourceTree = "<group>"; };
-		0D383993191D030400CC615D /* SEProductsScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEProductsScannerViewController.h; path = ViewControllers/SEProductsScannerViewController.h; sourceTree = "<group>"; };
-		0D383994191D030400CC615D /* SEProductsScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEProductsScannerViewController.m; path = ViewControllers/SEProductsScannerViewController.m; sourceTree = "<group>"; };
 		0D383996191D03C100CC615D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0D383998191D051700CC615D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		0D38399A191D1AB800CC615D /* SEPartsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEPartsViewController.h; path = ViewControllers/SEPartsViewController.h; sourceTree = "<group>"; };
-		0D38399B191D1AB800CC615D /* SEPartsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEPartsViewController.m; path = ViewControllers/SEPartsViewController.m; sourceTree = "<group>"; };
 		0D6F80CF191B26F3005E7975 /* sechi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sechi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D6F80D2191B26F3005E7975 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0D6F80D4191B26F3005E7975 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -261,6 +257,8 @@
 		0DC90302191C32740056254A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0E934CC5194D048E007139B1 /* SEPaymentAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEPaymentAddViewController.swift; path = ViewControllers/SEPaymentAddViewController.swift; sourceTree = "<group>"; };
 		0E934CC7194D089C007139B1 /* SEPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEPaymentViewController.swift; path = ViewControllers/SEPaymentViewController.swift; sourceTree = "<group>"; };
+		0E934CC9194D092E007139B1 /* SEProductsScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEProductsScannerViewController.swift; path = ViewControllers/SEProductsScannerViewController.swift; sourceTree = "<group>"; };
+		0EAFABDC194D148000371DB3 /* SEPartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEPartsViewController.swift; path = ViewControllers/SEPartsViewController.swift; sourceTree = "<group>"; };
 		624365B1194AB15D00B212D1 /* UIImage+FixOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+FixOrientation.swift"; path = "Utils/UIImage+FixOrientation.swift"; sourceTree = "<group>"; };
 		624365B3194AB1A700B212D1 /* UIView+Hierarchy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Hierarchy.swift"; path = "Utils/UIView+Hierarchy.swift"; sourceTree = "<group>"; };
 		624365B5194AB23500B212D1 /* SETextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SETextView.swift; path = Views/SETextView.swift; sourceTree = "<group>"; };
@@ -401,10 +399,8 @@
 		0D383992191D02EA00CC615D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0D383993191D030400CC615D /* SEProductsScannerViewController.h */,
-				0D383994191D030400CC615D /* SEProductsScannerViewController.m */,
-				0D38399A191D1AB800CC615D /* SEPartsViewController.h */,
-				0D38399B191D1AB800CC615D /* SEPartsViewController.m */,
+				0E934CC9194D092E007139B1 /* SEProductsScannerViewController.swift */,
+				0EAFABDC194D148000371DB3 /* SEPartsViewController.swift */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -824,14 +820,12 @@
 				624365B2194AB15D00B212D1 /* UIImage+FixOrientation.swift in Sources */,
 				624365FD194BE35C00B212D1 /* SEJobAddressTableViewCell.swift in Sources */,
 				62DADD89194BFA0C001B51F0 /* SEViewController.swift in Sources */,
-				0D383995191D030400CC615D /* SEProductsScannerViewController.m in Sources */,
 				0DA9BFFD191C539200B0AFA1 /* SEJobClientInfoEditViewController.m in Sources */,
 				0D383991191D012800CC615D /* SEClientMapViewController.m in Sources */,
 				62D92755194CC44500B56740 /* SEMainMenuViewController.swift in Sources */,
 				0DC46113191BD2B6004B26B7 /* SEPushNoAnimationSegue.m in Sources */,
 				624365E9194BCC1700B212D1 /* SESwipeableTableViewCell.swift in Sources */,
 				0DA9BFEB191C3C7700B0AFA1 /* SEJobViewController.m in Sources */,
-				0D38399C191D1AB800CC615D /* SEPartsViewController.m in Sources */,
 				0D1DC422191CC580000367E2 /* SEJobNotesEditViewController.m in Sources */,
 				0D1DC409191C6D50000367E2 /* SEJobMapViewController.m in Sources */,
 				0D1DC41F191CC558000367E2 /* SEJobAddressEditViewController.m in Sources */,
@@ -857,6 +851,7 @@
 				624365B6194AB23500B212D1 /* SETextView.swift in Sources */,
 				0DC902FB191C2FB60056254A /* SERestClient.m in Sources */,
 				0D383978191CED1800CC615D /* SEClientEditViewController.m in Sources */,
+				0E934CCA194D092E007139B1 /* SEProductsScannerViewController.swift in Sources */,
 				0D1DC425191CC9BF000367E2 /* SEJobAddViewController.m in Sources */,
 				62436601194BE35C00B212D1 /* SEJobPhotosTableViewCell.swift in Sources */,
 				624365F6194BDA3000B212D1 /* SEClientTableViewCell.swift in Sources */,
@@ -875,6 +870,7 @@
 				62436600194BE35C00B212D1 /* SEJobNotesTableViewCell.swift in Sources */,
 				0DC902FE191C2FC60056254A /* Model.xcdatamodeld in Sources */,
 				0D6F80DF191B26F3005E7975 /* main.m in Sources */,
+				0EAFABDD194D148000371DB3 /* SEPartsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
