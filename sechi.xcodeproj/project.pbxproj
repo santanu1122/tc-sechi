@@ -35,8 +35,6 @@
 		0D383997191D03C100CC615D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D383996191D03C100CC615D /* AVFoundation.framework */; };
 		0D383999191D051700CC615D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D383998191D051700CC615D /* QuartzCore.framework */; };
 		0D38399C191D1AB800CC615D /* SEPartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D38399B191D1AB800CC615D /* SEPartsViewController.m */; };
-		0D3839A4191D611B00CC615D /* SEPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3839A3191D611B00CC615D /* SEPaymentsViewController.m */; };
-		0D3839A7191D613E00CC615D /* SEPaymentAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3839A6191D613E00CC615D /* SEPaymentAddViewController.m */; };
 		0D3839AA191D618B00CC615D /* SEPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3839A9191D618B00CC615D /* SEPaymentViewController.m */; };
 		0D6F80D3191B26F3005E7975 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6F80D2191B26F3005E7975 /* Foundation.framework */; };
 		0D6F80D5191B26F3005E7975 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6F80D4191B26F3005E7975 /* CoreGraphics.framework */; };
@@ -84,6 +82,7 @@
 		0DC902FB191C2FB60056254A /* SERestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC902FA191C2FB60056254A /* SERestClient.m */; };
 		0DC902FE191C2FC60056254A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DC902FC191C2FC60056254A /* Model.xcdatamodeld */; };
 		0DC90303191C32740056254A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC90302191C32740056254A /* CoreData.framework */; };
+		0E934CC6194D048E007139B1 /* SEPaymentAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E934CC5194D048E007139B1 /* SEPaymentAddViewController.swift */; };
 		624365B2194AB15D00B212D1 /* UIImage+FixOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365B1194AB15D00B212D1 /* UIImage+FixOrientation.swift */; };
 		624365B4194AB1A700B212D1 /* UIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365B3194AB1A700B212D1 /* UIView+Hierarchy.swift */; };
 		624365B6194AB23500B212D1 /* SETextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365B5194AB23500B212D1 /* SETextView.swift */; };
@@ -206,10 +205,6 @@
 		0D383998191D051700CC615D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0D38399A191D1AB800CC615D /* SEPartsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEPartsViewController.h; path = ViewControllers/SEPartsViewController.h; sourceTree = "<group>"; };
 		0D38399B191D1AB800CC615D /* SEPartsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEPartsViewController.m; path = ViewControllers/SEPartsViewController.m; sourceTree = "<group>"; };
-		0D3839A2191D611B00CC615D /* SEPaymentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEPaymentsViewController.h; path = ViewControllers/SEPaymentsViewController.h; sourceTree = "<group>"; };
-		0D3839A3191D611B00CC615D /* SEPaymentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEPaymentsViewController.m; path = ViewControllers/SEPaymentsViewController.m; sourceTree = "<group>"; };
-		0D3839A5191D613E00CC615D /* SEPaymentAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEPaymentAddViewController.h; path = ViewControllers/SEPaymentAddViewController.h; sourceTree = "<group>"; };
-		0D3839A6191D613E00CC615D /* SEPaymentAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEPaymentAddViewController.m; path = ViewControllers/SEPaymentAddViewController.m; sourceTree = "<group>"; };
 		0D3839A8191D618B00CC615D /* SEPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEPaymentViewController.h; path = ViewControllers/SEPaymentViewController.h; sourceTree = "<group>"; };
 		0D3839A9191D618B00CC615D /* SEPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEPaymentViewController.m; path = ViewControllers/SEPaymentViewController.m; sourceTree = "<group>"; };
 		0D6F80CF191B26F3005E7975 /* sechi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sechi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -266,6 +261,7 @@
 		0DC902FA191C2FB60056254A /* SERestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SERestClient.m; path = Networking/SERestClient.m; sourceTree = "<group>"; };
 		0DC902FD191C2FC60056254A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		0DC90302191C32740056254A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		0E934CC5194D048E007139B1 /* SEPaymentAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEPaymentAddViewController.swift; path = ViewControllers/SEPaymentAddViewController.swift; sourceTree = "<group>"; };
 		624365B1194AB15D00B212D1 /* UIImage+FixOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+FixOrientation.swift"; path = "Utils/UIImage+FixOrientation.swift"; sourceTree = "<group>"; };
 		624365B3194AB1A700B212D1 /* UIView+Hierarchy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Hierarchy.swift"; path = "Utils/UIView+Hierarchy.swift"; sourceTree = "<group>"; };
 		624365B5194AB23500B212D1 /* SETextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SETextView.swift; path = Views/SETextView.swift; sourceTree = "<group>"; };
@@ -427,10 +423,7 @@
 			children = (
 				62E45BFD194CDB3100A57283 /* SEPaymentEditViewController.swift */,
 				62C40925194CFC2600298A12 /* SEPaymentsViewController.swift */,
-				0D3839A2191D611B00CC615D /* SEPaymentsViewController.h */,
-				0D3839A3191D611B00CC615D /* SEPaymentsViewController.m */,
-				0D3839A5191D613E00CC615D /* SEPaymentAddViewController.h */,
-				0D3839A6191D613E00CC615D /* SEPaymentAddViewController.m */,
+				0E934CC5194D048E007139B1 /* SEPaymentAddViewController.swift */,
 				0D3839A8191D618B00CC615D /* SEPaymentViewController.h */,
 				0D3839A9191D618B00CC615D /* SEPaymentViewController.m */,
 			);
@@ -856,6 +849,7 @@
 				0D383972191CED0500CC615D /* SEClientViewController.m in Sources */,
 				0D3839AA191D618B00CC615D /* SEPaymentViewController.m in Sources */,
 				624365ED194BD69300B212D1 /* SEPaymentInfoTableViewCell.swift in Sources */,
+				0E934CC6194D048E007139B1 /* SEPaymentAddViewController.swift in Sources */,
 				628F16A5194C80DA00084C40 /* SESignInViewController.swift in Sources */,
 				62E2A409194AA4A20038BBF8 /* SEConstants.swift in Sources */,
 				0D38397B191CEF5C00CC615D /* SEClient.m in Sources */,
@@ -874,12 +868,10 @@
 				62E45BFC194CDAEE00A57283 /* SENoStatusBarImagePickerController.swift in Sources */,
 				624365FF194BE35C00B212D1 /* SEJobHoursTableViewCell.swift in Sources */,
 				0D383981191CEF5D00CC615D /* SEPayment.m in Sources */,
-				0D3839A4191D611B00CC615D /* SEPaymentsViewController.m in Sources */,
 				62B71C73194A7A7600EB80C7 /* SETextField.swift in Sources */,
 				624365EA194BCC1700B212D1 /* SETextFieldTableViewCell.swift in Sources */,
 				0D38396F191CECFA00CC615D /* SEClientsViewController.m in Sources */,
 				62E45BFE194CDB3100A57283 /* SEPaymentEditViewController.swift in Sources */,
-				0D3839A7191D613E00CC615D /* SEPaymentAddViewController.m in Sources */,
 				0D1DC429191CD19F000367E2 /* SEGalleryViewController.m in Sources */,
 				0DC46117191BEA54004B26B7 /* SEJobsViewController.m in Sources */,
 				62436600194BE35C00B212D1 /* SEJobNotesTableViewCell.swift in Sources */,
