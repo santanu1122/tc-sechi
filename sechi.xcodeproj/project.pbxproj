@@ -35,7 +35,6 @@
 		0D383997191D03C100CC615D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D383996191D03C100CC615D /* AVFoundation.framework */; };
 		0D383999191D051700CC615D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D383998191D051700CC615D /* QuartzCore.framework */; };
 		0D38399C191D1AB800CC615D /* SEPartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D38399B191D1AB800CC615D /* SEPartsViewController.m */; };
-		0D3839AA191D618B00CC615D /* SEPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3839A9191D618B00CC615D /* SEPaymentViewController.m */; };
 		0D6F80D3191B26F3005E7975 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6F80D2191B26F3005E7975 /* Foundation.framework */; };
 		0D6F80D5191B26F3005E7975 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6F80D4191B26F3005E7975 /* CoreGraphics.framework */; };
 		0D6F80D7191B26F3005E7975 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6F80D6191B26F3005E7975 /* UIKit.framework */; };
@@ -83,6 +82,7 @@
 		0DC902FE191C2FC60056254A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DC902FC191C2FC60056254A /* Model.xcdatamodeld */; };
 		0DC90303191C32740056254A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC90302191C32740056254A /* CoreData.framework */; };
 		0E934CC6194D048E007139B1 /* SEPaymentAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E934CC5194D048E007139B1 /* SEPaymentAddViewController.swift */; };
+		0E934CC8194D089C007139B1 /* SEPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E934CC7194D089C007139B1 /* SEPaymentViewController.swift */; };
 		624365B2194AB15D00B212D1 /* UIImage+FixOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365B1194AB15D00B212D1 /* UIImage+FixOrientation.swift */; };
 		624365B4194AB1A700B212D1 /* UIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365B3194AB1A700B212D1 /* UIView+Hierarchy.swift */; };
 		624365B6194AB23500B212D1 /* SETextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365B5194AB23500B212D1 /* SETextView.swift */; };
@@ -205,8 +205,6 @@
 		0D383998191D051700CC615D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0D38399A191D1AB800CC615D /* SEPartsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEPartsViewController.h; path = ViewControllers/SEPartsViewController.h; sourceTree = "<group>"; };
 		0D38399B191D1AB800CC615D /* SEPartsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEPartsViewController.m; path = ViewControllers/SEPartsViewController.m; sourceTree = "<group>"; };
-		0D3839A8191D618B00CC615D /* SEPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEPaymentViewController.h; path = ViewControllers/SEPaymentViewController.h; sourceTree = "<group>"; };
-		0D3839A9191D618B00CC615D /* SEPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEPaymentViewController.m; path = ViewControllers/SEPaymentViewController.m; sourceTree = "<group>"; };
 		0D6F80CF191B26F3005E7975 /* sechi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sechi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D6F80D2191B26F3005E7975 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0D6F80D4191B26F3005E7975 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -262,6 +260,7 @@
 		0DC902FD191C2FC60056254A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		0DC90302191C32740056254A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0E934CC5194D048E007139B1 /* SEPaymentAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEPaymentAddViewController.swift; path = ViewControllers/SEPaymentAddViewController.swift; sourceTree = "<group>"; };
+		0E934CC7194D089C007139B1 /* SEPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEPaymentViewController.swift; path = ViewControllers/SEPaymentViewController.swift; sourceTree = "<group>"; };
 		624365B1194AB15D00B212D1 /* UIImage+FixOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+FixOrientation.swift"; path = "Utils/UIImage+FixOrientation.swift"; sourceTree = "<group>"; };
 		624365B3194AB1A700B212D1 /* UIView+Hierarchy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Hierarchy.swift"; path = "Utils/UIView+Hierarchy.swift"; sourceTree = "<group>"; };
 		624365B5194AB23500B212D1 /* SETextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SETextView.swift; path = Views/SETextView.swift; sourceTree = "<group>"; };
@@ -424,8 +423,7 @@
 				62E45BFD194CDB3100A57283 /* SEPaymentEditViewController.swift */,
 				62C40925194CFC2600298A12 /* SEPaymentsViewController.swift */,
 				0E934CC5194D048E007139B1 /* SEPaymentAddViewController.swift */,
-				0D3839A8191D618B00CC615D /* SEPaymentViewController.h */,
-				0D3839A9191D618B00CC615D /* SEPaymentViewController.m */,
+				0E934CC7194D089C007139B1 /* SEPaymentViewController.swift */,
 			);
 			name = Payments;
 			sourceTree = "<group>";
@@ -842,12 +840,12 @@
 				0D383975191CED0E00CC615D /* SEClientAddViewController.m in Sources */,
 				624365F4194BDA3000B212D1 /* SEClientAddressTableViewCell.swift in Sources */,
 				62C40926194CFC2600298A12 /* SEPaymentsViewController.swift in Sources */,
+				0E934CC8194D089C007139B1 /* SEPaymentViewController.swift in Sources */,
 				624365F5194BDA3000B212D1 /* SEClientInfoTableViewCell.swift in Sources */,
 				624365EE194BD69300B212D1 /* SEPaymentTableViewCell.swift in Sources */,
 				624365F0194BD9C400B212D1 /* SEProductTableViewCell.swift in Sources */,
 				624365E6194BCA4A00B212D1 /* SEAppDelegate.swift in Sources */,
 				0D383972191CED0500CC615D /* SEClientViewController.m in Sources */,
-				0D3839AA191D618B00CC615D /* SEPaymentViewController.m in Sources */,
 				624365ED194BD69300B212D1 /* SEPaymentInfoTableViewCell.swift in Sources */,
 				0E934CC6194D048E007139B1 /* SEPaymentAddViewController.swift in Sources */,
 				628F16A5194C80DA00084C40 /* SESignInViewController.swift in Sources */,
