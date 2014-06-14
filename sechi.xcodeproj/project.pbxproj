@@ -18,7 +18,6 @@
 		0D1DC414191C784D000367E2 /* SEJobPhotoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1DC413191C784D000367E2 /* SEJobPhotoInfo.m */; };
 		0D1DC417191C7AA2000367E2 /* SENoStatusBarImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1DC416191C7AA2000367E2 /* SENoStatusBarImagePickerController.m */; };
 		0D1DC419191C7B04000367E2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D1DC418191C7B04000367E2 /* MobileCoreServices.framework */; };
-		0D1DC41C191C7B8D000367E2 /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1DC41B191C7B8D000367E2 /* UIImage+FixOrientation.m */; };
 		0D1DC41F191CC558000367E2 /* SEJobAddressEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1DC41E191CC557000367E2 /* SEJobAddressEditViewController.m */; };
 		0D1DC422191CC580000367E2 /* SEJobNotesEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1DC421191CC580000367E2 /* SEJobNotesEditViewController.m */; };
 		0D1DC425191CC9BF000367E2 /* SEJobAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1DC424191CC9BF000367E2 /* SEJobAddViewController.m */; };
@@ -31,29 +30,21 @@
 		0D38397B191CEF5C00CC615D /* SEClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D38397A191CEF5C00CC615D /* SEClient.m */; };
 		0D38397E191CEF5D00CC615D /* SEProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D38397D191CEF5D00CC615D /* SEProduct.m */; };
 		0D383981191CEF5D00CC615D /* SEPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D383980191CEF5D00CC615D /* SEPayment.m */; };
-		0D383985191CF34400CC615D /* SEClientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D383984191CF34400CC615D /* SEClientTableViewCell.m */; };
-		0D383988191CF36300CC615D /* SEClientInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D383987191CF36300CC615D /* SEClientInfoTableViewCell.m */; };
-		0D38398B191CF37100CC615D /* SEClientAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D38398A191CF37100CC615D /* SEClientAddressTableViewCell.m */; };
 		0D38398E191CF93000CC615D /* SEClientAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D38398D191CF93000CC615D /* SEClientAddressViewController.m */; };
 		0D383991191D012800CC615D /* SEClientMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D383990191D012800CC615D /* SEClientMapViewController.m */; };
 		0D383995191D030400CC615D /* SEProductsScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D383994191D030400CC615D /* SEProductsScannerViewController.m */; };
 		0D383997191D03C100CC615D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D383996191D03C100CC615D /* AVFoundation.framework */; };
 		0D383999191D051700CC615D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D383998191D051700CC615D /* QuartzCore.framework */; };
 		0D38399C191D1AB800CC615D /* SEPartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D38399B191D1AB800CC615D /* SEPartsViewController.m */; };
-		0D3839A0191D1AF000CC615D /* SEProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D38399F191D1AF000CC615D /* SEProductTableViewCell.m */; };
 		0D3839A4191D611B00CC615D /* SEPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3839A3191D611B00CC615D /* SEPaymentsViewController.m */; };
 		0D3839A7191D613E00CC615D /* SEPaymentAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3839A6191D613E00CC615D /* SEPaymentAddViewController.m */; };
 		0D3839AA191D618B00CC615D /* SEPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3839A9191D618B00CC615D /* SEPaymentViewController.m */; };
 		0D3839AD191D619C00CC615D /* SEPaymentEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3839AC191D619C00CC615D /* SEPaymentEditViewController.m */; };
-		0D3839B1191D630800CC615D /* SEPaymentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3839B0191D630800CC615D /* SEPaymentTableViewCell.m */; };
-		0D3839B4191D632200CC615D /* SEPaymentInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3839B3191D632200CC615D /* SEPaymentInfoTableViewCell.m */; };
-		0D5D0656191C605B002598A9 /* UIView+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D0655191C605B002598A9 /* UIView+Hierarchy.m */; };
 		0D6F80D3191B26F3005E7975 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6F80D2191B26F3005E7975 /* Foundation.framework */; };
 		0D6F80D5191B26F3005E7975 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6F80D4191B26F3005E7975 /* CoreGraphics.framework */; };
 		0D6F80D7191B26F3005E7975 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6F80D6191B26F3005E7975 /* UIKit.framework */; };
 		0D6F80DD191B26F3005E7975 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F80DB191B26F3005E7975 /* InfoPlist.strings */; };
 		0D6F80DF191B26F3005E7975 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F80DE191B26F3005E7975 /* main.m */; };
-		0D6F80E3191B26F3005E7975 /* SEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F80E2191B26F3005E7975 /* SEAppDelegate.m */; };
 		0D6F80E6191B26F3005E7975 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F80E4191B26F3005E7975 /* Main.storyboard */; };
 		0D6F80EB191B26F3005E7975 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F80EA191B26F3005E7975 /* Images.xcassets */; };
 		0D6F80F2191B26F3005E7975 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6F80F1191B26F3005E7975 /* XCTest.framework */; };
@@ -86,14 +77,7 @@
 		0D6F8136191B283E005E7975 /* line_schedule@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F811E191B283E005E7975 /* line_schedule@2x.png */; };
 		0D6F8137191B283E005E7975 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F811F191B283E005E7975 /* logo@2x.png */; };
 		0DA9BFEB191C3C7700B0AFA1 /* SEJobViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9BFEA191C3C7700B0AFA1 /* SEJobViewController.m */; };
-		0DA9BFEE191C3CE400B0AFA1 /* SEJobClientInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9BFED191C3CE400B0AFA1 /* SEJobClientInfoTableViewCell.m */; };
-		0DA9BFF1191C3CFB00B0AFA1 /* SEJobAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9BFF0191C3CFB00B0AFA1 /* SEJobAddressTableViewCell.m */; };
-		0DA9BFF4191C3D1300B0AFA1 /* SEJobNotesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9BFF3191C3D1300B0AFA1 /* SEJobNotesTableViewCell.m */; };
-		0DA9BFF7191C3D3000B0AFA1 /* SEJobPhotosTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9BFF6191C3D3000B0AFA1 /* SEJobPhotosTableViewCell.m */; };
-		0DA9BFFA191C3D4000B0AFA1 /* SEJobHoursTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9BFF9191C3D4000B0AFA1 /* SEJobHoursTableViewCell.m */; };
 		0DA9BFFD191C539200B0AFA1 /* SEJobClientInfoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9BFFC191C539200B0AFA1 /* SEJobClientInfoEditViewController.m */; };
-		0DA9C000191C54AD00B0AFA1 /* SETextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9BFFF191C54AD00B0AFA1 /* SETextFieldTableViewCell.m */; };
-		0DB84CC51922CB710099FA64 /* UIAlertView+CLErrorMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB84CC41922CB710099FA64 /* UIAlertView+CLErrorMessages.m */; };
 		0DBD8AD4191D7F0900A5C859 /* values.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DBD8AD3191D7F0900A5C859 /* values.plist */; };
 		0DC46105191BCA1D004B26B7 /* SESignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC46104191BCA1D004B26B7 /* SESignInViewController.m */; };
 		0DC46108191BD13C004B26B7 /* SEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC46107191BD13C004B26B7 /* SEViewController.m */; };
@@ -101,8 +85,6 @@
 		0DC46113191BD2B6004B26B7 /* SEPushNoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC46112191BD2B6004B26B7 /* SEPushNoAnimationSegue.m */; };
 		0DC46117191BEA54004B26B7 /* SEJobsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC46116191BEA54004B26B7 /* SEJobsViewController.m */; };
 		0DC46119191BEE1F004B26B7 /* schedule_navbar_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC46118191BEE1F004B26B7 /* schedule_navbar_bg@2x.png */; };
-		0DC4611C191BFE9E004B26B7 /* SEJobTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4611B191BFE9E004B26B7 /* SEJobTableViewCell.m */; };
-		0DC4611F191C13E1004B26B7 /* SESwipeableTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4611E191C13E1004B26B7 /* SESwipeableTableViewCell.m */; };
 		0DC46121191C1873004B26B7 /* cell_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC46120191C1873004B26B7 /* cell_bg@2x.png */; };
 		0DC902FB191C2FB60056254A /* SERestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC902FA191C2FB60056254A /* SERestClient.m */; };
 		0DC902FE191C2FC60056254A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DC902FC191C2FC60056254A /* Model.xcdatamodeld */; };
@@ -110,6 +92,21 @@
 		624365B2194AB15D00B212D1 /* UIImage+FixOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365B1194AB15D00B212D1 /* UIImage+FixOrientation.swift */; };
 		624365B4194AB1A700B212D1 /* UIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365B3194AB1A700B212D1 /* UIView+Hierarchy.swift */; };
 		624365B6194AB23500B212D1 /* SETextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365B5194AB23500B212D1 /* SETextView.swift */; };
+		624365E6194BCA4A00B212D1 /* SEAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365E5194BCA4A00B212D1 /* SEAppDelegate.swift */; };
+		624365E9194BCC1700B212D1 /* SESwipeableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365E7194BCC1700B212D1 /* SESwipeableTableViewCell.swift */; };
+		624365EA194BCC1700B212D1 /* SETextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365E8194BCC1700B212D1 /* SETextFieldTableViewCell.swift */; };
+		624365ED194BD69300B212D1 /* SEPaymentInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365EB194BD69300B212D1 /* SEPaymentInfoTableViewCell.swift */; };
+		624365EE194BD69300B212D1 /* SEPaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365EC194BD69300B212D1 /* SEPaymentTableViewCell.swift */; };
+		624365F0194BD9C400B212D1 /* SEProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365EF194BD9C400B212D1 /* SEProductTableViewCell.swift */; };
+		624365F4194BDA3000B212D1 /* SEClientAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365F1194BDA3000B212D1 /* SEClientAddressTableViewCell.swift */; };
+		624365F5194BDA3000B212D1 /* SEClientInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365F2194BDA3000B212D1 /* SEClientInfoTableViewCell.swift */; };
+		624365F6194BDA3000B212D1 /* SEClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365F3194BDA3000B212D1 /* SEClientTableViewCell.swift */; };
+		624365FD194BE35C00B212D1 /* SEJobAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365F7194BE35C00B212D1 /* SEJobAddressTableViewCell.swift */; };
+		624365FE194BE35C00B212D1 /* SEJobClientInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365F8194BE35C00B212D1 /* SEJobClientInfoTableViewCell.swift */; };
+		624365FF194BE35C00B212D1 /* SEJobHoursTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365F9194BE35C00B212D1 /* SEJobHoursTableViewCell.swift */; };
+		62436600194BE35C00B212D1 /* SEJobNotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365FA194BE35C00B212D1 /* SEJobNotesTableViewCell.swift */; };
+		62436601194BE35C00B212D1 /* SEJobPhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365FB194BE35C00B212D1 /* SEJobPhotosTableViewCell.swift */; };
+		62436602194BE35C00B212D1 /* SEJobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365FC194BE35C00B212D1 /* SEJobTableViewCell.swift */; };
 		62B71C73194A7A7600EB80C7 /* SETextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B71C72194A7A7600EB80C7 /* SETextField.swift */; };
 		62E2A403194A8DC30038BBF8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62E2A402194A8DC30038BBF8 /* CoreLocation.framework */; };
 		62E2A409194AA4A20038BBF8 /* SEConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E2A408194AA4A20038BBF8 /* SEConstants.swift */; };
@@ -176,8 +173,6 @@
 		0D1DC415191C7AA2000367E2 /* SENoStatusBarImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SENoStatusBarImagePickerController.h; path = ViewControllers/SENoStatusBarImagePickerController.h; sourceTree = "<group>"; };
 		0D1DC416191C7AA2000367E2 /* SENoStatusBarImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SENoStatusBarImagePickerController.m; path = ViewControllers/SENoStatusBarImagePickerController.m; sourceTree = "<group>"; };
 		0D1DC418191C7B04000367E2 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		0D1DC41A191C7B8D000367E2 /* UIImage+FixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+FixOrientation.h"; path = "Utils/UIImage+FixOrientation.h"; sourceTree = "<group>"; };
-		0D1DC41B191C7B8D000367E2 /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+FixOrientation.m"; path = "Utils/UIImage+FixOrientation.m"; sourceTree = "<group>"; };
 		0D1DC41D191CC557000367E2 /* SEJobAddressEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEJobAddressEditViewController.h; path = ViewControllers/SEJobAddressEditViewController.h; sourceTree = "<group>"; };
 		0D1DC41E191CC557000367E2 /* SEJobAddressEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEJobAddressEditViewController.m; path = ViewControllers/SEJobAddressEditViewController.m; sourceTree = "<group>"; };
 		0D1DC420191CC580000367E2 /* SEJobNotesEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEJobNotesEditViewController.h; path = ViewControllers/SEJobNotesEditViewController.h; sourceTree = "<group>"; };
@@ -202,12 +197,6 @@
 		0D38397D191CEF5D00CC615D /* SEProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEProduct.m; path = CoreData/SEProduct.m; sourceTree = "<group>"; };
 		0D38397F191CEF5D00CC615D /* SEPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEPayment.h; path = CoreData/SEPayment.h; sourceTree = "<group>"; };
 		0D383980191CEF5D00CC615D /* SEPayment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEPayment.m; path = CoreData/SEPayment.m; sourceTree = "<group>"; };
-		0D383983191CF34400CC615D /* SEClientTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEClientTableViewCell.h; path = Views/SEClientTableViewCell.h; sourceTree = "<group>"; };
-		0D383984191CF34400CC615D /* SEClientTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEClientTableViewCell.m; path = Views/SEClientTableViewCell.m; sourceTree = "<group>"; };
-		0D383986191CF36300CC615D /* SEClientInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEClientInfoTableViewCell.h; path = Views/SEClientInfoTableViewCell.h; sourceTree = "<group>"; };
-		0D383987191CF36300CC615D /* SEClientInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEClientInfoTableViewCell.m; path = Views/SEClientInfoTableViewCell.m; sourceTree = "<group>"; };
-		0D383989191CF37100CC615D /* SEClientAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SEClientAddressTableViewCell.h; path = Views/SEClientAddressTableViewCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		0D38398A191CF37100CC615D /* SEClientAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SEClientAddressTableViewCell.m; path = Views/SEClientAddressTableViewCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		0D38398C191CF93000CC615D /* SEClientAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SEClientAddressViewController.h; path = ViewControllers/SEClientAddressViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		0D38398D191CF93000CC615D /* SEClientAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEClientAddressViewController.m; path = ViewControllers/SEClientAddressViewController.m; sourceTree = "<group>"; };
 		0D38398F191D012800CC615D /* SEClientMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEClientMapViewController.h; sourceTree = "<group>"; };
@@ -218,8 +207,6 @@
 		0D383998191D051700CC615D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0D38399A191D1AB800CC615D /* SEPartsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEPartsViewController.h; path = ViewControllers/SEPartsViewController.h; sourceTree = "<group>"; };
 		0D38399B191D1AB800CC615D /* SEPartsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEPartsViewController.m; path = ViewControllers/SEPartsViewController.m; sourceTree = "<group>"; };
-		0D38399E191D1AF000CC615D /* SEProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEProductTableViewCell.h; path = Views/SEProductTableViewCell.h; sourceTree = "<group>"; };
-		0D38399F191D1AF000CC615D /* SEProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEProductTableViewCell.m; path = Views/SEProductTableViewCell.m; sourceTree = "<group>"; };
 		0D3839A2191D611B00CC615D /* SEPaymentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEPaymentsViewController.h; path = ViewControllers/SEPaymentsViewController.h; sourceTree = "<group>"; };
 		0D3839A3191D611B00CC615D /* SEPaymentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEPaymentsViewController.m; path = ViewControllers/SEPaymentsViewController.m; sourceTree = "<group>"; };
 		0D3839A5191D613E00CC615D /* SEPaymentAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEPaymentAddViewController.h; path = ViewControllers/SEPaymentAddViewController.h; sourceTree = "<group>"; };
@@ -228,12 +215,6 @@
 		0D3839A9191D618B00CC615D /* SEPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEPaymentViewController.m; path = ViewControllers/SEPaymentViewController.m; sourceTree = "<group>"; };
 		0D3839AB191D619C00CC615D /* SEPaymentEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEPaymentEditViewController.h; sourceTree = "<group>"; };
 		0D3839AC191D619C00CC615D /* SEPaymentEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SEPaymentEditViewController.m; sourceTree = "<group>"; };
-		0D3839AF191D630800CC615D /* SEPaymentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEPaymentTableViewCell.h; path = Views/SEPaymentTableViewCell.h; sourceTree = "<group>"; };
-		0D3839B0191D630800CC615D /* SEPaymentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEPaymentTableViewCell.m; path = Views/SEPaymentTableViewCell.m; sourceTree = "<group>"; };
-		0D3839B2191D632200CC615D /* SEPaymentInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEPaymentInfoTableViewCell.h; path = Views/SEPaymentInfoTableViewCell.h; sourceTree = "<group>"; };
-		0D3839B3191D632200CC615D /* SEPaymentInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEPaymentInfoTableViewCell.m; path = Views/SEPaymentInfoTableViewCell.m; sourceTree = "<group>"; };
-		0D5D0654191C605B002598A9 /* UIView+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Hierarchy.h"; path = "Utils/UIView+Hierarchy.h"; sourceTree = "<group>"; };
-		0D5D0655191C605B002598A9 /* UIView+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Hierarchy.m"; path = "Utils/UIView+Hierarchy.m"; sourceTree = "<group>"; };
 		0D6F80CF191B26F3005E7975 /* sechi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sechi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D6F80D2191B26F3005E7975 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0D6F80D4191B26F3005E7975 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -242,8 +223,6 @@
 		0D6F80DC191B26F3005E7975 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0D6F80DE191B26F3005E7975 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		0D6F80E0191B26F3005E7975 /* sechi-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sechi-Prefix.pch"; sourceTree = "<group>"; };
-		0D6F80E1191B26F3005E7975 /* SEAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SEAppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		0D6F80E2191B26F3005E7975 /* SEAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SEAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		0D6F80E5191B26F3005E7975 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0D6F80EA191B26F3005E7975 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0D6F80F0191B26F3005E7975 /* sechiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sechiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -277,22 +256,8 @@
 		0D6F811F191B283E005E7975 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		0DA9BFE9191C3C7700B0AFA1 /* SEJobViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEJobViewController.h; path = ViewControllers/SEJobViewController.h; sourceTree = "<group>"; };
 		0DA9BFEA191C3C7700B0AFA1 /* SEJobViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEJobViewController.m; path = ViewControllers/SEJobViewController.m; sourceTree = "<group>"; };
-		0DA9BFEC191C3CE400B0AFA1 /* SEJobClientInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEJobClientInfoTableViewCell.h; path = Views/SEJobClientInfoTableViewCell.h; sourceTree = "<group>"; };
-		0DA9BFED191C3CE400B0AFA1 /* SEJobClientInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEJobClientInfoTableViewCell.m; path = Views/SEJobClientInfoTableViewCell.m; sourceTree = "<group>"; };
-		0DA9BFEF191C3CFB00B0AFA1 /* SEJobAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEJobAddressTableViewCell.h; path = Views/SEJobAddressTableViewCell.h; sourceTree = "<group>"; };
-		0DA9BFF0191C3CFB00B0AFA1 /* SEJobAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEJobAddressTableViewCell.m; path = Views/SEJobAddressTableViewCell.m; sourceTree = "<group>"; };
-		0DA9BFF2191C3D1300B0AFA1 /* SEJobNotesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEJobNotesTableViewCell.h; path = Views/SEJobNotesTableViewCell.h; sourceTree = "<group>"; };
-		0DA9BFF3191C3D1300B0AFA1 /* SEJobNotesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEJobNotesTableViewCell.m; path = Views/SEJobNotesTableViewCell.m; sourceTree = "<group>"; };
-		0DA9BFF5191C3D3000B0AFA1 /* SEJobPhotosTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEJobPhotosTableViewCell.h; sourceTree = "<group>"; };
-		0DA9BFF6191C3D3000B0AFA1 /* SEJobPhotosTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SEJobPhotosTableViewCell.m; sourceTree = "<group>"; };
-		0DA9BFF8191C3D4000B0AFA1 /* SEJobHoursTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEJobHoursTableViewCell.h; path = Views/SEJobHoursTableViewCell.h; sourceTree = "<group>"; };
-		0DA9BFF9191C3D4000B0AFA1 /* SEJobHoursTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEJobHoursTableViewCell.m; path = Views/SEJobHoursTableViewCell.m; sourceTree = "<group>"; };
 		0DA9BFFB191C539200B0AFA1 /* SEJobClientInfoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEJobClientInfoEditViewController.h; path = ViewControllers/SEJobClientInfoEditViewController.h; sourceTree = "<group>"; };
 		0DA9BFFC191C539200B0AFA1 /* SEJobClientInfoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEJobClientInfoEditViewController.m; path = ViewControllers/SEJobClientInfoEditViewController.m; sourceTree = "<group>"; };
-		0DA9BFFE191C54AD00B0AFA1 /* SETextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SETextFieldTableViewCell.h; path = Views/SETextFieldTableViewCell.h; sourceTree = "<group>"; };
-		0DA9BFFF191C54AD00B0AFA1 /* SETextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SETextFieldTableViewCell.m; path = Views/SETextFieldTableViewCell.m; sourceTree = "<group>"; };
-		0DB84CC31922CB710099FA64 /* UIAlertView+CLErrorMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertView+CLErrorMessages.h"; path = "Utils/UIAlertView+CLErrorMessages.h"; sourceTree = "<group>"; };
-		0DB84CC41922CB710099FA64 /* UIAlertView+CLErrorMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertView+CLErrorMessages.m"; path = "Utils/UIAlertView+CLErrorMessages.m"; sourceTree = "<group>"; };
 		0DBD8AD3191D7F0900A5C859 /* values.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = values.plist; sourceTree = "<group>"; };
 		0DC46103191BCA1D004B26B7 /* SESignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SESignInViewController.h; path = ViewControllers/SESignInViewController.h; sourceTree = "<group>"; };
 		0DC46104191BCA1D004B26B7 /* SESignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SESignInViewController.m; path = ViewControllers/SESignInViewController.m; sourceTree = "<group>"; };
@@ -305,10 +270,6 @@
 		0DC46115191BEA54004B26B7 /* SEJobsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEJobsViewController.h; path = ViewControllers/SEJobsViewController.h; sourceTree = "<group>"; };
 		0DC46116191BEA54004B26B7 /* SEJobsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEJobsViewController.m; path = ViewControllers/SEJobsViewController.m; sourceTree = "<group>"; };
 		0DC46118191BEE1F004B26B7 /* schedule_navbar_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_navbar_bg@2x.png"; sourceTree = "<group>"; };
-		0DC4611A191BFE9E004B26B7 /* SEJobTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEJobTableViewCell.h; path = Views/SEJobTableViewCell.h; sourceTree = "<group>"; };
-		0DC4611B191BFE9E004B26B7 /* SEJobTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEJobTableViewCell.m; path = Views/SEJobTableViewCell.m; sourceTree = "<group>"; };
-		0DC4611D191C13E1004B26B7 /* SESwipeableTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SESwipeableTableViewCell.h; path = Views/SESwipeableTableViewCell.h; sourceTree = "<group>"; };
-		0DC4611E191C13E1004B26B7 /* SESwipeableTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SESwipeableTableViewCell.m; path = Views/SESwipeableTableViewCell.m; sourceTree = "<group>"; };
 		0DC46120191C1873004B26B7 /* cell_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_bg@2x.png"; sourceTree = "<group>"; };
 		0DC902F9191C2FB60056254A /* SERestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SERestClient.h; path = Networking/SERestClient.h; sourceTree = "<group>"; };
 		0DC902FA191C2FB60056254A /* SERestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SERestClient.m; path = Networking/SERestClient.m; sourceTree = "<group>"; };
@@ -317,6 +278,21 @@
 		624365B1194AB15D00B212D1 /* UIImage+FixOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+FixOrientation.swift"; path = "Utils/UIImage+FixOrientation.swift"; sourceTree = "<group>"; };
 		624365B3194AB1A700B212D1 /* UIView+Hierarchy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Hierarchy.swift"; path = "Utils/UIView+Hierarchy.swift"; sourceTree = "<group>"; };
 		624365B5194AB23500B212D1 /* SETextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SETextView.swift; path = Views/SETextView.swift; sourceTree = "<group>"; };
+		624365E5194BCA4A00B212D1 /* SEAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SEAppDelegate.swift; sourceTree = "<group>"; };
+		624365E7194BCC1700B212D1 /* SESwipeableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SESwipeableTableViewCell.swift; path = Views/SESwipeableTableViewCell.swift; sourceTree = "<group>"; };
+		624365E8194BCC1700B212D1 /* SETextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SETextFieldTableViewCell.swift; path = Views/SETextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		624365EB194BD69300B212D1 /* SEPaymentInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEPaymentInfoTableViewCell.swift; path = Views/SEPaymentInfoTableViewCell.swift; sourceTree = "<group>"; };
+		624365EC194BD69300B212D1 /* SEPaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEPaymentTableViewCell.swift; path = Views/SEPaymentTableViewCell.swift; sourceTree = "<group>"; };
+		624365EF194BD9C400B212D1 /* SEProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEProductTableViewCell.swift; path = Views/SEProductTableViewCell.swift; sourceTree = "<group>"; };
+		624365F1194BDA3000B212D1 /* SEClientAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEClientAddressTableViewCell.swift; path = Views/SEClientAddressTableViewCell.swift; sourceTree = "<group>"; };
+		624365F2194BDA3000B212D1 /* SEClientInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEClientInfoTableViewCell.swift; path = Views/SEClientInfoTableViewCell.swift; sourceTree = "<group>"; };
+		624365F3194BDA3000B212D1 /* SEClientTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEClientTableViewCell.swift; path = Views/SEClientTableViewCell.swift; sourceTree = "<group>"; };
+		624365F7194BE35C00B212D1 /* SEJobAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEJobAddressTableViewCell.swift; path = Views/SEJobAddressTableViewCell.swift; sourceTree = "<group>"; };
+		624365F8194BE35C00B212D1 /* SEJobClientInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEJobClientInfoTableViewCell.swift; path = Views/SEJobClientInfoTableViewCell.swift; sourceTree = "<group>"; };
+		624365F9194BE35C00B212D1 /* SEJobHoursTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEJobHoursTableViewCell.swift; path = Views/SEJobHoursTableViewCell.swift; sourceTree = "<group>"; };
+		624365FA194BE35C00B212D1 /* SEJobNotesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEJobNotesTableViewCell.swift; path = Views/SEJobNotesTableViewCell.swift; sourceTree = "<group>"; };
+		624365FB194BE35C00B212D1 /* SEJobPhotosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEJobPhotosTableViewCell.swift; path = Views/SEJobPhotosTableViewCell.swift; sourceTree = "<group>"; };
+		624365FC194BE35C00B212D1 /* SEJobTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEJobTableViewCell.swift; path = Views/SEJobTableViewCell.swift; sourceTree = "<group>"; };
 		62B71C71194A7A7500EB80C7 /* sechi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sechi-Bridging-Header.h"; sourceTree = "<group>"; };
 		62B71C72194A7A7600EB80C7 /* SETextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SETextField.swift; path = Views/SETextField.swift; sourceTree = "<group>"; };
 		62E2A402194A8DC30038BBF8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -391,18 +367,12 @@
 		0D38396B191CE86800CC615D /* Job */ = {
 			isa = PBXGroup;
 			children = (
-				0DC4611A191BFE9E004B26B7 /* SEJobTableViewCell.h */,
-				0DC4611B191BFE9E004B26B7 /* SEJobTableViewCell.m */,
-				0DA9BFEC191C3CE400B0AFA1 /* SEJobClientInfoTableViewCell.h */,
-				0DA9BFED191C3CE400B0AFA1 /* SEJobClientInfoTableViewCell.m */,
-				0DA9BFEF191C3CFB00B0AFA1 /* SEJobAddressTableViewCell.h */,
-				0DA9BFF0191C3CFB00B0AFA1 /* SEJobAddressTableViewCell.m */,
-				0DA9BFF2191C3D1300B0AFA1 /* SEJobNotesTableViewCell.h */,
-				0DA9BFF3191C3D1300B0AFA1 /* SEJobNotesTableViewCell.m */,
-				0DA9BFF5191C3D3000B0AFA1 /* SEJobPhotosTableViewCell.h */,
-				0DA9BFF6191C3D3000B0AFA1 /* SEJobPhotosTableViewCell.m */,
-				0DA9BFF8191C3D4000B0AFA1 /* SEJobHoursTableViewCell.h */,
-				0DA9BFF9191C3D4000B0AFA1 /* SEJobHoursTableViewCell.m */,
+				624365F7194BE35C00B212D1 /* SEJobAddressTableViewCell.swift */,
+				624365F8194BE35C00B212D1 /* SEJobClientInfoTableViewCell.swift */,
+				624365F9194BE35C00B212D1 /* SEJobHoursTableViewCell.swift */,
+				624365FA194BE35C00B212D1 /* SEJobNotesTableViewCell.swift */,
+				624365FB194BE35C00B212D1 /* SEJobPhotosTableViewCell.swift */,
+				624365FC194BE35C00B212D1 /* SEJobTableViewCell.swift */,
 			);
 			name = Job;
 			sourceTree = "<group>";
@@ -429,12 +399,9 @@
 		0D383982191CF32B00CC615D /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				0D383983191CF34400CC615D /* SEClientTableViewCell.h */,
-				0D383984191CF34400CC615D /* SEClientTableViewCell.m */,
-				0D383986191CF36300CC615D /* SEClientInfoTableViewCell.h */,
-				0D383987191CF36300CC615D /* SEClientInfoTableViewCell.m */,
-				0D383989191CF37100CC615D /* SEClientAddressTableViewCell.h */,
-				0D38398A191CF37100CC615D /* SEClientAddressTableViewCell.m */,
+				624365F1194BDA3000B212D1 /* SEClientAddressTableViewCell.swift */,
+				624365F2194BDA3000B212D1 /* SEClientInfoTableViewCell.swift */,
+				624365F3194BDA3000B212D1 /* SEClientTableViewCell.swift */,
 			);
 			name = Client;
 			sourceTree = "<group>";
@@ -453,8 +420,7 @@
 		0D38399D191D1ADE00CC615D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0D38399E191D1AF000CC615D /* SEProductTableViewCell.h */,
-				0D38399F191D1AF000CC615D /* SEProductTableViewCell.m */,
+				624365EF194BD9C400B212D1 /* SEProductTableViewCell.swift */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -477,10 +443,8 @@
 		0D3839AE191D62E800CC615D /* Payments */ = {
 			isa = PBXGroup;
 			children = (
-				0D3839AF191D630800CC615D /* SEPaymentTableViewCell.h */,
-				0D3839B0191D630800CC615D /* SEPaymentTableViewCell.m */,
-				0D3839B2191D632200CC615D /* SEPaymentInfoTableViewCell.h */,
-				0D3839B3191D632200CC615D /* SEPaymentInfoTableViewCell.m */,
+				624365EB194BD69300B212D1 /* SEPaymentInfoTableViewCell.swift */,
+				624365EC194BD69300B212D1 /* SEPaymentTableViewCell.swift */,
 			);
 			name = Payments;
 			sourceTree = "<group>";
@@ -536,8 +500,7 @@
 				0DC460FA191BC6FE004B26B7 /* Views */,
 				0DC46102191BCA01004B26B7 /* ViewControllers */,
 				0D6F8107191B283E005E7975 /* Resources */,
-				0D6F80E1191B26F3005E7975 /* SEAppDelegate.h */,
-				0D6F80E2191B26F3005E7975 /* SEAppDelegate.m */,
+				624365E5194BCA4A00B212D1 /* SEAppDelegate.swift */,
 				0D6F80E4191B26F3005E7975 /* Main.storyboard */,
 				0D6F80EA191B26F3005E7975 /* Images.xcassets */,
 				0D6F80D9191B26F3005E7975 /* Supporting Files */,
@@ -616,12 +579,10 @@
 				0D38399D191D1ADE00CC615D /* Products */,
 				0D383982191CF32B00CC615D /* Client */,
 				0D38396B191CE86800CC615D /* Job */,
-				0DC4611D191C13E1004B26B7 /* SESwipeableTableViewCell.h */,
-				0DC4611E191C13E1004B26B7 /* SESwipeableTableViewCell.m */,
-				0DA9BFFE191C54AD00B0AFA1 /* SETextFieldTableViewCell.h */,
-				0DA9BFFF191C54AD00B0AFA1 /* SETextFieldTableViewCell.m */,
 				62B71C72194A7A7600EB80C7 /* SETextField.swift */,
 				624365B5194AB23500B212D1 /* SETextView.swift */,
+				624365E7194BCC1700B212D1 /* SESwipeableTableViewCell.swift */,
+				624365E8194BCC1700B212D1 /* SETextFieldTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -632,12 +593,6 @@
 				62E2A408194AA4A20038BBF8 /* SEConstants.swift */,
 				624365B1194AB15D00B212D1 /* UIImage+FixOrientation.swift */,
 				624365B3194AB1A700B212D1 /* UIView+Hierarchy.swift */,
-				0D5D0654191C605B002598A9 /* UIView+Hierarchy.h */,
-				0D5D0655191C605B002598A9 /* UIView+Hierarchy.m */,
-				0D1DC41A191C7B8D000367E2 /* UIImage+FixOrientation.h */,
-				0D1DC41B191C7B8D000367E2 /* UIImage+FixOrientation.m */,
-				0DB84CC31922CB710099FA64 /* UIAlertView+CLErrorMessages.h */,
-				0DB84CC41922CB710099FA64 /* UIAlertView+CLErrorMessages.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -883,62 +838,59 @@
 			buildActionMask = 2147483647;
 			files = (
 				624365B2194AB15D00B212D1 /* UIImage+FixOrientation.swift in Sources */,
-				0DA9BFF1191C3CFB00B0AFA1 /* SEJobAddressTableViewCell.m in Sources */,
+				624365FD194BE35C00B212D1 /* SEJobAddressTableViewCell.swift in Sources */,
 				0D383995191D030400CC615D /* SEProductsScannerViewController.m in Sources */,
 				0DA9BFFD191C539200B0AFA1 /* SEJobClientInfoEditViewController.m in Sources */,
 				0D383991191D012800CC615D /* SEClientMapViewController.m in Sources */,
 				0DC46113191BD2B6004B26B7 /* SEPushNoAnimationSegue.m in Sources */,
+				624365E9194BCC1700B212D1 /* SESwipeableTableViewCell.swift in Sources */,
 				0DA9BFEB191C3C7700B0AFA1 /* SEJobViewController.m in Sources */,
-				0D6F80E3191B26F3005E7975 /* SEAppDelegate.m in Sources */,
 				0D38399C191D1AB800CC615D /* SEPartsViewController.m in Sources */,
 				0D1DC422191CC580000367E2 /* SEJobNotesEditViewController.m in Sources */,
-				0D3839B1191D630800CC615D /* SEPaymentTableViewCell.m in Sources */,
-				0DA9BFFA191C3D4000B0AFA1 /* SEJobHoursTableViewCell.m in Sources */,
 				0D1DC409191C6D50000367E2 /* SEJobMapViewController.m in Sources */,
 				0D1DC41F191CC558000367E2 /* SEJobAddressEditViewController.m in Sources */,
+				624365FE194BE35C00B212D1 /* SEJobClientInfoTableViewCell.swift in Sources */,
 				0D1DC42C191CD1F3000367E2 /* SEPhotoViewController.m in Sources */,
 				0D383975191CED0E00CC615D /* SEClientAddViewController.m in Sources */,
+				624365F4194BDA3000B212D1 /* SEClientAddressTableViewCell.swift in Sources */,
+				624365F5194BDA3000B212D1 /* SEClientInfoTableViewCell.swift in Sources */,
+				624365EE194BD69300B212D1 /* SEPaymentTableViewCell.swift in Sources */,
+				624365F0194BD9C400B212D1 /* SEProductTableViewCell.swift in Sources */,
+				624365E6194BCA4A00B212D1 /* SEAppDelegate.swift in Sources */,
 				0D383972191CED0500CC615D /* SEClientViewController.m in Sources */,
 				0D3839AA191D618B00CC615D /* SEPaymentViewController.m in Sources */,
+				624365ED194BD69300B212D1 /* SEPaymentInfoTableViewCell.swift in Sources */,
 				62E2A409194AA4A20038BBF8 /* SEConstants.swift in Sources */,
-				0D1DC41C191C7B8D000367E2 /* UIImage+FixOrientation.m in Sources */,
 				0D38397B191CEF5C00CC615D /* SEClient.m in Sources */,
 				0D1DC414191C784D000367E2 /* SEJobPhotoInfo.m in Sources */,
 				0D38398E191CF93000CC615D /* SEClientAddressViewController.m in Sources */,
-				0DA9C000191C54AD00B0AFA1 /* SETextFieldTableViewCell.m in Sources */,
 				0DC46105191BCA1D004B26B7 /* SESignInViewController.m in Sources */,
 				0D38397E191CEF5D00CC615D /* SEProduct.m in Sources */,
 				624365B6194AB23500B212D1 /* SETextView.swift in Sources */,
-				0DC4611C191BFE9E004B26B7 /* SEJobTableViewCell.m in Sources */,
 				0DC902FB191C2FB60056254A /* SERestClient.m in Sources */,
 				0D383978191CED1800CC615D /* SEClientEditViewController.m in Sources */,
 				0D1DC425191CC9BF000367E2 /* SEJobAddViewController.m in Sources */,
+				62436601194BE35C00B212D1 /* SEJobPhotosTableViewCell.swift in Sources */,
 				0DC46108191BD13C004B26B7 /* SEViewController.m in Sources */,
 				0D3839AD191D619C00CC615D /* SEPaymentEditViewController.m in Sources */,
-				0D383988191CF36300CC615D /* SEClientInfoTableViewCell.m in Sources */,
+				624365F6194BDA3000B212D1 /* SEClientTableViewCell.swift in Sources */,
 				0D1DC411191C784D000367E2 /* SEJob.m in Sources */,
-				0DA9BFF7191C3D3000B0AFA1 /* SEJobPhotosTableViewCell.m in Sources */,
-				0D3839B4191D632200CC615D /* SEPaymentInfoTableViewCell.m in Sources */,
+				62436602194BE35C00B212D1 /* SEJobTableViewCell.swift in Sources */,
 				624365B4194AB1A700B212D1 /* UIView+Hierarchy.swift in Sources */,
+				624365FF194BE35C00B212D1 /* SEJobHoursTableViewCell.swift in Sources */,
 				0D383981191CEF5D00CC615D /* SEPayment.m in Sources */,
-				0D5D0656191C605B002598A9 /* UIView+Hierarchy.m in Sources */,
-				0DA9BFF4191C3D1300B0AFA1 /* SEJobNotesTableViewCell.m in Sources */,
-				0DB84CC51922CB710099FA64 /* UIAlertView+CLErrorMessages.m in Sources */,
 				0D3839A4191D611B00CC615D /* SEPaymentsViewController.m in Sources */,
-				0D383985191CF34400CC615D /* SEClientTableViewCell.m in Sources */,
-				0DA9BFEE191C3CE400B0AFA1 /* SEJobClientInfoTableViewCell.m in Sources */,
-				0DC4611F191C13E1004B26B7 /* SESwipeableTableViewCell.m in Sources */,
 				62B71C73194A7A7600EB80C7 /* SETextField.swift in Sources */,
+				624365EA194BCC1700B212D1 /* SETextFieldTableViewCell.swift in Sources */,
 				0D38396F191CECFA00CC615D /* SEClientsViewController.m in Sources */,
 				0D3839A7191D613E00CC615D /* SEPaymentAddViewController.m in Sources */,
 				0D1DC417191C7AA2000367E2 /* SENoStatusBarImagePickerController.m in Sources */,
 				0D1DC429191CD19F000367E2 /* SEGalleryViewController.m in Sources */,
 				0DC4610F191BD1E0004B26B7 /* SEMainMenuViewController.m in Sources */,
 				0DC46117191BEA54004B26B7 /* SEJobsViewController.m in Sources */,
+				62436600194BE35C00B212D1 /* SEJobNotesTableViewCell.swift in Sources */,
 				0DC902FE191C2FC60056254A /* Model.xcdatamodeld in Sources */,
 				0D6F80DF191B26F3005E7975 /* main.m in Sources */,
-				0D38398B191CF37100CC615D /* SEClientAddressTableViewCell.m in Sources */,
-				0D3839A0191D1AF000CC615D /* SEProductTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
