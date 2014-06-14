@@ -1,5 +1,5 @@
 //
-//  SESwipeableTableViewCellDelegate.swift
+//  SESwipeableTableViewCell.swift
 //  sechi
 //
 //  Created by TCSASSEMBLER on 2014-06-13.
