@@ -129,8 +129,8 @@ class SEPaymentViewController: SEViewController, UITableViewDataSource, UITableV
      */
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> Float {
         var df = NSDateFormatter()
-        df.timeStyle = NSDateFormatterNoStyle
-        df.dateStyle = NSDateFormatterMediumStyle
+        df.timeStyle = .NoStyle
+        df.dateStyle = .MediumStyle
         switch indexPath.row {
             case 0:
                 self.tempPaymentInfoCell.amountLabel.text = self.payment.paymentAmountC.stringValue
