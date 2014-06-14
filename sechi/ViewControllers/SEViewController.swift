@@ -14,7 +14,7 @@ class SEViewController : UIViewController {
     /**
      *  Boolean indicating if keyboard is visible
      */
-    var keyboardShown: Bool
+    var keyboardShown: Bool = false
 
     /**
      *  Setups keyborad show/hide notifications observer and application status bar style.
@@ -36,9 +36,9 @@ class SEViewController : UIViewController {
     *  Shows back button on navigation bar
     */
     func setupNavigationBarBackButton() {
-        var backButton = UIButton(type: UI.Custom)
-        backButton.frame = CGRectMake(0.0, 00.0, 11.0, 18.0)
-        backButton.setBackgroundImage(UIImage.imageNamed("btn_back"), forState: .Normal)
+        var backButton = UIButton.buttonWithType(.Custom) as UIButton
+        backButton.frame = CGRectMake(0.0, 0.0, 11.0, 18.0)
+        backButton.setBackgroundImage(UIImage(named: "btn_back"), forState: .Normal)
         backButton.addTarget(self, action: "popViewControllerAnimated", forControlEvents: .TouchUpInside)
         var backButtonItem = UIBarButtonItem(customView: backButton)
         self.navigationItem.leftBarButtonItem = backButtonItem
@@ -50,9 +50,9 @@ class SEViewController : UIViewController {
      *  @return UIButton used as add button
      */
     func setupNavigationBarAddButton() -> UIButton {
-        var addButton = UIButton(type: .Custom)
-        addButton.frame = CGRectMake(0.0, 00.0, 17.0, 17.0)
-        addButton.setBackgroundImage(UIImage.imageNamed("btn_add"), forState: .Normal)
+        var addButton = UIButton.buttonWithType(.Custom) as UIButton
+        addButton.frame = CGRectMake(0.0, 0.0, 17.0, 17.0)
+        addButton.setBackgroundImage(UIImage(named: "btn_add"), forState: .Normal)
         var addButtonItem = UIBarButtonItem(customView: addButton)
         self.navigationItem.rightBarButtonItem = addButtonItem
         return addButton
@@ -67,7 +67,7 @@ class SEViewController : UIViewController {
         var saveButtonItem = UIBarButtonItem(barButtonSystemItem: .Save, target: nil, action: nil)
         saveButtonItem.tintColor = UIColor.whiteColor()
         self.navigationItem.rightBarButtonItem = saveButtonItem
-        UINavigationBar.appearance.setTintColor(UIColor.whiteColor)
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         return saveButtonItem
     }
 
@@ -104,7 +104,7 @@ class SEViewController : UIViewController {
      */
     func getMainScrollView() -> UIScrollView? {
         if self.respondsToSelector("tableView") && self.valueForKeyPath("tableView.superview") is UIScrollView {
-            return self.valueForKeyPath("tableView.superview") as UIScrollView
+            return self.valueForKeyPath("tableView.superview") as? UIScrollView
         }
     
         if self.respondsToSelector("tableView") && self.valueForKey("tableView") is UIScrollView {
@@ -116,7 +116,7 @@ class SEViewController : UIViewController {
         }
 
         return nil
-}
+    }
 
     /**
      *  Method called before keyboard is shown. Adds padding to main scroll view.
@@ -128,14 +128,14 @@ class SEViewController : UIViewController {
             return
         }
     
-        var scrollView = self.getMainScrollView()
+        if let scrollView = self.getMainScrollView()? {
+            var userInfo = aNotification.userInfo
+            var aValue = userInfo.objectForKey(UIKeyboardFrameEndUserInfoKey) as NSValue
+            var keyboardRect = scrollView.superview.convertRect(aValue.CGRectValue(), fromView: nil)
     
-        var userInfo = aNotification.userInfo()
-        var aValue = userInfo.objectForKey(UIKeyboardFrameEndUserInfoKey)
-        var keyboardRect = scrollView.superview.convertRect(aValue.CGRectValue, fromView: nil)
-    
-        var newInsets = UIEdgeInsetsMake(74, 0, keyboardRect.size.height, 0)
-        scrollView.contentInset = newInsets
+            var newInsets = UIEdgeInsetsMake(74, 0, keyboardRect.size.height, 0)
+            scrollView.contentInset = newInsets
+        }
     }
 
     /**
@@ -144,8 +144,9 @@ class SEViewController : UIViewController {
      *  @param aNotification
      */
     func keyboardWillHide(aNotification: NSNotification) {
-        var scrollView = self.getMainScrollView()
-        scrollView.contentInset = UIEdgeInsetsMake(74, 0, 0, 0)
+        if let scrollView = self.getMainScrollView()? {
+            scrollView.contentInset = UIEdgeInsetsMake(74, 0, 0, 0)
+        }
     }
 
 }

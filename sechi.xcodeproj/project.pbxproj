@@ -80,7 +80,6 @@
 		0DA9BFFD191C539200B0AFA1 /* SEJobClientInfoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9BFFC191C539200B0AFA1 /* SEJobClientInfoEditViewController.m */; };
 		0DBD8AD4191D7F0900A5C859 /* values.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DBD8AD3191D7F0900A5C859 /* values.plist */; };
 		0DC46105191BCA1D004B26B7 /* SESignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC46104191BCA1D004B26B7 /* SESignInViewController.m */; };
-		0DC46108191BD13C004B26B7 /* SEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC46107191BD13C004B26B7 /* SEViewController.m */; };
 		0DC4610F191BD1E0004B26B7 /* SEMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4610E191BD1E0004B26B7 /* SEMainMenuViewController.m */; };
 		0DC46113191BD2B6004B26B7 /* SEPushNoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC46112191BD2B6004B26B7 /* SEPushNoAnimationSegue.m */; };
 		0DC46117191BEA54004B26B7 /* SEJobsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC46116191BEA54004B26B7 /* SEJobsViewController.m */; };
@@ -262,8 +261,6 @@
 		0DBD8AD3191D7F0900A5C859 /* values.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = values.plist; sourceTree = "<group>"; };
 		0DC46103191BCA1D004B26B7 /* SESignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SESignInViewController.h; path = ViewControllers/SESignInViewController.h; sourceTree = "<group>"; };
 		0DC46104191BCA1D004B26B7 /* SESignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SESignInViewController.m; path = ViewControllers/SESignInViewController.m; sourceTree = "<group>"; };
-		0DC46106191BD13C004B26B7 /* SEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEViewController.h; path = ViewControllers/SEViewController.h; sourceTree = "<group>"; };
-		0DC46107191BD13C004B26B7 /* SEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEViewController.m; path = ViewControllers/SEViewController.m; sourceTree = "<group>"; };
 		0DC4610D191BD1E0004B26B7 /* SEMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEMainMenuViewController.h; path = ViewControllers/SEMainMenuViewController.h; sourceTree = "<group>"; };
 		0DC4610E191BD1E0004B26B7 /* SEMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEMainMenuViewController.m; path = ViewControllers/SEMainMenuViewController.m; sourceTree = "<group>"; };
 		0DC46111191BD2B6004B26B7 /* SEPushNoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEPushNoAnimationSegue.h; path = Objects/SEPushNoAnimationSegue.h; sourceTree = "<group>"; };
@@ -607,8 +604,6 @@
 				0D38396C191CECE900CC615D /* Client */,
 				0D1DC426191CD14D000367E2 /* Photos */,
 				0DC46114191BEA39004B26B7 /* Schedule */,
-				0DC46106191BD13C004B26B7 /* SEViewController.h */,
-				0DC46107191BD13C004B26B7 /* SEViewController.m */,
 				0DC46103191BCA1D004B26B7 /* SESignInViewController.h */,
 				0DC46104191BCA1D004B26B7 /* SESignInViewController.m */,
 				0DC4610D191BD1E0004B26B7 /* SEMainMenuViewController.h */,
@@ -875,7 +870,6 @@
 				0D383978191CED1800CC615D /* SEClientEditViewController.m in Sources */,
 				0D1DC425191CC9BF000367E2 /* SEJobAddViewController.m in Sources */,
 				62436601194BE35C00B212D1 /* SEJobPhotosTableViewCell.swift in Sources */,
-				0DC46108191BD13C004B26B7 /* SEViewController.m in Sources */,
 				0D3839AD191D619C00CC615D /* SEPaymentEditViewController.m in Sources */,
 				624365F6194BDA3000B212D1 /* SEClientTableViewCell.swift in Sources */,
 				0D1DC411191C784D000367E2 /* SEJob.m in Sources */,
