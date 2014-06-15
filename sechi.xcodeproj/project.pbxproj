@@ -12,12 +12,8 @@
 		0D01630A19212C2C00C819E0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D01630919212C2B00C819E0 /* Security.framework */; };
 		0D01630C19212C3100C819E0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D01630B19212C3100C819E0 /* SystemConfiguration.framework */; };
 		0D01630E19212C4200C819E0 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D01630D19212C4200C819E0 /* libxml2.dylib */; };
-		0D1DC409191C6D50000367E2 /* SEJobMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1DC408191C6D50000367E2 /* SEJobMapViewController.m */; };
 		0D1DC40B191C6F1F000367E2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D1DC40A191C6F1F000367E2 /* MapKit.framework */; };
 		0D1DC419191C7B04000367E2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D1DC418191C7B04000367E2 /* MobileCoreServices.framework */; };
-		0D1DC41F191CC558000367E2 /* SEJobAddressEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1DC41E191CC557000367E2 /* SEJobAddressEditViewController.m */; };
-		0D1DC422191CC580000367E2 /* SEJobNotesEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1DC421191CC580000367E2 /* SEJobNotesEditViewController.m */; };
-		0D1DC425191CC9BF000367E2 /* SEJobAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1DC424191CC9BF000367E2 /* SEJobAddViewController.m */; };
 		0D383997191D03C100CC615D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D383996191D03C100CC615D /* AVFoundation.framework */; };
 		0D383999191D051700CC615D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D383998191D051700CC615D /* QuartzCore.framework */; };
 		0D6F80D3191B26F3005E7975 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6F80D2191B26F3005E7975 /* Foundation.framework */; };
@@ -56,11 +52,8 @@
 		0D6F8135191B283E005E7975 /* line_payment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F811D191B283E005E7975 /* line_payment@2x.png */; };
 		0D6F8136191B283E005E7975 /* line_schedule@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F811E191B283E005E7975 /* line_schedule@2x.png */; };
 		0D6F8137191B283E005E7975 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F811F191B283E005E7975 /* logo@2x.png */; };
-		0DA9BFEB191C3C7700B0AFA1 /* SEJobViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9BFEA191C3C7700B0AFA1 /* SEJobViewController.m */; };
-		0DA9BFFD191C539200B0AFA1 /* SEJobClientInfoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9BFFC191C539200B0AFA1 /* SEJobClientInfoEditViewController.m */; };
 		0DBD8AD4191D7F0900A5C859 /* values.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DBD8AD3191D7F0900A5C859 /* values.plist */; };
 		0DC46113191BD2B6004B26B7 /* SEPushNoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC46112191BD2B6004B26B7 /* SEPushNoAnimationSegue.m */; };
-		0DC46117191BEA54004B26B7 /* SEJobsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC46116191BEA54004B26B7 /* SEJobsViewController.m */; };
 		0DC46119191BEE1F004B26B7 /* schedule_navbar_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC46118191BEE1F004B26B7 /* schedule_navbar_bg@2x.png */; };
 		0DC46121191C1873004B26B7 /* cell_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC46120191C1873004B26B7 /* cell_bg@2x.png */; };
 		0DC902FB191C2FB60056254A /* SERestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC902FA191C2FB60056254A /* SERestClient.m */; };
@@ -104,6 +97,13 @@
 		62C40935194D244700298A12 /* SEJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C40934194D244700298A12 /* SEJob.swift */; };
 		62C40937194D2FAC00298A12 /* SEGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C40936194D2FAC00298A12 /* SEGalleryViewController.swift */; };
 		62C40939194D301200298A12 /* SEPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C40938194D301200298A12 /* SEPhotoViewController.swift */; };
+		62C4093B194D315800298A12 /* SEJobNotesEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C4093A194D315800298A12 /* SEJobNotesEditViewController.swift */; };
+		62C4093D194D328E00298A12 /* SEJobAddressEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C4093C194D328E00298A12 /* SEJobAddressEditViewController.swift */; };
+		62C4093F194D346C00298A12 /* SEJobClientInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C4093E194D346C00298A12 /* SEJobClientInfoEditViewController.swift */; };
+		62C40941194D3AF200298A12 /* SEJobAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C40940194D3AF200298A12 /* SEJobAddViewController.swift */; };
+		62C40943194D3B5B00298A12 /* SEJobMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C40942194D3B5B00298A12 /* SEJobMapViewController.swift */; };
+		62C40945194D3E7B00298A12 /* SEJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C40944194D3E7B00298A12 /* SEJobViewController.swift */; };
+		62C40947194D414F00298A12 /* SEJobsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C40946194D414F00298A12 /* SEJobsViewController.swift */; };
 		62D92755194CC44500B56740 /* SEMainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D92754194CC44500B56740 /* SEMainMenuViewController.swift */; };
 		62DADD89194BFA0C001B51F0 /* SEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DADD88194BFA0C001B51F0 /* SEViewController.swift */; };
 		62E2A403194A8DC30038BBF8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62E2A402194A8DC30038BBF8 /* CoreLocation.framework */; };
@@ -163,16 +163,8 @@
 		0D01630919212C2B00C819E0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0D01630B19212C3100C819E0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0D01630D19212C4200C819E0 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		0D1DC407191C6D50000367E2 /* SEJobMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEJobMapViewController.h; path = ViewControllers/SEJobMapViewController.h; sourceTree = "<group>"; };
-		0D1DC408191C6D50000367E2 /* SEJobMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEJobMapViewController.m; path = ViewControllers/SEJobMapViewController.m; sourceTree = "<group>"; };
 		0D1DC40A191C6F1F000367E2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0D1DC418191C7B04000367E2 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		0D1DC41D191CC557000367E2 /* SEJobAddressEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEJobAddressEditViewController.h; path = ViewControllers/SEJobAddressEditViewController.h; sourceTree = "<group>"; };
-		0D1DC41E191CC557000367E2 /* SEJobAddressEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEJobAddressEditViewController.m; path = ViewControllers/SEJobAddressEditViewController.m; sourceTree = "<group>"; };
-		0D1DC420191CC580000367E2 /* SEJobNotesEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEJobNotesEditViewController.h; path = ViewControllers/SEJobNotesEditViewController.h; sourceTree = "<group>"; };
-		0D1DC421191CC580000367E2 /* SEJobNotesEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEJobNotesEditViewController.m; path = ViewControllers/SEJobNotesEditViewController.m; sourceTree = "<group>"; };
-		0D1DC423191CC9BF000367E2 /* SEJobAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEJobAddViewController.h; path = ViewControllers/SEJobAddViewController.h; sourceTree = "<group>"; };
-		0D1DC424191CC9BF000367E2 /* SEJobAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEJobAddViewController.m; path = ViewControllers/SEJobAddViewController.m; sourceTree = "<group>"; };
 		0D383996191D03C100CC615D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0D383998191D051700CC615D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0D6F80CF191B26F3005E7975 /* sechi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sechi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,15 +206,9 @@
 		0D6F811D191B283E005E7975 /* line_payment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line_payment@2x.png"; sourceTree = "<group>"; };
 		0D6F811E191B283E005E7975 /* line_schedule@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line_schedule@2x.png"; sourceTree = "<group>"; };
 		0D6F811F191B283E005E7975 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
-		0DA9BFE9191C3C7700B0AFA1 /* SEJobViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEJobViewController.h; path = ViewControllers/SEJobViewController.h; sourceTree = "<group>"; };
-		0DA9BFEA191C3C7700B0AFA1 /* SEJobViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEJobViewController.m; path = ViewControllers/SEJobViewController.m; sourceTree = "<group>"; };
-		0DA9BFFB191C539200B0AFA1 /* SEJobClientInfoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEJobClientInfoEditViewController.h; path = ViewControllers/SEJobClientInfoEditViewController.h; sourceTree = "<group>"; };
-		0DA9BFFC191C539200B0AFA1 /* SEJobClientInfoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEJobClientInfoEditViewController.m; path = ViewControllers/SEJobClientInfoEditViewController.m; sourceTree = "<group>"; };
 		0DBD8AD3191D7F0900A5C859 /* values.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = values.plist; sourceTree = "<group>"; };
 		0DC46111191BD2B6004B26B7 /* SEPushNoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEPushNoAnimationSegue.h; path = Objects/SEPushNoAnimationSegue.h; sourceTree = "<group>"; };
 		0DC46112191BD2B6004B26B7 /* SEPushNoAnimationSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEPushNoAnimationSegue.m; path = Objects/SEPushNoAnimationSegue.m; sourceTree = "<group>"; };
-		0DC46115191BEA54004B26B7 /* SEJobsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEJobsViewController.h; path = ViewControllers/SEJobsViewController.h; sourceTree = "<group>"; };
-		0DC46116191BEA54004B26B7 /* SEJobsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEJobsViewController.m; path = ViewControllers/SEJobsViewController.m; sourceTree = "<group>"; };
 		0DC46118191BEE1F004B26B7 /* schedule_navbar_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_navbar_bg@2x.png"; sourceTree = "<group>"; };
 		0DC46120191C1873004B26B7 /* cell_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_bg@2x.png"; sourceTree = "<group>"; };
 		0DC902F9191C2FB60056254A /* SERestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SERestClient.h; path = Networking/SERestClient.h; sourceTree = "<group>"; };
@@ -268,6 +254,13 @@
 		62C40934194D244700298A12 /* SEJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEJob.swift; path = CoreData/SEJob.swift; sourceTree = "<group>"; };
 		62C40936194D2FAC00298A12 /* SEGalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEGalleryViewController.swift; path = ViewControllers/SEGalleryViewController.swift; sourceTree = "<group>"; };
 		62C40938194D301200298A12 /* SEPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEPhotoViewController.swift; path = ViewControllers/SEPhotoViewController.swift; sourceTree = "<group>"; };
+		62C4093A194D315800298A12 /* SEJobNotesEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEJobNotesEditViewController.swift; path = ViewControllers/SEJobNotesEditViewController.swift; sourceTree = "<group>"; };
+		62C4093C194D328E00298A12 /* SEJobAddressEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEJobAddressEditViewController.swift; path = ViewControllers/SEJobAddressEditViewController.swift; sourceTree = "<group>"; };
+		62C4093E194D346C00298A12 /* SEJobClientInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEJobClientInfoEditViewController.swift; path = ViewControllers/SEJobClientInfoEditViewController.swift; sourceTree = "<group>"; };
+		62C40940194D3AF200298A12 /* SEJobAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEJobAddViewController.swift; path = ViewControllers/SEJobAddViewController.swift; sourceTree = "<group>"; };
+		62C40942194D3B5B00298A12 /* SEJobMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEJobMapViewController.swift; path = ViewControllers/SEJobMapViewController.swift; sourceTree = "<group>"; };
+		62C40944194D3E7B00298A12 /* SEJobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEJobViewController.swift; path = ViewControllers/SEJobViewController.swift; sourceTree = "<group>"; };
+		62C40946194D414F00298A12 /* SEJobsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEJobsViewController.swift; path = ViewControllers/SEJobsViewController.swift; sourceTree = "<group>"; };
 		62D92754194CC44500B56740 /* SEMainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEMainMenuViewController.swift; path = ViewControllers/SEMainMenuViewController.swift; sourceTree = "<group>"; };
 		62DADD88194BFA0C001B51F0 /* SEViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEViewController.swift; path = ViewControllers/SEViewController.swift; sourceTree = "<group>"; };
 		62E2A402194A8DC30038BBF8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -588,20 +581,13 @@
 		0DC46114191BEA39004B26B7 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				0DC46115191BEA54004B26B7 /* SEJobsViewController.h */,
-				0DC46116191BEA54004B26B7 /* SEJobsViewController.m */,
-				0DA9BFE9191C3C7700B0AFA1 /* SEJobViewController.h */,
-				0DA9BFEA191C3C7700B0AFA1 /* SEJobViewController.m */,
-				0D1DC407191C6D50000367E2 /* SEJobMapViewController.h */,
-				0D1DC408191C6D50000367E2 /* SEJobMapViewController.m */,
-				0D1DC423191CC9BF000367E2 /* SEJobAddViewController.h */,
-				0D1DC424191CC9BF000367E2 /* SEJobAddViewController.m */,
-				0DA9BFFB191C539200B0AFA1 /* SEJobClientInfoEditViewController.h */,
-				0DA9BFFC191C539200B0AFA1 /* SEJobClientInfoEditViewController.m */,
-				0D1DC41D191CC557000367E2 /* SEJobAddressEditViewController.h */,
-				0D1DC41E191CC557000367E2 /* SEJobAddressEditViewController.m */,
-				0D1DC420191CC580000367E2 /* SEJobNotesEditViewController.h */,
-				0D1DC421191CC580000367E2 /* SEJobNotesEditViewController.m */,
+				62C40946194D414F00298A12 /* SEJobsViewController.swift */,
+				62C40944194D3E7B00298A12 /* SEJobViewController.swift */,
+				62C40942194D3B5B00298A12 /* SEJobMapViewController.swift */,
+				62C40940194D3AF200298A12 /* SEJobAddViewController.swift */,
+				62C4093E194D346C00298A12 /* SEJobClientInfoEditViewController.swift */,
+				62C4093C194D328E00298A12 /* SEJobAddressEditViewController.swift */,
+				62C4093A194D315800298A12 /* SEJobNotesEditViewController.swift */,
 			);
 			name = Schedule;
 			sourceTree = "<group>";
@@ -794,15 +780,11 @@
 				624365B2194AB15D00B212D1 /* UIImage+FixOrientation.swift in Sources */,
 				624365FD194BE35C00B212D1 /* SEJobAddressTableViewCell.swift in Sources */,
 				62DADD89194BFA0C001B51F0 /* SEViewController.swift in Sources */,
-				0DA9BFFD191C539200B0AFA1 /* SEJobClientInfoEditViewController.m in Sources */,
 				62D92755194CC44500B56740 /* SEMainMenuViewController.swift in Sources */,
 				0DC46113191BD2B6004B26B7 /* SEPushNoAnimationSegue.m in Sources */,
 				624365E9194BCC1700B212D1 /* SESwipeableTableViewCell.swift in Sources */,
-				0DA9BFEB191C3C7700B0AFA1 /* SEJobViewController.m in Sources */,
-				0D1DC422191CC580000367E2 /* SEJobNotesEditViewController.m in Sources */,
-				0D1DC409191C6D50000367E2 /* SEJobMapViewController.m in Sources */,
-				0D1DC41F191CC558000367E2 /* SEJobAddressEditViewController.m in Sources */,
 				624365FE194BE35C00B212D1 /* SEJobClientInfoTableViewCell.swift in Sources */,
+				62C40943194D3B5B00298A12 /* SEJobMapViewController.swift in Sources */,
 				0EAFABEC194D151100371DB3 /* SEClientViewController.swift in Sources */,
 				624365F4194BDA3000B212D1 /* SEClientAddressTableViewCell.swift in Sources */,
 				0EAFABEA194D151100371DB3 /* SEClientMapViewController.swift in Sources */,
@@ -817,12 +799,15 @@
 				0EAFABEB194D151100371DB3 /* SEClientsViewController.swift in Sources */,
 				624365ED194BD69300B212D1 /* SEPaymentInfoTableViewCell.swift in Sources */,
 				0E934CC6194D048E007139B1 /* SEPaymentAddViewController.swift in Sources */,
+				62C40945194D3E7B00298A12 /* SEJobViewController.swift in Sources */,
 				628F16A5194C80DA00084C40 /* SESignInViewController.swift in Sources */,
+				62C40941194D3AF200298A12 /* SEJobAddViewController.swift in Sources */,
 				62E2A409194AA4A20038BBF8 /* SEConstants.swift in Sources */,
 				624365B6194AB23500B212D1 /* SETextView.swift in Sources */,
 				0DC902FB191C2FB60056254A /* SERestClient.m in Sources */,
+				62C4093D194D328E00298A12 /* SEJobAddressEditViewController.swift in Sources */,
+				62C40947194D414F00298A12 /* SEJobsViewController.swift in Sources */,
 				0E934CCA194D092E007139B1 /* SEProductsScannerViewController.swift in Sources */,
-				0D1DC425191CC9BF000367E2 /* SEJobAddViewController.m in Sources */,
 				62436601194BE35C00B212D1 /* SEJobPhotosTableViewCell.swift in Sources */,
 				62C40931194D234500298A12 /* SEPayment.swift in Sources */,
 				624365F6194BDA3000B212D1 /* SEClientTableViewCell.swift in Sources */,
@@ -835,13 +820,14 @@
 				0EAFABE9194D151100371DB3 /* SEClientEditViewController.swift in Sources */,
 				62C4092F194D225B00298A12 /* SEProduct.swift in Sources */,
 				62C40937194D2FAC00298A12 /* SEGalleryViewController.swift in Sources */,
+				62C4093F194D346C00298A12 /* SEJobClientInfoEditViewController.swift in Sources */,
 				62B71C73194A7A7600EB80C7 /* SETextField.swift in Sources */,
 				624365EA194BCC1700B212D1 /* SETextFieldTableViewCell.swift in Sources */,
 				62E45BFE194CDB3100A57283 /* SEPaymentEditViewController.swift in Sources */,
 				62C40935194D244700298A12 /* SEJob.swift in Sources */,
-				0DC46117191BEA54004B26B7 /* SEJobsViewController.m in Sources */,
 				62C4092A194D1F6B00298A12 /* SEClient.swift in Sources */,
 				62436600194BE35C00B212D1 /* SEJobNotesTableViewCell.swift in Sources */,
+				62C4093B194D315800298A12 /* SEJobNotesEditViewController.swift in Sources */,
 				0DC902FE191C2FC60056254A /* Model.xcdatamodeld in Sources */,
 				0D6F80DF191B26F3005E7975 /* main.m in Sources */,
 				0EAFABDD194D148000371DB3 /* SEPartsViewController.swift in Sources */,
