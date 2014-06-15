@@ -1,3 +1,11 @@
+//
+//  SEPhotoViewController.swift
+//  sechi
+//
+//  Created by TCSASSEMBLER on 2014-06-13.
+//  Copyright (c) 2014 TopCoder. All rights reserved.
+//
+
 /**
  *  View controller used for displaying single photo in gallery's UIPageViewcontroller
  */
@@ -6,7 +14,7 @@ class SEPhotoViewController: SEViewController, UIScrollViewDelegate {
 	/**
 	 *  NSManagedObject with information about the photo to show.
 	 */
-	var jobPhotoInfo: SEJobPhotoInfo
+	var jobPhotoInfo: SEJobPhotoInfo!
 
 	/**
 	 *  Scroll view that's used for displaying the photo
@@ -114,7 +122,7 @@ class SEPhotoViewController: SEViewController, UIScrollViewDelegate {
 	    return true
 	}
 
-	#pragma mark - UIScrollViewDelegate
+	//#pragma mark - UIScrollViewDelegate
 	func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView {
 	    return self.imageView
 	}
