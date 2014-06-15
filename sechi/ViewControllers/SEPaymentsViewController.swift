@@ -24,7 +24,7 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
     /**
      *  Index path of cell that began process of removing (swipe, press delete button etc).
      */
-    var indexPathToRemove: NSIndexPath!
+    var indexPathToRemove: NSIndexPath?
 
     /**
      *  Gesture recognizer used to cancel the custom edit mode of the table view.
@@ -150,10 +150,10 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
      *
      *  @param cell SESwipeableTableViewCell that was opened.
      */
-    func cellDidOpen(cell: SESwipeableTableViewCell!) {
+    func cellDidOpen(cell: SESwipeableTableViewCell) {
         var newIndexPathToRemove = self.tableView.indexPathForCell(cell)
         
-        if self.indexPathToRemove && self.indexPathToRemove != newIndexPathToRemove {
+        if self.indexPathToRemove && self.indexPathToRemove! != newIndexPathToRemove {
             var oldCell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as SESwipeableTableViewCell
             oldCell.closeCellAnimated(true)
         }
@@ -335,12 +335,12 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
      *  @param sender object that begin the segue
      */
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        if segue.destinationViewController is SEPaymentViewController && sender is UITableViewCell {
+        //if segue.destinationViewController is SEPaymentViewController && sender is UITableViewCell {
             var indexPath = self.tableView.indexPathForCell(sender as UITableViewCell)
             var payment = self.fetchedResultsController.objectAtIndexPath(indexPath) as SEPayment
             var vc = segue.destinationViewController as SEPaymentViewController
             vc.payment = payment
-        }
+        //}
     }
 
 }

@@ -20,7 +20,7 @@ class SERestClient: NSObject {
     var syncInterval: Double!
     var baseURL: NSURL!
     
-    var RKFailureBlock: (_: RKObjectRequestOperation, _: NSError) -> Void
+    var RKFailureBlock: ((_: RKObjectRequestOperation, _: NSError) -> Void)!
     
     /**
      *  Returning singleton object
@@ -32,9 +32,10 @@ class SERestClient: NSObject {
             if _restClientInstance? {
                 return _restClientInstance!
             }
-            var dictionary = NSDictionary.dictionaryWithContentsOfFile(NSBundle.mainBundle().pathForResource("values", ofType: "plist"))
-            _restClientInstance.baseURL = NSURL(string: dictionary.valueForKeyPath("APIUrl"))
-            _restClientInstance.syncInterval(dictionary.valueForKeyPath("SyncInterval"))
+            _restClientInstance = SERestClient()
+            var dictionary = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("values", ofType: "plist"))
+            _restClientInstance!.baseURL = NSURL(string: dictionary.valueForKeyPath("APIUrl"))
+            _restClientInstance!.syncInterval(dictionary.valueForKeyPath("SyncInterval"))
             
             if !_restClientInstance.baseURL? {
                 UIAlertView(title: "API Base URL", message: "Base URL in values.plist file is incorrect, please check it's value.", delegate: nil, cancelButtonTitle: "Close", otherButtonTitles: nil).show()

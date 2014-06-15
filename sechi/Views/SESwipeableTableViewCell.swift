@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 TopCoder. All rights reserved.
 //
 
-@objc protocol SESwipeableTableViewCellDelegate {
+@objc protocol SESwipeableTableViewCellDelegate: NSObjectProtocol {
     
     /**
      *  Called when UIPanGestureRecognizer used for swipe gesture emits UIGestureRecognizerStateBegin to it's delegate.
