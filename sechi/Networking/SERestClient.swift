@@ -97,8 +97,8 @@ class SERestClient: NSObject {
             [unowned self] (operation, error) -> Void in
             if error? && !(error!.domain == NSURLErrorDomain && error!.code == -1009) {
                 dispatch_async(dispatch_get_main_queue(), {
-                    [unowned self] () -> Void in
-                    self.showError();
+                    () -> Void in
+                    self.showError()
                 })
             }
         }

@@ -31,12 +31,12 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
      */
     var tempClientInfoCell: SEJobClientInfoTableViewCell!
     var tempAddressInfoCell: SEJobAddressTableViewCell!
-    var tempNotesInfoCell: SEJobNotesTableViewCell
+    var tempNotesInfoCell: SEJobNotesTableViewCell!
 
     /**
      *  Index path of cell that began process of removing (swipe, press delete button etc).
      */
-    var indexPathToRemove: NSIndexPath
+    var indexPathToRemove: NSIndexPath?
 
     /**
      *  Gesture recognizer used to cancel the custom edit mode of the table view.
@@ -56,9 +56,9 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
         self.tableView.dataSource = self
         self.tableView.contentInset = UIEdgeInsetsMake(74, 0, 0, 0)
 
-        self.tempClientInfoCell = self.tableView.dequeueReusableCellWithIdentifier(SEJobClientInfoTableViewCellIdentifier)
-        self.tempAddressInfoCell = self.tableView.dequeueReusableCellWithIdentifier(SEJobAddressTableViewCellIdentifier)
-        self.tempNotesInfoCell = self.tableView.dequeueReusableCellWithIdentifier(SEJobNotesTableViewCellIdentifier)
+        self.tempClientInfoCell = self.tableView.dequeueReusableCellWithIdentifier(SEJobClientInfoTableViewCellIdentifier) as SEJobClientInfoTableViewCell
+        self.tempAddressInfoCell = self.tableView.dequeueReusableCellWithIdentifier(SEJobAddressTableViewCellIdentifier) as SEJobAddressTableViewCell
+        self.tempNotesInfoCell = self.tableView.dequeueReusableCellWithIdentifier(SEJobNotesTableViewCellIdentifier) as SEJobNotesTableViewCell
         
         self.editModeGestureRecognizer = UIPanGestureRecognizer(target: self, action: "viewWasPanned:")
         self.view.addGestureRecognizer(self.editModeGestureRecognizer)
@@ -105,7 +105,7 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
      *  @param scrollView scrollView (table view) that begin scrolling.
      */
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        var visibleCellsIndexPaths = self.tableView.indexPathsForVisibleRows()
+        var visibleCellsIndexPaths = self.tableView.indexPathsForVisibleRows() as NSIndexPath[]
         for indexPath in visibleCellsIndexPaths {
             var cell = self.tableView.cellForRowAtIndexPath(indexPath) as SESwipeableTableViewCell
             cell.swipeEnabled = false
@@ -118,7 +118,7 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
      *  @param scrollView scroll view (table view) that end decelerating.
      */
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        var visibleCellsIndexPaths = self.tableView.indexPathsForVisibleRows()
+        var visibleCellsIndexPaths = self.tableView.indexPathsForVisibleRows() as NSIndexPath[]
         for indexPath in visibleCellsIndexPaths {
             var cell = self.tableView.cellForRowAtIndexPath(indexPath) as SESwipeableTableViewCell
             cell.swipeEnabled = true
@@ -180,7 +180,7 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
      *  @return UITableViewCell to display
      */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(self.datasource[indexPath.row])
+        var cell = tableView.dequeueReusableCellWithIdentifier(self.datasource[indexPath.row]) as UITableViewCell
         
         if let swipeableCell = cell as? SESwipeableTableViewCell {
             swipeableCell.delegate = self
@@ -208,7 +208,7 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
             notesCell.notesLabel.contentInset = UIEdgeInsetsMake(-8, -4, 0, 0)
             notesCell.notesLabel.userInteractionEnabled = false
         } else if let photosCell = cell as? SEJobPhotosTableViewCell {
-            photosCell.datasource = self.job.photos.array
+            photosCell.datasource = self.job.photos
             photosCell.collectionView.delegate = self
             photosCell.collectionView.reloadData()
         } else if let hoursCell = cell as? SEJobHoursTableViewCell {
@@ -224,12 +224,12 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
             if self.job.statusC == "In Progress" {
                 hoursCell.startButton.hidden = true
                 var calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
-                dc = calendar.components(NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond, fromDate: self.job.jobStartTimeC, toDate: NSDate.date(), options: nil)
+                dc = calendar.components(NSCalendarUnit.CalendarUnitHour | NSCalendarUnit.CalendarUnitMinute | NSCalendarUnit.CalendarUnitSecond, fromDate: self.job.jobStartTimeC, toDate: NSDate.date(), options: nil)
             } else if self.job.statusC == "Complete" {
                 hoursCell.startButton.hidden = true
                 hoursCell.completeButton.hidden = true
                 var calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
-                dc = calendar.components(NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond, fromDate:self.job.jobStartTimeC, toDate: self.job.jobEndTimeC, options: nil)
+                dc = calendar.components(NSCalendarUnit.CalendarUnitHour | NSCalendarUnit.CalendarUnitMinute | NSCalendarUnit.CalendarUnitSecond, fromDate:self.job.jobStartTimeC, toDate: self.job.jobEndTimeC, options: nil)
             }
             
             var hours = dc.hour < 10 ? "0\(dc.hour)" : "\(dc.hour)"
@@ -251,14 +251,14 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
      *  @param sender object that called the method
      */
     func callButtonTouchedUpInside(sender: UIButton) {
-        var phone = self.job.phoneC.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet(), componentsJoinedByString: "")
+        var phone = self.job.phoneC.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet).bridgeToObjectiveC().componentsJoinedByString("")
         var callUrl = NSURL(string: "tel:\(phone)")
         
         if UIApplication.sharedApplication().canOpenURL(callUrl) {
             UIApplication.sharedApplication().openURL(callUrl)
         }
         else {
-            UIAlertView(title: "Error", message: "This function is only available on the iPhone", delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+            UIAlertView(title: "Error", message: "This function is only available on the iPhone", delegate: nil, cancelButtonTitle: "OK").show()
         }
     }
 
@@ -317,7 +317,7 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
         if indexPath.row == 0 && indexPath.section == 0 {
             self.selectPhoto()
         } else {
-            var gallery = SEGalleryViewController(mediaFilesArray: self.job.photos.array, atIndex: indexPath.row - 1)
+            var gallery = SEGalleryViewController(mediaFilesArray: self.job.photos, atIndex: indexPath.row - 1)
             self.navigationController.pushViewController(gallery, animated: true)
         }
         
@@ -362,13 +362,16 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
         var b = UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)
         
         if a && b {
-            UIAlertView(title: "Add Photo", message: "Select source:", delegate: self, cancelButtonTitle: nil, otherButtonTitles: ["Photo library",  "Camera", nil]).show()
+            var alertView = UIAlertView(title: "Add Photo", message: "Select source:", delegate: self, cancelButtonTitle: nil)
+            alertView.addButtonWithTitle("Photo library")
+            alertView.addButtonWithTitle("Camera")
+            alertView.show()
         } else if a && !b {
             self.startCameraControllerFromViewController(self, withCameraCaptureMode: .Photo, usingDelegate: self)
         } else if !a && b {
             self.startMediaBrowserFromViewController(self, photos: true, videos: false, usingDelegate: self)
         } else {
-            UIAlertView(title: "Error", message: "No sources available", delegate: self, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+            UIAlertView(title: "Error", message: "No sources available", delegate: self, cancelButtonTitle: "OK").show()
         }
     }
 
@@ -396,7 +399,7 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
      *
      *  @return YES if image picker was displayed successfully
      */
-    func startCameraControllerFromViewController(controller: UIViewController, withCameraCaptureMode cameraCaptureMode: UIImagePickerControllerCameraCaptureMode, usingDelegate delegate: UIImagePickerControllerDelegate) -> Bool {
+    func startCameraControllerFromViewController(controller: UIViewController, withCameraCaptureMode cameraCaptureMode: UIImagePickerControllerCameraCaptureMode, usingDelegate delegate: protocol<UIImagePickerControllerDelegate, UINavigationControllerDelegate>) -> Bool {
         // check args
         if !UIImagePickerController.isSourceTypeAvailable(.Camera) {
             return false
@@ -411,14 +414,14 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
         var mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.Camera)
         
         if cameraCaptureMode == .Photo {
-            mediaTypes = mediaTypes.filteredArrayUsingPredicate(NSPredicate(format: "(SELF contains image)"))
+            mediaTypes = mediaTypes.bridgeToObjectiveC().filteredArrayUsingPredicate(NSPredicate(format: "(SELF contains image)"))
         } else {
-            mediaTypes = mediaTypes.filteredArrayUsingPredicate(NSPredicate(format: "(SELF contains movie)"))
+            mediaTypes = mediaTypes.bridgeToObjectiveC().filteredArrayUsingPredicate(NSPredicate(format: "(SELF contains movie)"))
         }
         
         // error if not movie/photo is not avaliable
         if mediaTypes.count < 1 {
-            UIAlertView(title: "Error occured", message: "Cannot get access to camera.", delegate: self, cancelButtonTitle: "OK", otherButtonTitles: nil).show();
+            UIAlertView(title: "Error occured", message: "Cannot get access to camera.", delegate: self, cancelButtonTitle: "OK").show();
             return false
         }
         
@@ -443,7 +446,7 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
      *
      *  @return YES if controller was shown, NO otherwise
      */
-    func startMediaBrowserFromViewController(controller: UIViewController, photos showPhotos: Bool, videos showVideos: Bool, usingDelegate delegate: UIImagePickerControllerDelegate) -> Bool {
+    func startMediaBrowserFromViewController(controller: UIViewController, photos showPhotos: Bool, videos showVideos: Bool, usingDelegate delegate: protocol<UIImagePickerControllerDelegate, UINavigationControllerDelegate>) -> Bool {
         if !UIImagePickerController.isSourceTypeAvailable(.SavedPhotosAlbum) {
             return false
         }
@@ -483,7 +486,7 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
         self.dismissViewControllerAnimated(true) {
             () -> () in
             if info.objectForKey(UIImagePickerControllerOriginalImage) {
-                var image = info.objectForKey(UIImagePickerControllerOriginalImage)
+                var image = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
                 image = image.fixOrientation();
                 var imageData = UIImageJPEGRepresentation(image, 0.8)
 
@@ -492,27 +495,27 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
                 var filePath = self.applicationDocumentsDirectory.stringByAppendingPathComponent(fileName)
 
                 imageData.writeToFile(filePath, atomically: true)
-            }
+            
+                var photoInfo = NSEntityDescription.insertNewObjectForEntityForName("SEJobPhotoInfo", inManagedObjectContext:SERestClient.instance.managedObjectContext) as SEJobPhotoInfo
+                photoInfo.filePath = filePath
+                photoInfo.job = self.job
                                      
-            var photoInfo = NSEntityDescription.insertNewObjectForEntityForName("SEJobPhotoInfo", inManagedObjectContext:SERestClient.instance().managedObjectContext)
-            photoInfo.filePath = filePath
-            photoInfo.job = self.job
+                var error: NSError? = nil
                                      
-            var error: NSError? = nil
+                SERestClient.instance.managedObjectContext.save(&error)
                                      
-            SERestClient.instance.managedObjectContext.save(&error)
-                                     
-            if error {
-                UIAlertView(title: "Error", message: "Error occured while saving to database.", delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
-            } else {
-                SERestClient.instance.managedObjectContext.saveToPersistentStore(&error)
-                                         
                 if error {
-                    UIAlertView(title: "Error", message: "Error occured while saving to database.", delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+                    UIAlertView(title: "Error", message: "Error occured while saving to database.", delegate: nil, cancelButtonTitle: "OK").show()
+                } else {
+                    SERestClient.instance.managedObjectContext.saveToPersistentStore(&error)
+                                         
+                    if error {
+                        UIAlertView(title: "Error", message: "Error occured while saving to database.", delegate: nil, cancelButtonTitle: "OK").show()
+                    }
                 }
+                
+                self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 3, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
             }
-                                     
-            self.tableView.reloadRowsAtIndexPaths(NSIndexPath(item: 3, inSection: 0), withRowAnimation: .None)
         }
     }
 
@@ -522,9 +525,9 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
      *  @return unique id string
      */
     func uuid() -> String {
-        var uuid = CFUUIDCreate(0)
-        var uuidString = CFUUIDCreateString(0, uuid)
-        CFRelease(uuid)
+        var uuidValue = CFUUIDCreate(kCFAllocatorDefault)
+        var uuidString = CFUUIDCreateString(kCFAllocatorDefault, uuidValue)
+        CFRelease(uuidValue)
         return uuidString
     }
 
@@ -533,10 +536,11 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
      *
      *  @return path to application documents directiory
      */
-    func applicationDocumentsDirectory() -> String {
-        var paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true)
-        var basePath = paths.count > 0 ? paths[0] : nil
-        return basePath
+    var applicationDocumentsDirectory: String {
+        get {
+            var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as String[]
+            return paths[0]
+        }
     }
 
     /**
@@ -544,10 +548,11 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
      *
      *  @return path to application caches directiory
      */
-    func applicationCacheDirectory() -> String {
-        var paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, true)
-        var basePath = paths.count > 0 ? paths[0] : nil
-        return basePath
+    var applicationCacheDirectory: String {
+        get {
+            var paths = NSSearchPathForDirectoriesInDomains(.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true) as String[]
+            return paths[0]
+        }
     }
 
     /**
@@ -556,7 +561,7 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
      *  @param segue  segue that's going to be performed
      *  @param sender object that initiated the segue
      */
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
         if segue.destinationViewController.respondsToSelector("setJob") {
             segue.destinationViewController.setValue(self.job, forKey: "job")
         }
