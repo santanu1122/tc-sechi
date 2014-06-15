@@ -1,4 +1,10 @@
-
+//
+//  SEClientAddressViewController.swift
+//  sechi
+//
+//  Created by TCSASSEMBLER on 2014-06-13.
+//  Copyright (c) 2014 TopCoder. All rights reserved.
+//
 
 /**
  *  View controller used for displaying form for editing value of the client address.
@@ -125,7 +131,7 @@ class SEClientAddressViewController: SEViewController, UITableViewDataSource, UI
      *  @param textView text view that began editing.
      */
     func textViewDidBeginEditing(textView: UITextView) {
-        var cell = textView.superviewOfClass(UITableViewCell.class) as UITableViewCell
+        var cell = textView.superviewOfClass(UITableViewCell) as UITableViewCell
         self.tableView.scrollToRowAtIndexPath(self.tableView.indexPathForCell(cell),
                               atScrollPosition: UITableViewScrollPosition.Top, animated: true)
     }
@@ -136,7 +142,7 @@ class SEClientAddressViewController: SEViewController, UITableViewDataSource, UI
      *  @param textView UITextView that changed the content.
      */
     func textViewDidChange(textView: UITextView) {
-        var cell = textView.superviewOfClass(SETextFieldTableViewCell.class) as SETextFieldTableViewCell
+        var cell = textView.superviewOfClass(SETextFieldTableViewCell) as SETextFieldTableViewCell
         var heightNeeded = cell.cellHeightForText(cell.valueTextView.text!)
         if cell.frame.size.height != heightNeeded {
             cell.height = heightNeeded
@@ -145,7 +151,7 @@ class SEClientAddressViewController: SEViewController, UITableViewDataSource, UI
         }
     }
 
-    #pragma mark - UITableViewDatasource
+    //#pragma mark - UITableViewDatasource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
