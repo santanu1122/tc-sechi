@@ -22,15 +22,9 @@
 		0D1DC425191CC9BF000367E2 /* SEJobAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1DC424191CC9BF000367E2 /* SEJobAddViewController.m */; };
 		0D1DC429191CD19F000367E2 /* SEGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1DC428191CD19F000367E2 /* SEGalleryViewController.m */; };
 		0D1DC42C191CD1F3000367E2 /* SEPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1DC42B191CD1F3000367E2 /* SEPhotoViewController.m */; };
-		0D38396F191CECFA00CC615D /* SEClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D38396E191CECFA00CC615D /* SEClientsViewController.m */; };
-		0D383972191CED0500CC615D /* SEClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D383971191CED0500CC615D /* SEClientViewController.m */; };
-		0D383975191CED0E00CC615D /* SEClientAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D383974191CED0E00CC615D /* SEClientAddViewController.m */; };
-		0D383978191CED1800CC615D /* SEClientEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D383977191CED1800CC615D /* SEClientEditViewController.m */; };
 		0D38397B191CEF5C00CC615D /* SEClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D38397A191CEF5C00CC615D /* SEClient.m */; };
 		0D38397E191CEF5D00CC615D /* SEProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D38397D191CEF5D00CC615D /* SEProduct.m */; };
 		0D383981191CEF5D00CC615D /* SEPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D383980191CEF5D00CC615D /* SEPayment.m */; };
-		0D38398E191CF93000CC615D /* SEClientAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D38398D191CF93000CC615D /* SEClientAddressViewController.m */; };
-		0D383991191D012800CC615D /* SEClientMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D383990191D012800CC615D /* SEClientMapViewController.m */; };
 		0D383997191D03C100CC615D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D383996191D03C100CC615D /* AVFoundation.framework */; };
 		0D383999191D051700CC615D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D383998191D051700CC615D /* QuartzCore.framework */; };
 		0D6F80D3191B26F3005E7975 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6F80D2191B26F3005E7975 /* Foundation.framework */; };
@@ -83,6 +77,12 @@
 		0E934CC8194D089C007139B1 /* SEPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E934CC7194D089C007139B1 /* SEPaymentViewController.swift */; };
 		0E934CCA194D092E007139B1 /* SEProductsScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E934CC9194D092E007139B1 /* SEProductsScannerViewController.swift */; };
 		0EAFABDD194D148000371DB3 /* SEPartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFABDC194D148000371DB3 /* SEPartsViewController.swift */; };
+		0EAFABE7194D151100371DB3 /* SEClientAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFABE1194D151100371DB3 /* SEClientAddressViewController.swift */; };
+		0EAFABE8194D151100371DB3 /* SEClientAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFABE2194D151100371DB3 /* SEClientAddViewController.swift */; };
+		0EAFABE9194D151100371DB3 /* SEClientEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFABE3194D151100371DB3 /* SEClientEditViewController.swift */; };
+		0EAFABEA194D151100371DB3 /* SEClientMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFABE4194D151100371DB3 /* SEClientMapViewController.swift */; };
+		0EAFABEB194D151100371DB3 /* SEClientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFABE5194D151100371DB3 /* SEClientsViewController.swift */; };
+		0EAFABEC194D151100371DB3 /* SEClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFABE6194D151100371DB3 /* SEClientViewController.swift */; };
 		624365B2194AB15D00B212D1 /* UIImage+FixOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365B1194AB15D00B212D1 /* UIImage+FixOrientation.swift */; };
 		624365B4194AB1A700B212D1 /* UIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365B3194AB1A700B212D1 /* UIView+Hierarchy.swift */; };
 		624365B6194AB23500B212D1 /* SETextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624365B5194AB23500B212D1 /* SETextView.swift */; };
@@ -181,24 +181,12 @@
 		0D1DC428191CD19F000367E2 /* SEGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEGalleryViewController.m; path = ViewControllers/SEGalleryViewController.m; sourceTree = "<group>"; };
 		0D1DC42A191CD1F3000367E2 /* SEPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEPhotoViewController.h; path = ViewControllers/SEPhotoViewController.h; sourceTree = "<group>"; };
 		0D1DC42B191CD1F3000367E2 /* SEPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEPhotoViewController.m; path = ViewControllers/SEPhotoViewController.m; sourceTree = "<group>"; };
-		0D38396D191CECFA00CC615D /* SEClientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEClientsViewController.h; path = ViewControllers/SEClientsViewController.h; sourceTree = "<group>"; };
-		0D38396E191CECFA00CC615D /* SEClientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEClientsViewController.m; path = ViewControllers/SEClientsViewController.m; sourceTree = "<group>"; };
-		0D383970191CED0500CC615D /* SEClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEClientViewController.h; path = ViewControllers/SEClientViewController.h; sourceTree = "<group>"; };
-		0D383971191CED0500CC615D /* SEClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEClientViewController.m; path = ViewControllers/SEClientViewController.m; sourceTree = "<group>"; };
-		0D383973191CED0E00CC615D /* SEClientAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEClientAddViewController.h; path = ViewControllers/SEClientAddViewController.h; sourceTree = "<group>"; };
-		0D383974191CED0E00CC615D /* SEClientAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEClientAddViewController.m; path = ViewControllers/SEClientAddViewController.m; sourceTree = "<group>"; };
-		0D383976191CED1800CC615D /* SEClientEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEClientEditViewController.h; path = ViewControllers/SEClientEditViewController.h; sourceTree = "<group>"; };
-		0D383977191CED1800CC615D /* SEClientEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEClientEditViewController.m; path = ViewControllers/SEClientEditViewController.m; sourceTree = "<group>"; };
 		0D383979191CEF5C00CC615D /* SEClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SEClient.h; path = CoreData/SEClient.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		0D38397A191CEF5C00CC615D /* SEClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SEClient.m; path = CoreData/SEClient.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		0D38397C191CEF5D00CC615D /* SEProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEProduct.h; path = CoreData/SEProduct.h; sourceTree = "<group>"; };
 		0D38397D191CEF5D00CC615D /* SEProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEProduct.m; path = CoreData/SEProduct.m; sourceTree = "<group>"; };
 		0D38397F191CEF5D00CC615D /* SEPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEPayment.h; path = CoreData/SEPayment.h; sourceTree = "<group>"; };
 		0D383980191CEF5D00CC615D /* SEPayment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEPayment.m; path = CoreData/SEPayment.m; sourceTree = "<group>"; };
-		0D38398C191CF93000CC615D /* SEClientAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SEClientAddressViewController.h; path = ViewControllers/SEClientAddressViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		0D38398D191CF93000CC615D /* SEClientAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEClientAddressViewController.m; path = ViewControllers/SEClientAddressViewController.m; sourceTree = "<group>"; };
-		0D38398F191D012800CC615D /* SEClientMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEClientMapViewController.h; sourceTree = "<group>"; };
-		0D383990191D012800CC615D /* SEClientMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SEClientMapViewController.m; sourceTree = "<group>"; };
 		0D383996191D03C100CC615D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0D383998191D051700CC615D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0D6F80CF191B26F3005E7975 /* sechi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sechi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -259,6 +247,12 @@
 		0E934CC7194D089C007139B1 /* SEPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEPaymentViewController.swift; path = ViewControllers/SEPaymentViewController.swift; sourceTree = "<group>"; };
 		0E934CC9194D092E007139B1 /* SEProductsScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEProductsScannerViewController.swift; path = ViewControllers/SEProductsScannerViewController.swift; sourceTree = "<group>"; };
 		0EAFABDC194D148000371DB3 /* SEPartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEPartsViewController.swift; path = ViewControllers/SEPartsViewController.swift; sourceTree = "<group>"; };
+		0EAFABE1194D151100371DB3 /* SEClientAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEClientAddressViewController.swift; path = ViewControllers/SEClientAddressViewController.swift; sourceTree = "<group>"; };
+		0EAFABE2194D151100371DB3 /* SEClientAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEClientAddViewController.swift; path = ViewControllers/SEClientAddViewController.swift; sourceTree = "<group>"; };
+		0EAFABE3194D151100371DB3 /* SEClientEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEClientEditViewController.swift; path = ViewControllers/SEClientEditViewController.swift; sourceTree = "<group>"; };
+		0EAFABE4194D151100371DB3 /* SEClientMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEClientMapViewController.swift; path = ViewControllers/SEClientMapViewController.swift; sourceTree = "<group>"; };
+		0EAFABE5194D151100371DB3 /* SEClientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEClientsViewController.swift; path = ViewControllers/SEClientsViewController.swift; sourceTree = "<group>"; };
+		0EAFABE6194D151100371DB3 /* SEClientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEClientViewController.swift; path = ViewControllers/SEClientViewController.swift; sourceTree = "<group>"; };
 		624365B1194AB15D00B212D1 /* UIImage+FixOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+FixOrientation.swift"; path = "Utils/UIImage+FixOrientation.swift"; sourceTree = "<group>"; };
 		624365B3194AB1A700B212D1 /* UIView+Hierarchy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Hierarchy.swift"; path = "Utils/UIView+Hierarchy.swift"; sourceTree = "<group>"; };
 		624365B5194AB23500B212D1 /* SETextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SETextView.swift; path = Views/SETextView.swift; sourceTree = "<group>"; };
@@ -370,18 +364,12 @@
 		0D38396C191CECE900CC615D /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				0D38396D191CECFA00CC615D /* SEClientsViewController.h */,
-				0D38396E191CECFA00CC615D /* SEClientsViewController.m */,
-				0D383970191CED0500CC615D /* SEClientViewController.h */,
-				0D383971191CED0500CC615D /* SEClientViewController.m */,
-				0D383973191CED0E00CC615D /* SEClientAddViewController.h */,
-				0D383974191CED0E00CC615D /* SEClientAddViewController.m */,
-				0D383976191CED1800CC615D /* SEClientEditViewController.h */,
-				0D383977191CED1800CC615D /* SEClientEditViewController.m */,
-				0D38398C191CF93000CC615D /* SEClientAddressViewController.h */,
-				0D38398D191CF93000CC615D /* SEClientAddressViewController.m */,
-				0D38398F191D012800CC615D /* SEClientMapViewController.h */,
-				0D383990191D012800CC615D /* SEClientMapViewController.m */,
+				0EAFABE1194D151100371DB3 /* SEClientAddressViewController.swift */,
+				0EAFABE2194D151100371DB3 /* SEClientAddViewController.swift */,
+				0EAFABE3194D151100371DB3 /* SEClientEditViewController.swift */,
+				0EAFABE4194D151100371DB3 /* SEClientMapViewController.swift */,
+				0EAFABE5194D151100371DB3 /* SEClientsViewController.swift */,
+				0EAFABE6194D151100371DB3 /* SEClientViewController.swift */,
 			);
 			name = Client;
 			sourceTree = "<group>";
@@ -821,7 +809,6 @@
 				624365FD194BE35C00B212D1 /* SEJobAddressTableViewCell.swift in Sources */,
 				62DADD89194BFA0C001B51F0 /* SEViewController.swift in Sources */,
 				0DA9BFFD191C539200B0AFA1 /* SEJobClientInfoEditViewController.m in Sources */,
-				0D383991191D012800CC615D /* SEClientMapViewController.m in Sources */,
 				62D92755194CC44500B56740 /* SEMainMenuViewController.swift in Sources */,
 				0DC46113191BD2B6004B26B7 /* SEPushNoAnimationSegue.m in Sources */,
 				624365E9194BCC1700B212D1 /* SESwipeableTableViewCell.swift in Sources */,
@@ -830,27 +817,27 @@
 				0D1DC409191C6D50000367E2 /* SEJobMapViewController.m in Sources */,
 				0D1DC41F191CC558000367E2 /* SEJobAddressEditViewController.m in Sources */,
 				624365FE194BE35C00B212D1 /* SEJobClientInfoTableViewCell.swift in Sources */,
+				0EAFABEC194D151100371DB3 /* SEClientViewController.swift in Sources */,
 				0D1DC42C191CD1F3000367E2 /* SEPhotoViewController.m in Sources */,
-				0D383975191CED0E00CC615D /* SEClientAddViewController.m in Sources */,
 				624365F4194BDA3000B212D1 /* SEClientAddressTableViewCell.swift in Sources */,
+				0EAFABEA194D151100371DB3 /* SEClientMapViewController.swift in Sources */,
 				62C40926194CFC2600298A12 /* SEPaymentsViewController.swift in Sources */,
+				0EAFABE8194D151100371DB3 /* SEClientAddViewController.swift in Sources */,
 				0E934CC8194D089C007139B1 /* SEPaymentViewController.swift in Sources */,
 				624365F5194BDA3000B212D1 /* SEClientInfoTableViewCell.swift in Sources */,
 				624365EE194BD69300B212D1 /* SEPaymentTableViewCell.swift in Sources */,
 				624365F0194BD9C400B212D1 /* SEProductTableViewCell.swift in Sources */,
 				624365E6194BCA4A00B212D1 /* SEAppDelegate.swift in Sources */,
-				0D383972191CED0500CC615D /* SEClientViewController.m in Sources */,
+				0EAFABEB194D151100371DB3 /* SEClientsViewController.swift in Sources */,
 				624365ED194BD69300B212D1 /* SEPaymentInfoTableViewCell.swift in Sources */,
 				0E934CC6194D048E007139B1 /* SEPaymentAddViewController.swift in Sources */,
 				628F16A5194C80DA00084C40 /* SESignInViewController.swift in Sources */,
 				62E2A409194AA4A20038BBF8 /* SEConstants.swift in Sources */,
 				0D38397B191CEF5C00CC615D /* SEClient.m in Sources */,
 				0D1DC414191C784D000367E2 /* SEJobPhotoInfo.m in Sources */,
-				0D38398E191CF93000CC615D /* SEClientAddressViewController.m in Sources */,
 				0D38397E191CEF5D00CC615D /* SEProduct.m in Sources */,
 				624365B6194AB23500B212D1 /* SETextView.swift in Sources */,
 				0DC902FB191C2FB60056254A /* SERestClient.m in Sources */,
-				0D383978191CED1800CC615D /* SEClientEditViewController.m in Sources */,
 				0E934CCA194D092E007139B1 /* SEProductsScannerViewController.swift in Sources */,
 				0D1DC425191CC9BF000367E2 /* SEJobAddViewController.m in Sources */,
 				62436601194BE35C00B212D1 /* SEJobPhotosTableViewCell.swift in Sources */,
@@ -858,12 +845,13 @@
 				0D1DC411191C784D000367E2 /* SEJob.m in Sources */,
 				62436602194BE35C00B212D1 /* SEJobTableViewCell.swift in Sources */,
 				624365B4194AB1A700B212D1 /* UIView+Hierarchy.swift in Sources */,
+				0EAFABE7194D151100371DB3 /* SEClientAddressViewController.swift in Sources */,
 				62E45BFC194CDAEE00A57283 /* SENoStatusBarImagePickerController.swift in Sources */,
 				624365FF194BE35C00B212D1 /* SEJobHoursTableViewCell.swift in Sources */,
+				0EAFABE9194D151100371DB3 /* SEClientEditViewController.swift in Sources */,
 				0D383981191CEF5D00CC615D /* SEPayment.m in Sources */,
 				62B71C73194A7A7600EB80C7 /* SETextField.swift in Sources */,
 				624365EA194BCC1700B212D1 /* SETextFieldTableViewCell.swift in Sources */,
-				0D38396F191CECFA00CC615D /* SEClientsViewController.m in Sources */,
 				62E45BFE194CDB3100A57283 /* SEPaymentEditViewController.swift in Sources */,
 				0D1DC429191CD19F000367E2 /* SEGalleryViewController.m in Sources */,
 				0DC46117191BEA54004B26B7 /* SEJobsViewController.m in Sources */,
