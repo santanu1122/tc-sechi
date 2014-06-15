@@ -17,10 +17,10 @@ class SERestClient: NSObject {
     
     var managedObjectContext: NSManagedObjectContext!
     var apiErrorWasDisplayed: Bool = false
-    var syncInterval: Double!
-    var baseURL: NSURL!
+    var syncInterval: Double?
+    var baseURL: NSURL?
     
-    var RKFailureBlock: ((_: RKObjectRequestOperation, _: NSError) -> Void)!
+    var RKFailureBlock: ((_: RKObjectRequestOperation?, _: NSError?) -> Void)!
     
     /**
      *  Returning singleton object
@@ -34,21 +34,21 @@ class SERestClient: NSObject {
             }
             _restClientInstance = SERestClient()
             var dictionary = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("values", ofType: "plist"))
-            _restClientInstance!.baseURL = NSURL(string: dictionary.valueForKeyPath("APIUrl"))
-            _restClientInstance!.syncInterval(dictionary.valueForKeyPath("SyncInterval"))
+            _restClientInstance!.baseURL = NSURL(string: dictionary.valueForKeyPath("APIUrl") as String)
+            _restClientInstance!.syncInterval = dictionary.valueForKeyPath("SyncInterval") as? Double
             
-            if !_restClientInstance.baseURL? {
-                UIAlertView(title: "API Base URL", message: "Base URL in values.plist file is incorrect, please check it's value.", delegate: nil, cancelButtonTitle: "Close", otherButtonTitles: nil).show()
+            if !_restClientInstance!.baseURL? {
+                UIAlertView(title: "API Base URL", message: "Base URL in values.plist file is incorrect, please check it's value.", delegate: nil, cancelButtonTitle: "Close").show()
             }
             
-            if !_restClientInstance.syncInterval? {
-                UIAlertView(title: "Sync Interval", message: "Sync Interval in values.plist file is incorrect, please check it's value. Data sync loop will be disabled.", delegate: nil, cancelButtonTitle: "Close", otherButtonTitles: nil).show()
+            if !_restClientInstance!.syncInterval? {
+                UIAlertView(title: "Sync Interval", message: "Sync Interval in values.plist file is incorrect, please check it's value. Data sync loop will be disabled.", delegate: nil, cancelButtonTitle: "Close").show()
             }
             
-            _restClientInstance.restKitSetup()
-            _restClientInstance.syncTimer.fire()
+            _restClientInstance!.restKitSetup()
+            _restClientInstance!.syncTimer.fire()
             
-            return _restClientInstance
+            return _restClientInstance!
         }
     }
     
@@ -65,7 +65,7 @@ class SERestClient: NSObject {
     func restKitSetup() {
         var error: NSError? = nil
         var modelURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("Model", ofType: "momd"))
-        var managedObjectModel = NSManagedObjectModel(contentsOfURL: modelURL).mutableCopy()
+        var managedObjectModel = NSManagedObjectModel(contentsOfURL: modelURL).mutableCopy() as NSManagedObjectModel
         var managedObjectStore = RKManagedObjectStore(managedObjectModel: managedObjectModel)
         managedObjectStore.createPersistentStoreCoordinator()
     
@@ -78,7 +78,7 @@ class SERestClient: NSObject {
         }
     
         var persistentStore = managedObjectStore.addSQLitePersistentStoreAtPath(storePath, fromSeedDatabaseAtPath: nil, withConfiguration: nil, options: nil, error: &error)
-        assert(persistentStore, "Failed to add persistent store with error: \(error)");
+        assert(persistentStore, "Failed to add persistent store with error");
         managedObjectStore.createManagedObjectContexts()
         RKManagedObjectStore.setDefaultStore(managedObjectStore)
         self.managedObjectContext = managedObjectStore.mainQueueManagedObjectContext
@@ -94,8 +94,8 @@ class SERestClient: NSObject {
         self.apiErrorWasDisplayed = false
     
         self.RKFailureBlock = {
-            [unowned self] (operation: RKObjectRequestOperation, error: NSError?) -> Void in
-            if error? && !(error.domain == NSURLErrorDomain && error.code == -1009) {
+            [unowned self] (operation, error) -> Void in
+            if error? && !(error!.domain == NSURLErrorDomain && error!.code == -1009) {
                 dispatch_async(dispatch_get_main_queue(), {
                     [unowned self] () -> Void in
                     self.showError();
@@ -110,7 +110,7 @@ class SERestClient: NSObject {
     func showError() {
         if !self.apiErrorWasDisplayed {
             self.apiErrorWasDisplayed = true
-            UIAlertView(title: "Error", message: "API server is not responding, or base url is incorrect.", delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+            UIAlertView(title: "Error", message: "API server is not responding, or base url is incorrect.", delegate: nil, cancelButtonTitle: "OK").show()
         }
     }
     
@@ -118,15 +118,15 @@ class SERestClient: NSObject {
      *  Setup RestKit responses mapping for all kind of objects used in application.
      */
     func setupResponseMapping() {
-        var jobsMapping = SEJob.responseMappingForManagedObjectStore(RKObjectManager.sharedManager(), managedObjectStore)
-        var clientsMapping = SEClient.responseMappingForManagedObjectStore(RKObjectManager.sharedManager(), managedObjectStore)
-        var productsMapping = SEProduct.responseMappingForManagedObjectStore(RKObjectManager.sharedManager(), managedObjectStore)
-        var paymentsMapping = SEPayment.responseMappingForManagedObjectStore(RKObjectManager.sharedManager(), managedObjectStore)
+        var jobsMapping = SEJob.responseMappingForManagedObjectStore(RKObjectManager.sharedManager().managedObjectStore)
+        var clientsMapping = SEClient.responseMappingForManagedObjectStore(RKObjectManager.sharedManager().managedObjectStore)
+        var productsMapping = SEProduct.responseMappingForManagedObjectStore(RKObjectManager.sharedManager().managedObjectStore)
+        var paymentsMapping = SEPayment.responseMappingForManagedObjectStore(RKObjectManager.sharedManager().managedObjectStore)
     
-        var jobsListResponseDescriptor = RKResponseDescriptor.responseDescriptorWithMapping(jobsMapping, method: RKRequestMethodGET, pathPattern: "jobs", keyPath: "jobs", statusCodes: RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful))
-        var clientsListResponseDescriptor = RKResponseDescriptor.responseDescriptorWithMapping(clientsMapping, method: RKRequestMethodGET, pathPattern: "clients", keyPath: "clients", statusCodes: RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful))
-        var productsListResponseDescriptor = RKResponseDescriptor.responseDescriptorWithMapping(productsMapping, method: RKRequestMethodGET, pathPattern: "parts", keyPath: "parts", statusCodes: RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful))
-        var paymentsListResponseDescriptor = RKResponseDescriptor.responseDescriptorWithMapping(paymentsMapping, method: RKRequestMethodGET, pathPattern: "payments", keyPath: "payments", statusCodes: RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful))
+        var jobsListResponseDescriptor = RKResponseDescriptor(mapping: jobsMapping, method: .GET, pathPattern: "jobs", keyPath: "jobs", statusCodes: RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful))
+        var clientsListResponseDescriptor = RKResponseDescriptor(mapping: clientsMapping, method: .GET, pathPattern: "clients", keyPath: "clients", statusCodes: RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful))
+        var productsListResponseDescriptor = RKResponseDescriptor(mapping: productsMapping, method: .GET, pathPattern: "parts", keyPath: "parts", statusCodes: RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful))
+        var paymentsListResponseDescriptor = RKResponseDescriptor(mapping: paymentsMapping, method: .GET, pathPattern: "payments", keyPath: "payments", statusCodes: RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful))
         RKObjectManager.sharedManager().addResponseDescriptor(jobsListResponseDescriptor)
         RKObjectManager.sharedManager().addResponseDescriptor(clientsListResponseDescriptor)
         RKObjectManager.sharedManager().addResponseDescriptor(productsListResponseDescriptor)
@@ -157,11 +157,11 @@ class SERestClient: NSObject {
     var syncTimer: NSTimer {
         get {
             if !_syncTimer {
-                _syncTimer = NSTimer(timeInterval: self.syncInterval, target: self, selector: "performDataSync:", userInfo: nil,  repeats: true)
+                _syncTimer = NSTimer(timeInterval: self.syncInterval!, target: self, selector: "performDataSync:", userInfo: nil,  repeats: true)
     
                 NSRunLoop.mainRunLoop().addTimer(_syncTimer, forMode: NSRunLoopCommonModes)
             }
-            return _syncTimer
+            return _syncTimer!
         }
     }
     var _syncTimer: NSTimer? = nil
@@ -183,9 +183,9 @@ class SERestClient: NSObject {
      *  Runs all methods for syncing data,
      */
     func performDataSync() {
-        SERestClient.instance().refreshJobsList()
-        SERestClient.instance().refreshClientsList()
-        SERestClient.instance().refreshPartsList()
-        SERestClient.instance().refreshPaymentsList()
+        SERestClient.instance.refreshJobsList()
+        SERestClient.instance.refreshClientsList()
+        SERestClient.instance.refreshPartsList()
+        SERestClient.instance.refreshPaymentsList()
     }
 }

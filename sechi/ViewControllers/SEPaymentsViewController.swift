@@ -335,12 +335,13 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
      *  @param sender object that begin the segue
      */
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        //if segue.destinationViewController is SEPaymentViewController && sender is UITableViewCell {
-            var indexPath = self.tableView.indexPathForCell(sender as UITableViewCell)
-            var payment = self.fetchedResultsController.objectAtIndexPath(indexPath) as SEPayment
-            var vc = segue.destinationViewController as SEPaymentViewController
-            vc.payment = payment
-        //}
+        if let vc = segue.destinationViewController as? SEPaymentViewController {
+            if let cell = sender as? UITableViewCell {
+                var indexPath = self.tableView.indexPathForCell(cell)
+                var payment = self.fetchedResultsController.objectAtIndexPath(indexPath) as SEPayment
+                vc.payment = payment
+            }
+        }
     }
 
 }

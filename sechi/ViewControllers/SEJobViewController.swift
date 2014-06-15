@@ -70,7 +70,7 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
      *
      *  @param animated
      */
-    func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController.setNavigationBarHidden(false, animated: animated)
         self.setupNavigationBarBackButton()

@@ -30,9 +30,9 @@ class SEPaymentAddViewController: SEViewController, UITableViewDataSource, UITab
      *  UITableViewCell objects that are displayed in table view.
      */
     var clientCell: SETextFieldTableViewCell!
-    var amountCell: SETextFieldTableViewCell
-    var jobCell: SETextFieldTableViewCell
-    var noteCell: SETextFieldTableViewCell
+    var amountCell: SETextFieldTableViewCell!
+    var jobCell: SETextFieldTableViewCell!
+    var noteCell: SETextFieldTableViewCell!
 
     /**
      *  Setup table view properties and cells that will be displayed
@@ -52,22 +52,22 @@ class SEPaymentAddViewController: SEViewController, UITableViewDataSource, UITab
      *  Prepare cell for each object field that's a need to be filled.
      */
     func setupCells() {
-        self.clientCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.clientCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.clientCell.label = "Client:"
         self.clientCell.key = "clientNameC"
         self.clientCell.value = self.payment.clientNameC
         
-        self.amountCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.amountCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.amountCell.label = "Amount:"
         self.amountCell.key = "paymentAmountC"
-        self.amountCell.value = self.payment.paymentAmountC.stringValue
+        self.amountCell.value = "\(self.payment.paymentAmountC)"
         
-        self.jobCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.jobCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.jobCell.label = "Job:"
         self.jobCell.key = "jobNameC"
         self.jobCell.value = self.payment.jobNameC
         
-        self.noteCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.noteCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.noteCell.label = "Notes:"
         self.noteCell.key = "paymentNotesC"
         self.noteCell.value = self.payment.paymentNotesC
@@ -89,7 +89,6 @@ class SEPaymentAddViewController: SEViewController, UITableViewDataSource, UITab
         saveButton.action = "saveButtonTouchedUpInside:"
     }
 
-    //#pragma mark - actions
     /**
      *  After save button was pressed, values filled by the user are validated and if any of them is empty validation alert will be shown.
      *  If everything is ok, data will be saved and the view controller will be dismissed.
@@ -97,18 +96,18 @@ class SEPaymentAddViewController: SEViewController, UITableViewDataSource, UITab
      *  @param sender object that called the method
      */
     func saveButtonTouchedUpInside(sender: UIButton) {
-        self.payment = NSEntityDescription.insertNewObjectForEntityForName("SEPayment", inManagedObjectContext: (UIApplication.sharedApplication().delegate as SEAppDelegate).managedObjectContext)
+        self.payment = NSEntityDescription.insertNewObjectForEntityForName("SEPayment", inManagedObjectContext: SERestClient.instance.managedObjectContext) as SEPayment
         
         for cell in self.datasource {
             if !cell.valueTextView?.text || cell.valueTextView?.text == "" {
                 self.payment.managedObjectContext.deleteObject(self.payment)
-                var fieldName = cell.label.stringByReplacingOccurrencesOfString(":", "")
-                UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+                var fieldName = cell.label!.stringByReplacingOccurrencesOfString(":", withString: "")
+                UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK").show()
                 return
             }
             
             if cell.key == "paymentAmountC" {
-                self.payment.setValue(cell.valueTextView.text.floatValue, forKey: cell.key)
+                self.payment.setValue(cell.valueTextView.text.toInt(), forKey: cell.key)
             } else {
                 self.payment.setValue(cell.valueTextView.text, forKey:cell.key)
             }
@@ -132,13 +131,12 @@ class SEPaymentAddViewController: SEViewController, UITableViewDataSource, UITab
         }
         
         if error {
-            UIAlertView(title: "Error", message: "Error occured while saving data: " + error.localizedDescription, delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+            UIAlertView(title: "Error", message: "Error occured while saving data: " + error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
         }
         
         self.navigationController.popViewControllerAnimated(true)
     }
 
-    //#pragma mark - UITextViewDelegate
     /**
      *  Hide keyboard on return when text view is a first responder
      *
@@ -181,7 +179,6 @@ class SEPaymentAddViewController: SEViewController, UITableViewDataSource, UITab
         }
     }
 
-    //#pragma mark - UITableViewDatasource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
