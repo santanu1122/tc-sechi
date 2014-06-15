@@ -19,7 +19,7 @@ class SEGalleryViewController: SEViewController, UIPageViewControllerDataSource,
     /**
      *  Array of photos that will be presented.
      */
-    var mediaFiles: SEJobPhotoInfo[]
+    var mediaFiles: SEJobPhotoInfo[]!
 
     /**
      *  UIPageViewController used for displaying gallery
@@ -61,7 +61,7 @@ class SEGalleryViewController: SEViewController, UIPageViewControllerDataSource,
         var background = UIImageView(image: UIImage(named: "bg.png"))
         background.contentMode = .ScaleAspectFill
         background.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview:background
+        self.view.addSubview(background)
         
         self.pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
         
@@ -77,7 +77,7 @@ class SEGalleryViewController: SEViewController, UIPageViewControllerDataSource,
         self.title = "SCHEDULE"
         
         var lineView = UIImageView(image: UIImage(named: "line_schedule"))
-        lineView.translatesAutoresizingMaskIntoConstraints = false
+        lineView.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.view.addSubview(lineView)
         
         var views = ["pvc": self.pageViewController.view, "line": lineView, "bg": background]
@@ -127,9 +127,9 @@ class SEGalleryViewController: SEViewController, UIPageViewControllerDataSource,
      *  @param toInterfaceOrientation
      *  @param duration
      */
-    func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration duration: NSTimeInterval) {
-        for var vc in self.pageViewController.viewControllers {
-            vc.willRotateToInterfaceOrientation(toInterfaceOrientation duration: duration)
+    func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        for vc in self.pageViewController.viewControllers {
+            vc.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
         }
     }
 
@@ -142,22 +142,21 @@ class SEGalleryViewController: SEViewController, UIPageViewControllerDataSource,
         self.view.setNeedsLayout()
         self.pageViewController.view.setNeedsLayout()
         
-        for var vc in self.pageViewController.viewControllers {
+        for vc in self.pageViewController.viewControllers {
             vc.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
             
             vc.view.setNeedsUpdateConstraints()
             vc.view.setNeedsLayout()
         }
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.05 * NSEC_PER_SEC), dispatch_get_main_queue()) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.05 * NSEC_PER_SEC), dispatch_get_main_queue(), {
             () -> () in
-            var index = self.mediaFiles.indexOfObject((SEPhotoViewController*)_pageViewController.viewControllers.lastObject).jobPhotoInfo];
+            var index = self.mediaFiles.indexOfObject((self.pageViewController.viewControllers.lastObject as SEPhotoViewController).jobPhotoInfo)
             
             self.pageViewController.setViewControllers([self.viewControllerAtIndex: index], direction: .Forward, animated: false, completion: nil)
-        }
+        })
     }
 
-    //#pragma mark - UIPageViewControllerDataSource
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController {
         var currentIndex = self.mediaFiles.indexOfObject((viewController as SEPhotoViewController).jobPhotoInfo)
         
@@ -165,7 +164,7 @@ class SEGalleryViewController: SEViewController, UIPageViewControllerDataSource,
     }
 
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController {
-        NSInteger currentIndex = self.mediaFiles.indexOfObject((viewController as SEPhotoViewController).jobPhotoInfo)
+        var currentIndex = self.mediaFiles.indexOfObject((viewController as SEPhotoViewController).jobPhotoInfo)
         
         return self.viewControllerAtIndex(currentIndex - 1)
     }

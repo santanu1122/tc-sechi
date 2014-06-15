@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 TopCoder. All rights reserved.
 //
 
+import MapKit
+
 /**
  *  View controller used for displaying a map with marked job address and option to show directions to it.
  */
@@ -34,12 +36,16 @@ class SEJobMapViewController: SEViewController, MKMapViewDelegate, UITextViewDel
     /**
      *  MKAnnotationView shown at jobAnnotation
      */
-    var jobAnnotationView = MKPinAnnotationView(annotation: self.jobAnnotation, reuseIdentifier: "nil")
+    var jobAnnotationView: MKPinAnnotationView {
+        get {
+            return MKPinAnnotationView(annotation: self.jobAnnotation, reuseIdentifier: "nil")
+        }
+    }
 
     /**
      *  Setup views properties
      */
-    func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         self.addressTextView.delegate = self
         self.addressTextView.text = self.job.jobAddressC
@@ -51,14 +57,13 @@ class SEJobMapViewController: SEViewController, MKMapViewDelegate, UITextViewDel
      *
      *  @param animated
      */
-    func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController.setNavigationBarHidden(false, animated: animated)
         self.setupNavigationBarBackButton()
         self.updateMap()
     }
 
-    //#pragma mark - UITextViewDelegate
     /**
      *  Hide keyboard on return when text view is a first responder
      *
@@ -76,7 +81,6 @@ class SEJobMapViewController: SEViewController, MKMapViewDelegate, UITextViewDel
         return true
     }
 
-    //#pragma mark - Actions
     /**
      *  Update map pin location when map button was pressed
      *
@@ -92,13 +96,11 @@ class SEJobMapViewController: SEViewController, MKMapViewDelegate, UITextViewDel
      *  @param sender object that called the method
      */
     @IBAction func directionsButtonTouchedUpInside(sender: UIButton) {
-        self.updateMapCompletion {
-            () -> () in
+        self.updateMapCompletion() {
+            () -> Void in
             self.showDirections()
         }
     }
-
-    #pragma mark - Direction actions
 
     /**
      *  Creates MKDirections request and displays directions on map if response is successfull.
@@ -107,24 +109,25 @@ class SEJobMapViewController: SEViewController, MKMapViewDelegate, UITextViewDel
         var jobPlacemark = MKPlacemark(coordinate: self.jobAnnotation.coordinate, addressDictionary: nil)
         
         var request = MKDirectionsRequest()
-        request.source = MKMapItem.mapItemForCurrentLocation()
-        request.destination = MKMapItem(placemark: jobPlacemark)
+        request.setSource(MKMapItem.mapItemForCurrentLocation())
+        request.setDestination(MKMapItem(placemark: jobPlacemark))
         request.requestsAlternateRoutes = false
         
         var directions = MKDirections(request: request)
-        directions.calculateDirectionsWithCompletionHandler {
-            (response: MKDirectionsResponse, error: NSError) -> () in
+        directions.calculateDirectionsWithCompletionHandler({
+            (response, error) -> Void in
             if error {
                 if let errorMessage = messageForCLError(error)? {
-                    NSLog("WARNING: Error message for error %@ not found in CL errors list.", error!)
-                    errorMessage = "Error occured: " + error!.localizedDescription
+                    UIAlertView(title: "Error", message: "Error occured: " + errorMessage, delegate: nil, cancelButtonTitle: "OK").show()
+                } else {
+                    NSLog("WARNING: Error message for error %@ not found in CL errors list.", error)
+                    var errorMessage = "Error occured: " + error.localizedDescription
+                    UIAlertView(title: "Error", message: errorMessage, delegate: nil, cancelButtonTitle: "OK").show()
                 }
-                UIAlertView(title: "Error", message: errorMessage, delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
-            }
-            else {
+            } else {
                 self.showDirections(response)
             }
-        }
+        })
     }
 
     /**
@@ -135,7 +138,7 @@ class SEJobMapViewController: SEViewController, MKMapViewDelegate, UITextViewDel
     func showDirections(response: MKDirectionsResponse) {
         self.mapView.removeOverlays(self.mapView.overlays)
         
-        for var route in response.routes {
+        for route in response.routes as MKRoute[] {
             self.mapView.addOverlay(route.polyline, level: .AboveRoads)
         }
     }
@@ -158,7 +161,6 @@ class SEJobMapViewController: SEViewController, MKMapViewDelegate, UITextViewDel
         }
     }
 
-    #pragma mark - Map actions
     /**
      *  Update location of pin on map to show current address.
      */
@@ -169,7 +171,7 @@ class SEJobMapViewController: SEViewController, MKMapViewDelegate, UITextViewDel
     /**
      *  Update location of pin on map to show current address, with completition handler.
      */
-    func updateMapCompletion(completion: () -> Void?) {
+    func updateMapCompletion(completion: (() -> Void)?) {
         var placeDictionary = Dictionary<String, String>()
         var addressComponents = self.addressTextView.text.componentsSeparatedByString(",")
         if addressComponents.count > 1 {
@@ -180,10 +182,10 @@ class SEJobMapViewController: SEViewController, MKMapViewDelegate, UITextViewDel
         }
         
         var geocoder = CLGeocoder()
-        geocoder.geocodeAddressDictionary(placeDictionary) {
-            (placemarks: CLPlacemark[], error: NSError) -> () in
+        geocoder.geocodeAddressDictionary(placeDictionary.bridgeToObjectiveC()) {
+            (placemarks, error) -> Void in
             if placemarks.count > 0 {
-                var placemark = placemarks[0]
+                var placemark = placemarks[0] as CLPlacemark
                 var location = placemark.location
                 var coordinate = location.coordinate
                 self.jobAnnotation.setCoordinate(coordinate)
@@ -191,16 +193,16 @@ class SEJobMapViewController: SEViewController, MKMapViewDelegate, UITextViewDel
                 if self.mapView.annotations.count == 0 {
                     self.mapView.addAnnotation(self.jobAnnotation)
                 }
-                if completion {
-                    completion()
+                if completion != nil {
+                    completion!()
                 }
             } else {
                 var errorMessage = messageForCLError(error)
-                if let errorMessage = messageForCLError(error)? {
+                if !errorMessage {
                     NSLog("WARNING: Error message for error %@ not found in CL errors list.", error!)
-                    errorMessage = "Error occured: " + error!.localizedDescription
+                    errorMessage = "Error occured: " + error.localizedDescription
                 }
-                UIAlertView(title: "Error", message: errorMessage, delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+                UIAlertView(title: "Error", message: errorMessage, delegate: nil, cancelButtonTitle: "OK").show()
             }
         }
     }

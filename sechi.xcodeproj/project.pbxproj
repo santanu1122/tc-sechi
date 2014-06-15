@@ -53,10 +53,8 @@
 		0D6F8136191B283E005E7975 /* line_schedule@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F811E191B283E005E7975 /* line_schedule@2x.png */; };
 		0D6F8137191B283E005E7975 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F811F191B283E005E7975 /* logo@2x.png */; };
 		0DBD8AD4191D7F0900A5C859 /* values.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DBD8AD3191D7F0900A5C859 /* values.plist */; };
-		0DC46113191BD2B6004B26B7 /* SEPushNoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC46112191BD2B6004B26B7 /* SEPushNoAnimationSegue.m */; };
 		0DC46119191BEE1F004B26B7 /* schedule_navbar_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC46118191BEE1F004B26B7 /* schedule_navbar_bg@2x.png */; };
 		0DC46121191C1873004B26B7 /* cell_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC46120191C1873004B26B7 /* cell_bg@2x.png */; };
-		0DC902FB191C2FB60056254A /* SERestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC902FA191C2FB60056254A /* SERestClient.m */; };
 		0DC902FE191C2FC60056254A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DC902FC191C2FC60056254A /* Model.xcdatamodeld */; };
 		0DC90303191C32740056254A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC90302191C32740056254A /* CoreData.framework */; };
 		0E934CC6194D048E007139B1 /* SEPaymentAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E934CC5194D048E007139B1 /* SEPaymentAddViewController.swift */; };
@@ -104,6 +102,8 @@
 		62C40943194D3B5B00298A12 /* SEJobMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C40942194D3B5B00298A12 /* SEJobMapViewController.swift */; };
 		62C40945194D3E7B00298A12 /* SEJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C40944194D3E7B00298A12 /* SEJobViewController.swift */; };
 		62C40947194D414F00298A12 /* SEJobsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C40946194D414F00298A12 /* SEJobsViewController.swift */; };
+		62C40949194D427900298A12 /* SEPushNoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C40948194D427900298A12 /* SEPushNoAnimationSegue.swift */; };
+		62C4094B194D454C00298A12 /* SERestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C4094A194D454C00298A12 /* SERestClient.swift */; };
 		62D92755194CC44500B56740 /* SEMainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D92754194CC44500B56740 /* SEMainMenuViewController.swift */; };
 		62DADD89194BFA0C001B51F0 /* SEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DADD88194BFA0C001B51F0 /* SEViewController.swift */; };
 		62E2A403194A8DC30038BBF8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62E2A402194A8DC30038BBF8 /* CoreLocation.framework */; };
@@ -207,12 +207,8 @@
 		0D6F811E191B283E005E7975 /* line_schedule@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line_schedule@2x.png"; sourceTree = "<group>"; };
 		0D6F811F191B283E005E7975 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		0DBD8AD3191D7F0900A5C859 /* values.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = values.plist; sourceTree = "<group>"; };
-		0DC46111191BD2B6004B26B7 /* SEPushNoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEPushNoAnimationSegue.h; path = Objects/SEPushNoAnimationSegue.h; sourceTree = "<group>"; };
-		0DC46112191BD2B6004B26B7 /* SEPushNoAnimationSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEPushNoAnimationSegue.m; path = Objects/SEPushNoAnimationSegue.m; sourceTree = "<group>"; };
 		0DC46118191BEE1F004B26B7 /* schedule_navbar_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_navbar_bg@2x.png"; sourceTree = "<group>"; };
 		0DC46120191C1873004B26B7 /* cell_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_bg@2x.png"; sourceTree = "<group>"; };
-		0DC902F9191C2FB60056254A /* SERestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SERestClient.h; path = Networking/SERestClient.h; sourceTree = "<group>"; };
-		0DC902FA191C2FB60056254A /* SERestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SERestClient.m; path = Networking/SERestClient.m; sourceTree = "<group>"; };
 		0DC902FD191C2FC60056254A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		0DC90302191C32740056254A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0E934CC5194D048E007139B1 /* SEPaymentAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEPaymentAddViewController.swift; path = ViewControllers/SEPaymentAddViewController.swift; sourceTree = "<group>"; };
@@ -261,6 +257,8 @@
 		62C40942194D3B5B00298A12 /* SEJobMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEJobMapViewController.swift; path = ViewControllers/SEJobMapViewController.swift; sourceTree = "<group>"; };
 		62C40944194D3E7B00298A12 /* SEJobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEJobViewController.swift; path = ViewControllers/SEJobViewController.swift; sourceTree = "<group>"; };
 		62C40946194D414F00298A12 /* SEJobsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEJobsViewController.swift; path = ViewControllers/SEJobsViewController.swift; sourceTree = "<group>"; };
+		62C40948194D427900298A12 /* SEPushNoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEPushNoAnimationSegue.swift; path = Objects/SEPushNoAnimationSegue.swift; sourceTree = "<group>"; };
+		62C4094A194D454C00298A12 /* SERestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SERestClient.swift; path = Networking/SERestClient.swift; sourceTree = "<group>"; };
 		62D92754194CC44500B56740 /* SEMainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEMainMenuViewController.swift; path = ViewControllers/SEMainMenuViewController.swift; sourceTree = "<group>"; };
 		62DADD88194BFA0C001B51F0 /* SEViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SEViewController.swift; path = ViewControllers/SEViewController.swift; sourceTree = "<group>"; };
 		62E2A402194A8DC30038BBF8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -572,8 +570,7 @@
 		0DC46110191BD295004B26B7 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				0DC46111191BD2B6004B26B7 /* SEPushNoAnimationSegue.h */,
-				0DC46112191BD2B6004B26B7 /* SEPushNoAnimationSegue.m */,
+				62C40948194D427900298A12 /* SEPushNoAnimationSegue.swift */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -595,8 +592,7 @@
 		0DC902F7191C2F980056254A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				0DC902F9191C2FB60056254A /* SERestClient.h */,
-				0DC902FA191C2FB60056254A /* SERestClient.m */,
+				62C4094A194D454C00298A12 /* SERestClient.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -781,7 +777,6 @@
 				624365FD194BE35C00B212D1 /* SEJobAddressTableViewCell.swift in Sources */,
 				62DADD89194BFA0C001B51F0 /* SEViewController.swift in Sources */,
 				62D92755194CC44500B56740 /* SEMainMenuViewController.swift in Sources */,
-				0DC46113191BD2B6004B26B7 /* SEPushNoAnimationSegue.m in Sources */,
 				624365E9194BCC1700B212D1 /* SESwipeableTableViewCell.swift in Sources */,
 				624365FE194BE35C00B212D1 /* SEJobClientInfoTableViewCell.swift in Sources */,
 				62C40943194D3B5B00298A12 /* SEJobMapViewController.swift in Sources */,
@@ -792,6 +787,7 @@
 				0EAFABE8194D151100371DB3 /* SEClientAddViewController.swift in Sources */,
 				0E934CC8194D089C007139B1 /* SEPaymentViewController.swift in Sources */,
 				624365F5194BDA3000B212D1 /* SEClientInfoTableViewCell.swift in Sources */,
+				62C4094B194D454C00298A12 /* SERestClient.swift in Sources */,
 				624365EE194BD69300B212D1 /* SEPaymentTableViewCell.swift in Sources */,
 				62C40933194D244100298A12 /* SEJobPhotoInfo.swift in Sources */,
 				624365F0194BD9C400B212D1 /* SEProductTableViewCell.swift in Sources */,
@@ -804,7 +800,6 @@
 				62C40941194D3AF200298A12 /* SEJobAddViewController.swift in Sources */,
 				62E2A409194AA4A20038BBF8 /* SEConstants.swift in Sources */,
 				624365B6194AB23500B212D1 /* SETextView.swift in Sources */,
-				0DC902FB191C2FB60056254A /* SERestClient.m in Sources */,
 				62C4093D194D328E00298A12 /* SEJobAddressEditViewController.swift in Sources */,
 				62C40947194D414F00298A12 /* SEJobsViewController.swift in Sources */,
 				0E934CCA194D092E007139B1 /* SEProductsScannerViewController.swift in Sources */,
@@ -826,6 +821,7 @@
 				62E45BFE194CDB3100A57283 /* SEPaymentEditViewController.swift in Sources */,
 				62C40935194D244700298A12 /* SEJob.swift in Sources */,
 				62C4092A194D1F6B00298A12 /* SEClient.swift in Sources */,
+				62C40949194D427900298A12 /* SEPushNoAnimationSegue.swift in Sources */,
 				62436600194BE35C00B212D1 /* SEJobNotesTableViewCell.swift in Sources */,
 				62C4093B194D315800298A12 /* SEJobNotesEditViewController.swift in Sources */,
 				0DC902FE191C2FC60056254A /* Model.xcdatamodeld in Sources */,

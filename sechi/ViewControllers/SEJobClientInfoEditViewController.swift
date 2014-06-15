@@ -37,7 +37,7 @@ class SEJobClientInfoEditViewController: SEViewController, UITableViewDataSource
     /**
      *  Setup table view properties and cells that will be displayed
      */
-    func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
@@ -95,10 +95,10 @@ class SEJobClientInfoEditViewController: SEViewController, UITableViewDataSource
      *  If everything is ok, data is saved and view controller is dismissed.
      */
     func saveAndReturn() {
-        for var cell in self.datasource {
-            if cell.changesWereMade && (!cell.valueTextView?.text || cell.valueTextView?.text == "") {
+        for cell in self.datasource {
+            if cell.changesWereMade && cell.valueTextView.text == "" {
                 var fieldName = cell.label.stringByReplacingOccurrencesOfString(":", withString: "")
-                UIAlertView(title: "Validation error", message: String(format: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+                UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
                 return
             }
             
@@ -124,7 +124,6 @@ class SEJobClientInfoEditViewController: SEViewController, UITableViewDataSource
         self.navigationController.popViewControllerAnimated(true)
     }
 
-    //#pragma mark - UITextViewDelegate
     /**
      *  Hide keyboard on return when text view is a first responder
      *

@@ -19,7 +19,7 @@ class SEJobNotesEditViewController: SEViewController, UITableViewDataSource, UIT
     /**
      *  Table view that will display the form
      */
-    @IBOutlet tableView: UITableView
+    @IBOutlet var tableView: UITableView
 
     /**
      *  Datasource array with UITableViewCell objects that needs to be displayed.
@@ -77,8 +77,8 @@ class SEJobNotesEditViewController: SEViewController, UITableViewDataSource, UIT
      *  If everything is ok, data is saved and view controller is dismissed.
      */
     func saveAndReturn() {
-        for var cell in self.datasource {
-            if cell.changesWereMade && (!cell.valueTextView?.text || cell.valueTextView?.text == "") {
+        for cell in self.datasource {
+            if cell.changesWereMade && cell.valueTextView.text == "" {
                 var fieldName = cell.label.stringByReplacingOccurrencesOfString(":", "")
                 UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
                 return
@@ -100,7 +100,7 @@ class SEJobNotesEditViewController: SEViewController, UITableViewDataSource, UIT
         }
         
         if error {
-            UIAlertView alloc(title: "Error", message: "Error occured while saving data: " + error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+            UIAlertView(title: "Error", message: "Error occured while saving data: " + error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
         }
         
         self.navigationController.popViewControllerAnimated(true)

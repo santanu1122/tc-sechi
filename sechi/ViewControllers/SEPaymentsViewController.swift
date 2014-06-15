@@ -14,7 +14,7 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
     /**
      *  Managed object context used by fetched results controller.
      */
-    var managedObjectContext: NSManagedObjectContext
+    var managedObjectContext: NSManagedObjectContext!
 
     /**
      *  Table view with list of objects
@@ -22,19 +22,14 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
     @IBOutlet var tableView: UITableView
 
     /**
-     *  Temporary cell used for calculating height of the displayed cells.
-     */
-    var temporaryCell: SEPaymentTableViewCell
-
-    /**
      *  Index path of cell that began process of removing (swipe, press delete button etc).
      */
-    var indexPathToRemove: NSIndexPath
+    var indexPathToRemove: NSIndexPath!
 
     /**
      *  Gesture recognizer used to cancel the custom edit mode of the table view.
      */
-    var editModeGestureRecognizer: UIPanGestureRecognizer
+    var editModeGestureRecognizer: UIPanGestureRecognizer!
 
     /**
      *  Setup views properties, gesture recognizer and initiates displayed objects sync.
@@ -43,7 +38,7 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        self.managedObjectContext = (UIApplication.sharedApplication().delegate as SEAppDelegate).managedObjectContext
+        self.managedObjectContext = SERestClient.instance.managedObjectContext
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -53,7 +48,7 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
         self.view.addGestureRecognizer(self.editModeGestureRecognizer)
         self.editModeGestureRecognizer.delegate = self
         
-        SERestClient.instance().refreshPaymentsList()
+        SERestClient.instance.refreshPaymentsList()
     }
 
     /**
@@ -69,7 +64,6 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
         addButton.addTarget(self, action: "addButtonTouchedUpInside:", forControlEvents: .TouchUpInside)
     }
 
-    //#pragma mark - actions
     /**
      *  Show view controller with form for adding new object to the list.
      *
@@ -85,16 +79,15 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
      *  @param sender object that sent the message
      */
     @IBAction func deleteButtonTouchedUpInside(sender: UIButton) {
-        var cell = sender.superviewOfClass(UITableViewCell) as UITableViewCell?
-        
-        if cell {
-            self.indexPathToRemove = self.tableView.indexPathForCell(cell!)
+        if let cell = sender.superviewOfClass(UITableViewCell) as? UITableViewCell {
+            self.indexPathToRemove = self.tableView.indexPathForCell(cell)
             
-            UIAlertView(title: "Confirm", message: "Do you want to delete this client?", delegate: self, cancelButtonTitle: "NO", otherButtonTitles: "YES", nil).show()
+            var alertView = UIAlertView(title: "Confirm", message: "Do you want to delete this client?", delegate: self, cancelButtonTitle: "NO")
+            alertView.addButtonWithTitle("YES")
+            alertView.show()
         }
     }
 
-    //#pragma mark - editModeGestureRecognizer
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
@@ -117,14 +110,13 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
         }
     }
 
-    //#pragma mark - UIScrollViewDelegate (tableView)
     /**
      *  Disallow swipe gesture on visible cells when table view did start scrolling.
      *
      *  @param scrollView scrollView (table view) that begin scrolling.
      */
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        var visibleCellsIndexPaths = self.tableView.indexPathsForVisibleRows()
+        var visibleCellsIndexPaths = self.tableView.indexPathsForVisibleRows() as NSIndexPath[]
         for indexPath in visibleCellsIndexPaths {
             var cell = self.tableView.cellForRowAtIndexPath(indexPath) as SESwipeableTableViewCell
             cell.swipeEnabled = false
@@ -137,14 +129,13 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
      *  @param scrollView scroll view (table view) that end decelerating.
      */
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        var visibleCellsIndexPaths = self.tableView.indexPathsForVisibleRows()
+        var visibleCellsIndexPaths = self.tableView.indexPathsForVisibleRows() as NSIndexPath[]
         for indexPath in visibleCellsIndexPaths {
             var cell = self.tableView.cellForRowAtIndexPath(indexPath) as SESwipeableTableViewCell
             cell.swipeEnabled = true
         }
     }
 
-    //#pragma mark - SESwipeableTableViewCellDelegate
     /**
      *  Disable table view scrolling when swipe gesture was recognized on any swipeable cells.
      *
@@ -157,9 +148,9 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
     /**
      *  After opening a new cell, every other that was already opened will be closed.
      *
-     *  @param cell SESwipeableCell that was opened.
+     *  @param cell SESwipeableTableViewCell that was opened.
      */
-    func cellDidOpen(cell: SESwipeableTableViewCell) {
+    func cellDidOpen(cell: SESwipeableTableViewCell!) {
         var newIndexPathToRemove = self.tableView.indexPathForCell(cell)
         
         if self.indexPathToRemove && self.indexPathToRemove != newIndexPathToRemove {
@@ -180,7 +171,6 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
         self.tableView.scrollEnabled = true
     }
 
-    //#pragma mark - UIAlertViewDelegate
     /**
      *  Remove object from database or close opened cell if user confirmed or denied deleting of object in alert view.
      *
@@ -189,7 +179,7 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
      */
     func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
         if buttonIndex != alertView.cancelButtonIndex {
-            var payment = self.fetchedResultsController.objectAtIndexPath(self.indexPathToRemove)
+            var payment = self.fetchedResultsController.objectAtIndexPath(self.indexPathToRemove) as SEPayment
             payment.removed = "true"
             var error: NSError? = nil
             payment.managedObjectContext.save(&error)
@@ -212,14 +202,13 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
     /**
      *  Basic setup of UITableView with NSFetchedResultsViewController
      */
-    //#pragma mark - UITableViewDatasource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.fetchedResultsController.sections.count
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var sectionInfo = self.fetchedResultsController.sections[section]
-        return sectionInfo.numberOfObjects()
+        var sectionInfo = self.fetchedResultsController.sections[section] as NSFetchedResultsSectionInfo
+        return sectionInfo.numberOfObjects
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -237,36 +226,34 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
     /**
      *  Setup NSFetchedResultsController for providing data to UITableView
      */
-    //#pragma mark - Fetched results controller
     var fetchedResultsController: NSFetchedResultsController {
         get {
             if _fetchedResultsController {
-                return _fetchedResultsController
+                return _fetchedResultsController!
             }
         
             var fetchRequest = NSFetchRequest()
-            var entity = NSEntityDescription.entityForName("SEPayment", inManagedObjectContext: SEAppDelegate.managedObjectContext)
-            fetchRequest.setEntity(entity)
-            fetchRequest.setFetchBatchSize(20)
+            var entity = NSEntityDescription.entityForName("SEPayment", inManagedObjectContext: self.managedObjectContext)
+            fetchRequest.entity = entity
+            fetchRequest.fetchBatchSize = 20
             var sortDescriptor = NSSortDescriptor(key: "createdDate", ascending: false)
             var deletedPredicate = NSPredicate(format: "NOT (removed LIKE %@)", "true")
-            fetchRequest.setSortDescriptors([sortDescriptor])
-            fetchRequest.setPredicate(deletedPredicate)
-            _fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: SEAppDelegate.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-            _fetchedResultsController.delegate = self
+            fetchRequest.sortDescriptors = [sortDescriptor]
+            fetchRequest.predicate = deletedPredicate
+            _fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+            _fetchedResultsController!.delegate = self
             
             var error: NSError? = nil
             if !self.fetchedResultsController.performFetch(&error) {
-                NSLog("Unresolved error %@, %@", error, error.userInfo)
+                NSLog("Unresolved error %@, %@", error!, error!.userInfo)
                 abort()
             }
             
-            return _fetchedResultsController
+            return _fetchedResultsController!
         }
     }
-    var _fetchedResultController: NSFetchedResultController? = nil
+    var _fetchedResultsController: NSFetchedResultsController? = nil
 
-    //#pragma mark - NSFetchedResultsControllerDelegate
     /**
      *  Begin table view updates when fetched results controller wants to change datasource.
      */
@@ -279,12 +266,12 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
      */
     func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
         switch type {
-            case .Insert:
-                self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-            case .Delete:
-                self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-            default:
-                break
+        case NSFetchedResultsChangeInsert:
+            self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+        case NSFetchedResultsChangeDelete:
+            self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+        default:
+            break
         }
     }
 
@@ -294,16 +281,18 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {
         var tableView = self.tableView
         
-        switch(type) {
-            case .Insert:
-                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
-            case .Delete:
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            case .Update:
-                self.configureCell(tableView.cellForRowAtIndexPath(indexPath), atIndexPath: indexPath)
-            case .Move:
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+        switch type {
+        case NSFetchedResultsChangeInsert:
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+        case NSFetchedResultsChangeDelete:
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        case NSFetchedResultsChangeUpdate:
+            self.configureCell(tableView.cellForRowAtIndexPath(indexPath), atIndexPath: indexPath)
+        case NSFetchedResultsChangeMove:
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+        default:
+            break
         }
     }
 
@@ -321,35 +310,34 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
      *  @param indexPath index path at which the cell will be displayed.
      */
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-        if paymentCell = cell as? SEPaymentTableViewCell {
-            var payment = self.fetchedResultsController.objectAtIndexPath(indexPath)
+        if let paymentCell = cell as? SEPaymentTableViewCell {
+            var payment = self.fetchedResultsController.objectAtIndexPath(indexPath) as SEPayment
             paymentCell.clientLabel.text = payment.clientNameC
-            paymentCell.amountLabel.text = NSString.stringWithFormat("$%.2f", payment.paymentAmountC.doubleValue)
+            paymentCell.amountLabel.text = "$\(payment.paymentAmountC).00"
             paymentCell.jobLabel.text = payment.jobNameC
             
             var statusImageName = payment.statusC == "Complete" ? "icon_status_small_active" : "icon_status_small"
             paymentCell.paymentStatusImage.image = UIImage(named: statusImageName)
             
             var df = NSDateFormatter()
-            df.timeStyle = NSDateFormatterNoStyle
-            df.dateStyle = NSDateFormatterMediumStyle
-            paymentCell.dateLabel.text = df.stringFromDate(payment.paymentDateC).uppercaseString()
+            df.timeStyle = .NoStyle
+            df.dateStyle = .MediumStyle
+            paymentCell.dateLabel.text = df.stringFromDate(payment.paymentDateC).uppercaseString
             
             paymentCell.bottomCellView.backgroundColor = UIColor(red: 0.85, green: 0.109, blue: 0.36, alpha: 1)
         }
     }
 
-    //#pragma mark - Navigation
     /**
      *  Pass selected object to next view controller if it needs it.
      *
      *  @param segue  segue that will occur
      *  @param sender object that begin the segue
      */
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
         if segue.destinationViewController is SEPaymentViewController && sender is UITableViewCell {
-            var indexPath = self.tableView(indexPathForCell: sender as UITableViewCell)
-            var payment = self.fetchedResultsController.objectAtIndexPath(indexPath)
+            var indexPath = self.tableView.indexPathForCell(sender as UITableViewCell)
+            var payment = self.fetchedResultsController.objectAtIndexPath(indexPath) as SEPayment
             var vc = segue.destinationViewController as SEPaymentViewController
             vc.payment = payment
         }

@@ -26,12 +26,12 @@ class SEPaymentViewController: SEViewController, UITableViewDataSource, UITableV
     /**
      *  Temporary cell object used to calculate cell height.
      */
-    var tempPaymentInfoCell: SEPaymentInfoTableViewCell
+    var tempPaymentInfoCell: SEPaymentInfoTableViewCell!
 
     /**
      *  Setup table view properties and cells that will be displayed. Prepare temporary cells for use.
      */
-    func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
@@ -41,7 +41,7 @@ class SEPaymentViewController: SEViewController, UITableViewDataSource, UITableV
         self.tableView.dataSource = self
         self.tableView.contentInset = UIEdgeInsetsMake(68, 0, 0, 0)
         
-        self.tempPaymentInfoCell = self.tableView.dequeueReusableCellWithIdentifier(SEPaymentInfoTableViewCellIdentifier)
+        self.tempPaymentInfoCell = self.tableView.dequeueReusableCellWithIdentifier(SEPaymentInfoTableViewCellIdentifier) as SEPaymentInfoTableViewCell
     }
 
     /**
@@ -49,14 +49,13 @@ class SEPaymentViewController: SEViewController, UITableViewDataSource, UITableV
      *
      *  @param animated
      */
-    func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController.setNavigationBarHidden(false, animated: animated)
         self.setupNavigationBarBackButton()
         self.tableView.reloadData()
     }
 
-    //#pragma mark - UITableViewDatasource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -74,15 +73,15 @@ class SEPaymentViewController: SEViewController, UITableViewDataSource, UITableV
      *  @return UITableViewCell to display
      */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var identifier = self.datasource.objectAtIndex(indexPath.row)
-        var cell = tableView.dequeueReusableCellWithIdentifier(identifier)
+        var identifier = self.datasource[indexPath.row]
+        var cell = tableView.dequeueReusableCellWithIdentifier(identifier) as UITableViewCell
         
         if let clientInfoCell = cell as? SEPaymentInfoTableViewCell {
             var df = NSDateFormatter()
-            df.timeStyle = NSDateFormatterNoStyle
-            df.dateStyle = NSDateFormatterMediumStyle
+            df.timeStyle = .NoStyle
+            df.dateStyle = .MediumStyle
             
-            clientInfoCell.amountLabel.text = self.payment.paymentAmountC.stringValue
+            clientInfoCell.amountLabel.text = "\(self.payment.paymentAmountC)"
             clientInfoCell.clientLabel.text = self.payment.clientNameC
             clientInfoCell.jobLabel.text = self.payment.jobNameC
             clientInfoCell.dateLabel.text = df.stringFromDate(self.payment.paymentDateC)
@@ -118,7 +117,6 @@ class SEPaymentViewController: SEViewController, UITableViewDataSource, UITableV
         self.navigationController.popViewControllerAnimated(true)
     }
 
-    //#pragma mark - UITableViewDelegate
     /**
      *  Calculate height needed for cell based on it's content.
      *
@@ -133,25 +131,24 @@ class SEPaymentViewController: SEViewController, UITableViewDataSource, UITableV
         df.dateStyle = .MediumStyle
         switch indexPath.row {
             case 0:
-                self.tempPaymentInfoCell.amountLabel.text = self.payment.paymentAmountC.stringValue
+                self.tempPaymentInfoCell.amountLabel.text = "\(self.payment.paymentAmountC)"
                 self.tempPaymentInfoCell.clientLabel.text = self.payment.clientNameC
                 self.tempPaymentInfoCell.jobLabel.text = self.payment.jobNameC
                 self.tempPaymentInfoCell.dateLabel.text = df.stringFromDate(self.payment.paymentDateC)
                 self.tempPaymentInfoCell.notesLabel.text = self.payment.paymentNotesC
-                return self.tempPaymentInfoCell.cellHeightNeeded
+                return self.tempPaymentInfoCell.cellHeightNeeded()
             default:
                 return 44.0
         }
     }
 
-    //#pragma mark - Navigation
     /**
      *  Forward current object to next view controller if it's able to save it.
      *
      *  @param segue  segue that's going to be performed
      *  @param sender object that initiated the segue
      */
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
         if segue.destinationViewController.respondsToSelector("setPayment:") {
             segue.destinationViewController.setValue(self.payment, forKey: "payment")
         }

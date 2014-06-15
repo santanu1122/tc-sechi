@@ -33,7 +33,7 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
             _fetchedResultsController.delegate = self
             
             var error: NSError? = nil
-            if !self.fetchedResultsController.performFetch:(&error) {
+            if !self.fetchedResultsController.performFetch(&error) {
                 NSLog("Unresolved error %@, %@", error, error.userInfo)
                 abort()
             }
@@ -61,7 +61,7 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
     /**
      *  Gesture recognizer used to cancel the custom edit mode of the table view.
      */
-    var editModeGestureRecognizer: UIPanGestureRecognizer
+    var editModeGestureRecognizer: UIPanGestureRecognizer!
 
     /**
      *  Setup delegates and gesture recognizer for swipeable cells
@@ -70,7 +70,7 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        self.managedObjectContext = [[SERestClient instance] managedObjectContext];
+        self.managedObjectContext = SERestClient.instance().managedObjectContext
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -97,7 +97,6 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
-    //#pragma mark - actions
     /**
      *  Pushing SEJobAddViewController after add button was pressed
      *
@@ -120,7 +119,6 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
-    //#pragma mark - editModeGestureRecognizer
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
@@ -143,7 +141,6 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
-    //#pragma mark - UIScrollViewDelegate (tableView)
     /**
      *  Lock swipe gesture on cells when table is being scrolled
      *
@@ -151,7 +148,7 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
      */
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         var visibleCellsIndexPaths = self.tableView.indexPathsForVisibleRows()
-        for var indexPath in visibleCellsIndexPaths {
+        for indexPath in visibleCellsIndexPaths {
             var cell = self.tableView.cellForRowAtIndexPath(indexPath) as SESwipeableTableViewCell
             cell.swipeEnabled = false
         }
@@ -170,7 +167,6 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
-    //#pragma mark - SESwipeableTableViewCellDelegate
     /**
      *  Lock table view scroll when cell sipe gesture started
      *
@@ -206,7 +202,6 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
         self.tableView.scrollEnabled = true
     }
 
-    //#pragma mark - UIAlertViewDelegate
     /**
      *  If user confirmed delete action, row is deleted. Otherwise delete button will be hidden
      *
@@ -239,7 +234,6 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
     /**
      *  Basic setup of UITableView with NSFetchedResultsViewController
      */
-    //#pragma mark - UITableViewDatasource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.fetchedResultsController.sections.count
     }
@@ -256,7 +250,6 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
 
-    //#pragma mark - NSFetchedResultsControllerDelegate
     /**
      *  Begin table view updates when fetched results controller wants to change datasource.
      */
@@ -279,7 +272,7 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
     /**
      *  Change content of table view when fetched results controller is making changes to the datasource.
      */
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath newIndexPath: NSIndexPath) {
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {
         var tableView = self.tableView;
         
         switch type {
@@ -309,7 +302,7 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
      *  @param indexPath current index path
      */
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-        if let jobCell as? SEJobTableViewCell {
+        if let jobCell = cell as? SEJobTableViewCell {
             var job = self.fetchedResultsController.objectAtIndexPath(indexPath)
             jobCell.clientNameLabel.text = job.clientNameC
             jobCell.contactNameLabel.text = job.contactNameC
@@ -332,14 +325,13 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
-    //#pragma mark - Navigation
     /**
      *  Prepare for moving to next view controller
      *
      *  @param segue
      *  @param sender
      */
-    func prepareForSegue(segue: UIStoryboardSegue, sender sender: UIView) {
+    func prepareForSegue(segue: UIStoryboardSegue, sender: UIView) {
         if segue.destinationViewController is SEJobViewController && sender is UITableViewCell {
             var indexPath = self.tableView.indexPathForCell(sender)
             var job = self.fetchedResultsController.objectAtIndexPath(indexPath)

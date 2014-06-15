@@ -13,21 +13,21 @@
      *
      *  @param cell cell which started moving content
      */
-    @optional func swipeableCellWillStartMovingContent(cell: SESwipeableTableViewCell)
+    @optional func swipeableCellWillStartMovingContent(cell: SESwipeableTableViewCell!)
     
     /**
      *  Called after topmost cell view is moved to the left to display bottom view (ie. delete button);
      *
      *  @param cell cell which did move it's top view
      */
-    func cellDidOpen(cell: SESwipeableTableViewCell)
+    func cellDidOpen(cell: SESwipeableTableViewCell!)
     
     /**
      *  Called after topmost cell view is moved to the right to hide bottom view (ie. delete button);
      *
      *  @param cell cell which did move it's top view
      */
-    func cellDidClose(cell: SESwipeableTableViewCell)
+    func cellDidClose(cell: SESwipeableTableViewCell!)
     
 }
 

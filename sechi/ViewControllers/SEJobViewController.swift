@@ -19,7 +19,7 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
     /**
      *  UITableView used to display object info.
      */
-    @IBOutlet tableView: UITableView
+    @IBOutlet var tableView: UITableView
 
     /**
      *  Datasource with UITableViewCell identifiers used to display info.
@@ -77,7 +77,6 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
         self.tableView.reloadData()
     }
 
-    //#pragma mark - editModeGestureRecognizer
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
@@ -100,7 +99,6 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
         }
     }
 
-    //#pragma mark - UIScrollViewDelegate (tableView)
     /**
      *  Disallow swipe gesture on visible cells when table view did start scrolling.
      *
@@ -108,7 +106,7 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
      */
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         var visibleCellsIndexPaths = self.tableView.indexPathsForVisibleRows()
-        for var indexPath in visibleCellsIndexPaths {
+        for indexPath in visibleCellsIndexPaths {
             var cell = self.tableView.cellForRowAtIndexPath(indexPath) as SESwipeableTableViewCell
             cell.swipeEnabled = false
         }
@@ -121,13 +119,12 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
      */
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         var visibleCellsIndexPaths = self.tableView.indexPathsForVisibleRows()
-        for var indexPath in visibleCellsIndexPaths {
+        for indexPath in visibleCellsIndexPaths {
             var cell = self.tableView.cellForRowAtIndexPath(indexPath) as SESwipeableTableViewCell
             cell.swipeEnabled = true
         }
     }
 
-    #pragma mark - SESwipeableTableViewCellDelegate
     /**
      *  Disable table view scrolling when swipe gesture was recognized on any swipeable cells.
      *
@@ -166,7 +163,6 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
     /**
      *  Basic setup of UITableView with NSFetchedResultsViewController
      */
-    #pragma mark - UITableViewDatasource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -195,7 +191,7 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
             clientInfoCell.contactLabel.text = self.job.contactNameC
             clientInfoCell.phoneLabel.text = self.job.phoneC
             clientInfoCell.infoTextView.text = self.job.infoTextC
-            clientInfoCell.infoTextView.font = TextFieldFont]
+            clientInfoCell.infoTextView.font = TextFieldFont
             clientInfoCell.infoTextView.contentInset = UIEdgeInsetsMake(-8, -4, 0, 0)
             clientInfoCell.infoTextView.userInteractionEnabled = false
             clientInfoCell.bottomCellView.backgroundColor = UIColor(red: 0.137, green: 0.121, blue: 0.125, alpha: 1)
@@ -249,7 +245,6 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
         return cell
     }
 
-    //#pragma mark - actions
     /**
      *  Initiate phone dialer with number from object property
      *
@@ -312,7 +307,6 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
         self.navigationController.popViewControllerAnimated(true)
     }
 
-    //#pragma mark - UICollectionViewDelegate
     /**
      *  Display gallery view controller or image picker when photo from collection view was selected, or add button was pressed
      *
@@ -329,7 +323,6 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
         
     }
 
-    //#pragma mark - UITableViewDelegate
     /**
      *  Calculate height needed for cell based on it's content.
      *
@@ -361,7 +354,6 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
         }
     }
 
-    //#pragma mark - Photos
     /**
      *  Method decides to show image picker, camera view controller or if both are available ask a user what do he want to do.
      */
@@ -496,13 +488,13 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
                 var imageData = UIImageJPEGRepresentation(image, 0.8)
 
                 var uuid = self.uuid();
-                NSString* fileName = "\(uuid).jpg"
-                NSString* filePath = self.applicationDocumentsDirectory.stringByAppendingPathComponent(fileName)
+                var fileName = "\(uuid).jpg"
+                var filePath = self.applicationDocumentsDirectory.stringByAppendingPathComponent(fileName)
 
                 imageData.writeToFile(filePath, atomically: true)
             }
                                      
-            var photoInfo = NSEntityDescription.insertNewObjectForEntityForName("SEJobPhotoInfo", inManagedObjectContext:[[SERestClient instance] managedObjectContext])
+            var photoInfo = NSEntityDescription.insertNewObjectForEntityForName("SEJobPhotoInfo", inManagedObjectContext:SERestClient.instance().managedObjectContext)
             photoInfo.filePath = filePath
             photoInfo.job = self.job
                                      
@@ -520,7 +512,7 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
                 }
             }
                                      
-            self.tableView.reloadRowsAtIndexPaths([NSIndexPath(item: 3, inSection: 0], withRowAnimation: .None)
+            self.tableView.reloadRowsAtIndexPaths(NSIndexPath(item: 3, inSection: 0), withRowAnimation: .None)
         }
     }
 
@@ -530,8 +522,8 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
      *  @return unique id string
      */
     func uuid() -> String {
-        CFUUID uuid = CFUUIDCreate(0)
-        CFString uuidString = CFUUIDCreateString(0, uuid)
+        var uuid = CFUUIDCreate(0)
+        var uuidString = CFUUIDCreateString(0, uuid)
         CFRelease(uuid)
         return uuidString
     }
@@ -558,14 +550,13 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
         return basePath
     }
 
-    #pragma mark - Navigation
     /**
      *  Forward current object to next view controller if it's able to save it.
      *
      *  @param segue  segue that's going to be performed
      *  @param sender object that initiated the segue
      */
-    func prepareForSegue(segue: UIStoryboardSegue, sender sender: UIView) {
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
         if segue.destinationViewController.respondsToSelector("setJob") {
             segue.destinationViewController.setValue(self.job, forKey: "job")
         }

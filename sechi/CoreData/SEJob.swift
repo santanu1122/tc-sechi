@@ -155,7 +155,7 @@ class SEJob: NSManagedObject {
 
     class func responseMappingForManagedObjectStore(managedObjectStore: RKManagedObjectStore) -> RKEntityMapping {
         var entityMapping = RKEntityMapping.mappingForEntityForName("SEJob", inManagedObjectStore: managedObjectStore)
-        entityMapping.addAttributeMappingsFromDictionary(self elementToPropertyMappings)
+        entityMapping.addAttributeMappingsFromDictionary(self.elementToPropertyMappings)
         entityMapping.identificationAttributes = ["identifier"]
         
         return entityMapping

@@ -103,15 +103,15 @@ class SEViewController : UIViewController {
      *  @return bottommost UIScrollView object
      */
     func getMainScrollView() -> UIScrollView? {
-        if self.respondsToSelector("tableView") && self.valueForKeyPath("tableView.superview") is UIScrollView {
+        if self.valueForKeyPath("tableView.superview") is UIScrollView {
             return self.valueForKeyPath("tableView.superview") as? UIScrollView
         }
-    
-        if self.respondsToSelector("tableView") && self.valueForKey("tableView") is UIScrollView {
+        
+        if self.valueForKey("tableView") is UIScrollView {
             return self.valueForKeyPath("tableView") as? UIScrollView
         }
-
-        if self.respondsToSelector("scrollView") && self.valueForKey("scrollView") is UIScrollView {
+        
+        if self.valueForKey("scrollView") is UIScrollView {
             return self.valueForKey("scrollView") as? UIScrollView
         }
 

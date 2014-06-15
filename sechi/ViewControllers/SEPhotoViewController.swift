@@ -63,8 +63,8 @@ class SEPhotoViewController: SEViewController, UIScrollViewDelegate {
 	 *
 	 *  @return initialized view controller or nil if failure
 	 */
-	init(#jobPhotoInfo: SEJobPhotoInfo) {
-	    super(nibName: nil, bundle:nil)
+	init(jobPhotoInfo: SEJobPhotoInfo) {
+	    super.init(nibName: nil, bundle:nil)
 	    self.jobPhotoInfo = jobPhotoInfo
 	}
 

@@ -19,7 +19,7 @@ class SEJobAddressEditViewController: SEViewController, UITableViewDataSource, U
     /**
      *  Table view that will display the form
      */
-    @IBOutlet tableView: UITableView
+    @IBOutlet var tableView: UITableView
 
     /**
      *  Datasource array with UITableViewCell objects that needs to be displayed.
@@ -48,7 +48,7 @@ class SEJobAddressEditViewController: SEViewController, UITableViewDataSource, U
     /**
      *  Prepare cell for each object field that's a need to be filled.
      */
-    func setupCells {
+    func setupCells() {
         self.addressCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
         self.addressCell.label = "Address:"
         self.addressCell.key = "jobAddressC"
@@ -77,7 +77,7 @@ class SEJobAddressEditViewController: SEViewController, UITableViewDataSource, U
      *  If everything is ok, data is saved and view controller is dismissed.
      */
     func saveAndReturn() {
-        for var cell in self.datasource {
+        for cell in self.datasource {
             if cell.changesWereMade && (!cell.valueTextView?.text || cell.valueTextView?.text == "") {
                 var fieldName = cell.label.stringByReplacingOccurrencesOfString(":", "")
                 UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show();
@@ -105,7 +105,6 @@ class SEJobAddressEditViewController: SEViewController, UITableViewDataSource, U
         self.navigationController.popViewControllerAnimated(true)
     }
 
-    //#pragma mark - UITextViewDelegate
     /**
      *  Hide keyboard on return when text view is a first responder
      *
@@ -148,7 +147,6 @@ class SEJobAddressEditViewController: SEViewController, UITableViewDataSource, U
         }
     }
 
-    //#pragma mark - UITableViewDatasource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }

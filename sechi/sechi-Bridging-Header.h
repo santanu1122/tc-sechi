@@ -8,7 +8,6 @@
 #import <CoreData/CoreData.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <CoreLocation/CoreLocation.h>
+#import <SystemConfiguration/SystemConfiguration.h>
 #import <RestKit/RestKit.h>
 #import <RestKit/CoreData.h>
-
-#import "SERestClient.h"

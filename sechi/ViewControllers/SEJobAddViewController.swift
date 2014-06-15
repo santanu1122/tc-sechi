@@ -95,13 +95,12 @@ class SEJobAddViewController: SEViewController, UITableViewDataSource, UITableVi
     func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController.setNavigationBarHidden(false, animated: animated)
-        self setupNavigationBarBackButton()
+        self.setupNavigationBarBackButton()
         var saveButton = self.setupNavigationBarSaveButton()
         saveButton.target = self
         saveButton.action = "saveButtonTouchedUpInside:"
     }
 
-    //#pragma mark - actions
     /**
      *  After save button was pressed, values filled by the user are validated and if any of them is empty validation alert will be shown.
      *  If everything is ok, data will be saved and the view controller will be dismissed.
@@ -111,7 +110,7 @@ class SEJobAddViewController: SEViewController, UITableViewDataSource, UITableVi
     func saveButtonTouchedUpInside(sender: UIButton) {
         self.job = NSEntityDescription.insertNewObjectForEntityForName("SEJob", inManagedObjectContext: (UIApplication.sharedApplication().delegate as SEAppDelegate).managedObjectContext)
         
-        for var cell in self.datasource {
+        for cell in self.datasource {
             if cell.valueTextView.text == "" {
                 self.job.managedObjectContext.deleteObject(self.job)
                 var fieldName = cell.label.stringByReplacingOccurrencesOfString(":", withString: "")
@@ -145,7 +144,6 @@ class SEJobAddViewController: SEViewController, UITableViewDataSource, UITableVi
         self.navigationController.popViewControllerAnimated(true)
     }
 
-    //#pragma mark - UITextViewDelegate
     /**
      *  Hide keyboard on return when text view is a first responder
      *
@@ -169,7 +167,7 @@ class SEJobAddViewController: SEViewController, UITableViewDataSource, UITableVi
      *  @param textView text view that began editing.
      */
     func textViewDidBeginEditing(textView: UITextView) {
-        var cell = (UITableViewCell*)[textView superviewOfClass:[UITableViewCell class]];
+        var cell = textView.superviewOfClass(UITableViewCell) as UITableViewCell
         self.tableView.scrollToRowAtIndexPath(self.tableView.indexPathForCell(cell), atScrollPosition: .Top, animated: true)
     }
 
@@ -189,7 +187,6 @@ class SEJobAddViewController: SEViewController, UITableViewDataSource, UITableVi
         }
     }
 
-    //#pragma mark - UITableViewDatasource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
