@@ -6,10 +6,12 @@
 //  Copyright (c) 2014 TopCoder. All rights reserved.
 //
 
+import AVFoundation
+
 /**
  *  Protocol used by SEProductsScannerViewController to inform it's delegate about code that was read or canceling reading process.
  */
-protocol SEProductsScannerViewControllerDelegate {
+@objc protocol SEProductsScannerViewControllerDelegate: NSObjectProtocol {
 
     /**
      *  Method called after reading a bar code
@@ -56,12 +58,12 @@ class SEProductsScannerViewController: SEViewController, AVCaptureMetadataOutput
     /**
      *  Capture session used for video capture
      */
-    var captureSession: AVCaptureSession?
+    var captureSession: AVCaptureSession!
 
     /**
      *  Video preview layer used for displaying current content seen by the camera
      */
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer!
 
     /**
      *  Tap gesture recognizer used for informing delegate that the scanner wants to be dismissed.
@@ -88,11 +90,11 @@ class SEProductsScannerViewController: SEViewController, AVCaptureMetadataOutput
         startReading()
     }
 
-    func prefersStatusBarHidden() -> Bool {
+    override func prefersStatusBarHidden() -> Bool {
         return true
     }
 
-    func childViewControllerForStatusBarHidden() -> UIViewController? {
+    override func childViewControllerForStatusBarHidden() -> UIViewController? {
         return nil
     }
 
@@ -103,7 +105,9 @@ class SEProductsScannerViewController: SEViewController, AVCaptureMetadataOutput
      */
     func gestureRecognizerDidRecognize(gestureRecognizer: UIGestureRecognizer) {
         stopReading()
-        self.delegate.productsScannerViewControllerDidCancelReading(self)
+        if self.delegate {
+            self.delegate!.productsScannerViewControllerDidCancelReading(self)
+        }
     }
 
     /**
@@ -118,8 +122,8 @@ class SEProductsScannerViewController: SEViewController, AVCaptureMetadataOutput
         
         var input = AVCaptureDeviceInput(device: captureDevice, error: &error)
         
-        if !input {
-            NSLog("%@", error.localizedDescription)
+        if error {
+            NSLog("%@", error!.localizedDescription)
             return false
         }
         
@@ -131,11 +135,11 @@ class SEProductsScannerViewController: SEViewController, AVCaptureMetadataOutput
         
         var dispatchQueue = dispatch_queue_create("myQueue", nil)
         captureMetadataOutput.setMetadataObjectsDelegate(self, queue: dispatchQueue)
-        captureMetadataOutput.setMetadataObjectTypes([AVMetadataObjectTypeCode39Code, AVMetadataObjectTypeCode39Mod43Code])
+        captureMetadataOutput.metadataObjectTypes = [AVMetadataObjectTypeCode39Code, AVMetadataObjectTypeCode39Mod43Code]
         
         self.videoPreviewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
-        self.videoPreviewLayer.setVideoGravity(AVLayerVideoGravityResizeAspectFill)
-        self.videoPreviewLayer.setFrame(self.previewView.layer.bounds)
+        self.videoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        self.videoPreviewLayer.frame = self.previewView.layer.bounds
         self.previewView.layer.addSublayer(self.videoPreviewLayer)
         
         self.captureSession.startRunning()
@@ -165,21 +169,21 @@ class SEProductsScannerViewController: SEViewController, AVCaptureMetadataOutput
      *  @param metadataObjects metadataObjects found
      *  @param connection      connection of capture input and capture output
      */
-    func captureOutput(captureOutput: AVCaptureOutput, didOutputMetadataObjects metadataObjects: Array, fromConnection connection: AVCaptureConnection) {
+    func captureOutput(captureOutput: AVCaptureOutput, didOutputMetadataObjects metadataObjects: AnyObject[], fromConnection connection: AVCaptureConnection) {
         if metadataObjects != nil && metadataObjects.count > 0 {
             
-            var metadataObj = metadataObjects[0]
+            var metadataObj = metadataObjects[0] as AVMetadataMachineReadableCodeObject
             
-            if metadataObj.type == .Code39Code || metadataObj.type == .Code39Mod43Code {
+            if metadataObj.type == AVMetadataObjectTypeCode39Code || metadataObj.type == AVMetadataObjectTypeCode39Mod43Code {
                 dispatch_async(dispatch_get_main_queue(), {
-            		self.statusLabel.text = metadataObj.stringValue()
+            		self.statusLabel.text = metadataObj.stringValue
             	})
 
             	dispatch_async(dispatch_get_main_queue(), {
             		self.stopReading()
             	})
                 
-                self.delegateReadedCode(metadataObj.stringValue())
+                self.delegateReadedCode(metadataObj.stringValue)
                 
                 self.isReading = false
 
@@ -194,7 +198,9 @@ class SEProductsScannerViewController: SEViewController, AVCaptureMetadataOutput
      *  @param readedCode decoded metadata message
      */
     func delegateReadedCode(readedCode: String) {
-        self.delegate.productsScannerViewController(self, didReadString: readedCode)
+        if self.delegate {
+            self.delegate!.productsScannerViewController(self, didReadString: readedCode)
+        }
     }
 
 }

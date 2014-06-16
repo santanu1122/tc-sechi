@@ -29,10 +29,10 @@ class SEJobClientInfoEditViewController: SEViewController, UITableViewDataSource
     /**
      *  UITableViewCell objects that are displayed in table view.
      */
-    var clientCell: SETextFieldTableViewCell
-    var contactCell: SETextFieldTableViewCell
-    var phoneCell: SETextFieldTableViewCell
-    var infoCell: SETextFieldTableViewCell
+    var clientCell: SETextFieldTableViewCell!
+    var contactCell: SETextFieldTableViewCell!
+    var phoneCell: SETextFieldTableViewCell!
+    var infoCell: SETextFieldTableViewCell!
 
     /**
      *  Setup table view properties and cells that will be displayed
@@ -52,22 +52,22 @@ class SEJobClientInfoEditViewController: SEViewController, UITableViewDataSource
      *  Prepare cell for each object field that's a need to be filled.
      */
     func setupCells() {
-        self.clientCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.clientCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.clientCell.label = "Client:"
         self.clientCell.key = "clientNameC"
         self.clientCell.value = self.job.clientNameC
         
-        self.contactCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.contactCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.contactCell.label = "Contact:"
         self.contactCell.key = "contactNameC"
         self.contactCell.value = self.job.contactNameC
         
-        self.phoneCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.phoneCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.phoneCell.label = "Phone:"
         self.phoneCell.key = "phoneC"
         self.phoneCell.value = self.job.phoneC
         
-        self.infoCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.infoCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.infoCell.label = "Info:"
         self.infoCell.key = "infoTextC"
         self.infoCell.value = self.job.infoTextC
@@ -80,7 +80,7 @@ class SEJobClientInfoEditViewController: SEViewController, UITableViewDataSource
      *
      *  @param animated
      */
-    func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController.setNavigationBarHidden(false, animated: animated)
         self.setupNavigationBarBackButton()
@@ -97,8 +97,8 @@ class SEJobClientInfoEditViewController: SEViewController, UITableViewDataSource
     func saveAndReturn() {
         for cell in self.datasource {
             if cell.changesWereMade && cell.valueTextView.text == "" {
-                var fieldName = cell.label.stringByReplacingOccurrencesOfString(":", withString: "")
-                UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+                var fieldName = cell.label!.stringByReplacingOccurrencesOfString(":", withString: "")
+                UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK").show()
                 return
             }
             
@@ -118,7 +118,7 @@ class SEJobClientInfoEditViewController: SEViewController, UITableViewDataSource
         }
         
         if error {
-            UIAlertView(title: "Error", message: "Error occured while saving data: " + error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+            UIAlertView(title: "Error", message: "Error occured while saving data: " + error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
         }
         
         self.navigationController.popViewControllerAnimated(true)
@@ -134,7 +134,7 @@ class SEJobClientInfoEditViewController: SEViewController, UITableViewDataSource
      *  @return BOOL should change the content of the text view
      */
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        if text = "\n" {
+        if text == "\n" {
             textView.resignFirstResponder()
             return false
         }

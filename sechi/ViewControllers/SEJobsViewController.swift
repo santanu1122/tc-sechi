@@ -23,22 +23,22 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
         get {
             var fetchRequest = NSFetchRequest()
             var entity = NSEntityDescription.entityForName("SEJob", inManagedObjectContext: self.managedObjectContext)
-            fetchRequest.setEntity(entity)
-            fetchRequest.setFetchBatchSize(20)
+            fetchRequest.entity = entity
+            fetchRequest.fetchBatchSize = 20
             var sortDescriptor = NSSortDescriptor(key: "createdDate", ascending: false)
             var deletedPredicate = NSPredicate(format: "NOT (removed LIKE %@)", "true")
-            fetchRequest.setSortDescriptors([sortDescriptor])
-            fetchRequest.setPredicate(deletedPredicate)
-            _fetchedResultsController = NSFetchedResultsController(request: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-            _fetchedResultsController.delegate = self
+            fetchRequest.sortDescriptors = [sortDescriptor]
+            fetchRequest.predicate = deletedPredicate
+            _fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+            _fetchedResultsController!.delegate = self
             
             var error: NSError? = nil
             if !self.fetchedResultsController.performFetch(&error) {
-                NSLog("Unresolved error %@, %@", error, error.userInfo)
+                NSLog("Unresolved error %@, %@", error!, error!.userInfo)
                 abort()
             }
             
-            return _fetchedResultsController
+            return _fetchedResultsController!
         }
     }
     var _fetchedResultsController: NSFetchedResultsController? = nil
@@ -49,14 +49,9 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet var tableView: UITableView
 
     /**
-     *  Temporary cell used for calculating height of the displayed cells.
-     */
-    var temporaryCell: SEJobTableViewCell
-
-    /**
      *  Index path of cell that began process of removing (swipe, press delete button etc).
      */
-    var indexPathToRemove: NSIndexPath
+    var indexPathToRemove: NSIndexPath?
 
     /**
      *  Gesture recognizer used to cancel the custom edit mode of the table view.
@@ -70,7 +65,7 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        self.managedObjectContext = SERestClient.instance().managedObjectContext
+        self.managedObjectContext = SERestClient.instance.managedObjectContext
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -80,7 +75,7 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
         self.view.addGestureRecognizer(self.editModeGestureRecognizer)
         self.editModeGestureRecognizer.delegate = self
         
-        SERestClient.instance().refreshJobsList()
+        SERestClient.instance.refreshJobsList()
     }
 
     /**
@@ -92,9 +87,8 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
         super.viewWillAppear(animated)
         self.navigationController.setNavigationBarHidden(false, animated: animated)
         self.setupNavigationBarBackButton()
-        if let addButton = self.setupNavigationBarAddButton() {
-            addButton.addTarget(self, action: "addButtonTouchedUpInside:", forControlEvents: .TouchUpInside)
-        }
+        var addButton = self.setupNavigationBarAddButton()
+        addButton.addTarget(self, action: "addButtonTouchedUpInside:", forControlEvents: .TouchUpInside)
     }
 
     /**
@@ -115,7 +109,9 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
         if let cell = sender.superviewOfClass(UITableViewCell) as? UITableViewCell {
             self.indexPathToRemove = self.tableView.indexPathForCell(cell)
             
-            UIAlertView(title: "Confirm", message: "Do you want to delete this job?", delegate: self, cancelButtonTitle: "NO", otherButtonTitles: "YES", nil).show()
+            var alertView = UIAlertView(title: "Confirm", message: "Do you want to delete this job?", delegate: self, cancelButtonTitle: "NO")
+            alertView.addButtonWithTitle("YES")
+            alertView.show()
         }
     }
 
@@ -147,7 +143,7 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
      *  @param scrollView
      */
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        var visibleCellsIndexPaths = self.tableView.indexPathsForVisibleRows()
+        var visibleCellsIndexPaths = self.tableView.indexPathsForVisibleRows() as NSIndexPath[]
         for indexPath in visibleCellsIndexPaths {
             var cell = self.tableView.cellForRowAtIndexPath(indexPath) as SESwipeableTableViewCell
             cell.swipeEnabled = false
@@ -160,7 +156,7 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
      *  @param scrollView
      */
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        var visibleCellsIndexPaths = self.tableView.indexPathsForVisibleRows()
+        var visibleCellsIndexPaths = self.tableView.indexPathsForVisibleRows() as NSIndexPath[]
         for indexPath in visibleCellsIndexPaths {
             var cell = self.tableView.cellForRowAtIndexPath(indexPath) as SESwipeableTableViewCell
             cell.swipeEnabled = true
@@ -210,7 +206,7 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
      */
     func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
         if buttonIndex != alertView.cancelButtonIndex {
-            var job = self.fetchedResultsController.objectAtIndexPath(self.indexPathToRemove)
+            var job = self.fetchedResultsController.objectAtIndexPath(self.indexPathToRemove) as SEJob
             job.removed = "true"
             var error: NSError? = nil
             job.managedObjectContext.save(&error)
@@ -239,12 +235,12 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var sectionInfo = self.fetchedResultsController.sections[section]
-        return sectionInfo.numberOfObjects()
+        var sectionInfo = self.fetchedResultsController.sections[section] as NSFetchedResultsSectionInfo
+        return sectionInfo.numberOfObjects
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(SEJobTableViewCellIdentifier)
+        var cell = tableView.dequeueReusableCellWithIdentifier(SEJobTableViewCellIdentifier) as SESwipeableTableViewCell
         cell.delegate = self
         self.configureCell(cell, atIndexPath: indexPath)
         return cell
@@ -262,10 +258,12 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
      */
     func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
         switch type {
-            case .Insert:
-                self.tableView.insertSections(NSIndexSet.indexSetWithIndex(sectionIndex), withRowAnimation: .Fade)
-            case .Delete:
-                self.tableView.deleteSections(NSIndexSet.indexSetWithIndex(sectionIndex), withRowAnimation: .Fade)
+            case NSFetchedResultsChangeInsert:
+                self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+            case NSFetchedResultsChangeDelete:
+                self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+            default:
+                break
         }
     }
 
@@ -276,15 +274,17 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
         var tableView = self.tableView;
         
         switch type {
-            case .Insert:
+            case NSFetchedResultsChangeInsert:
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
-            case .Delete:
+            case NSFetchedResultsChangeDelete:
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            case .Update:
+            case NSFetchedResultsChangeUpdate:
                 self.configureCell(tableView.cellForRowAtIndexPath(indexPath), atIndexPath: indexPath)
-            case .Move:
+            case NSFetchedResultsChangeMove:
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            default:
+                break
         }
     }
 
@@ -303,23 +303,23 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
      */
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
         if let jobCell = cell as? SEJobTableViewCell {
-            var job = self.fetchedResultsController.objectAtIndexPath(indexPath)
+            var job = self.fetchedResultsController.objectAtIndexPath(indexPath) as SEJob
             jobCell.clientNameLabel.text = job.clientNameC
             jobCell.contactNameLabel.text = job.contactNameC
             jobCell.jobAddressLabel.text = job.jobAddressC
             
             var dateFormatter = NSDateFormatter()
-            dateFormatter.timeStyle = NSDateFormatter.NoStyle
-            dateFormatter.dateStyle = NSDateFormatter.MediumStyle
+            dateFormatter.timeStyle = .NoStyle
+            dateFormatter.dateStyle = .MediumStyle
             
             var timeFormatter = NSDateFormatter()
-            timeFormatter.timeStyle = NSDateFormatter.ShortStyle
-            timeFormatter.dateStyle = NSDateFormatter.NoStyle
+            timeFormatter.timeStyle = .ShortStyle
+            timeFormatter.dateStyle = .NoStyle
             
-            jobCell.dateLabel.text = dateFormatter.stringFromDate(job.jobStartTimeC).uppercaseString()
-            jobCell.timeLabel.text = timeFormatter.stringFromDate(job.jobStartTimeC).lowercaseString().stringByReplacingOccurrencesOfString(" ", withString:"")
+            jobCell.dateLabel.text = dateFormatter.stringFromDate(job.jobStartTimeC).uppercaseString
+            jobCell.timeLabel.text = timeFormatter.stringFromDate(job.jobStartTimeC).lowercaseString.stringByReplacingOccurrencesOfString(" ", withString:"")
             
-            jobCell.statusImageView.image = UIImage.imageNamed(job.statusC == "Complete" ? "icon_status_small_active" : "icon_status_small")
+            jobCell.statusImageView.image = UIImage(named: job.statusC == "Complete" ? "icon_status_small_active" : "icon_status_small")
             
             jobCell.bottomCellView.backgroundColor = UIColor(red: 0.85, green: 0.109, blue: 0.36, alpha: 1)
         }
@@ -331,12 +331,13 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
      *  @param segue
      *  @param sender
      */
-    func prepareForSegue(segue: UIStoryboardSegue, sender: UIView) {
-        if segue.destinationViewController is SEJobViewController && sender is UITableViewCell {
-            var indexPath = self.tableView.indexPathForCell(sender)
-            var job = self.fetchedResultsController.objectAtIndexPath(indexPath)
-            var vc = segue.destinationViewController as SEJobViewController
-            vc.job = job
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
+        if let vc = segue.destinationViewController as? SEJobViewController {
+            if let cell = sender as? UITableViewCell {
+                var indexPath = self.tableView.indexPathForCell(cell)
+                var job = self.fetchedResultsController.objectAtIndexPath(indexPath) as SEJob
+                vc.job = job
+            }
         }
     }
 

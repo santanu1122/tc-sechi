@@ -9,17 +9,12 @@
 /**
  *  View controller used for displaying list of part objects (products).
  */
-class SEPartsViewController: SEViewControllerUITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UIAlertViewDelegate, UISearchBarDelegate, SEProductsScannerViewControllerDelegate {
-
-    /**
-     *  Fetched results controller used to retrive content for table view.
-     */
-    var fetchedResultsController: NSFetchedResultsController
+class SEPartsViewController: SEViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UIAlertViewDelegate, UISearchBarDelegate, SEProductsScannerViewControllerDelegate {
 
     /**
      *  Managed object context used by fetched results controller.
      */
-    var managedObjectContext: NSManagedObjectContext
+    var managedObjectContext: NSManagedObjectContext!
 
     /**
      *  Table view with list of objects
@@ -27,19 +22,14 @@ class SEPartsViewController: SEViewControllerUITableViewDelegate, UITableViewDat
     @IBOutlet var tableView: UITableView
 
     /**
-     *  Temporary cell used for calculating height of the displayed cells.
-     */
-    var temporaryCell: SEProductTableViewCell
-
-    /**
      *  Index path of cell that began process of removing (swipe, press delete button etc).
      */
-    var indexPathToRemove: NSIndexPath
+    var indexPathToRemove: NSIndexPath?
 
     /**
      *  Gesture recognizer used to cancel the custom edit mode of the table view.
      */
-    var editModeGestureRecognizer: UIPanGestureRecognizer
+    var editModeGestureRecognizer: UIPanGestureRecognizer!
 
     /**
      *  UISearchBar object that's used to search objects in table view.
@@ -49,11 +39,11 @@ class SEPartsViewController: SEViewControllerUITableViewDelegate, UITableViewDat
     /**
      *  Setup views properties and initiates displayed objects sync.
      */
-    func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        self.managedObjectContext = (UIApplication.sharedApplication().delegate as SEAppDelegate).managedObjectContext
+        self.managedObjectContext = SERestClient.instance.managedObjectContext
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -61,7 +51,7 @@ class SEPartsViewController: SEViewControllerUITableViewDelegate, UITableViewDat
         self.searchBar.delegate = self
         self.searchBar.tintColor = UIColor.whiteColor()
         
-        SERestClient.instance().refreshPartsList()
+        SERestClient.instance.refreshPartsList()
     }
 
     /**
@@ -69,7 +59,7 @@ class SEPartsViewController: SEViewControllerUITableViewDelegate, UITableViewDat
      *
      *  @param animated
      */
-    func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController.setNavigationBarHidden(false, animated: animated)
         self.setupNavigationBarBackButton()
@@ -77,7 +67,6 @@ class SEPartsViewController: SEViewControllerUITableViewDelegate, UITableViewDat
         addButton.addTarget(self, action: "addButtonTouchedUpInside:", forControlEvents: .TouchUpInside)
     }
 
-    //#pragma mark - actions
     /**
      *  Show view controller with form for adding new object to the list.
      *
@@ -97,9 +86,8 @@ class SEPartsViewController: SEViewControllerUITableViewDelegate, UITableViewDat
     /**
      *  Update data from API if search button was clicked.
      */
-    //#pragma mark - UISearchBarDelegate
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        SERestClient.instance().refreshPartsList()
+        SERestClient.instance.refreshPartsList()
         searchBar.resignFirstResponder()
     }
 
@@ -109,62 +97,59 @@ class SEPartsViewController: SEViewControllerUITableViewDelegate, UITableViewDat
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.text = ""
         searchBar.resignFirstResponder()
-        SERestClient.instance().refreshPartsList()
+        SERestClient.instance.refreshPartsList()
     }
 
     /**
      *  Basic setup of UITableView with NSFetchedResultsViewController
      */
-    //#pragma mark - UITableViewDatasource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.fetchedResultsController.sections.count
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var sectionInfo = self.fetchedResultsController.sections[section]
-        return sectionInfo.numberOfObjects()
+        var sectionInfo = self.fetchedResultsController.sections[section] as NSFetchedResultsSectionInfo
+        return sectionInfo.numberOfObjects
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(SEProductTableViewCellIdentifier)
+        var cell = tableView.dequeueReusableCellWithIdentifier(SEProductTableViewCellIdentifier) as UITableViewCell
         self.configureCell(cell, atIndexPath: indexPath)
         return cell
     }
 
-    //#pragma mark - Fetched results controller
     /**
-     *  Setup NSFetchedResultsController for providing data to UITableView
+     *  Fetched results controller used to retrive content for table view.
      */
     var fetchedResultsController: NSFetchedResultsController {
         get {
             if _fetchedResultsController {
-                return _fetchedResultsController
+                return _fetchedResultsController!
             }
             
             var fetchRequest = NSFetchRequest()
-            var entity = NSEntityDescription(name: "SEProduct", inManagedObjectContext: self.managedObjectContext)
-            fetchRequest.setEntity(entity)
-            fetchRequest.setFetchBatchSize(20)
+            var entity = NSEntityDescription.entityForName("SEProduct", inManagedObjectContext: self.managedObjectContext)
+            fetchRequest.entity = entity
+            fetchRequest.fetchBatchSize = 20
             var sortDescriptor = NSSortDescriptor(key: "createdDate", ascending: false)
             var predicate = NSPredicate(format: "NOT (removed LIKE %@)", "true")
 
-            fetchRequest.setSortDescriptors([sortDescriptor])
-            fetchRequest.setPredicate(predicate)
+            fetchRequest.sortDescriptors = [sortDescriptor]
+            fetchRequest.predicate = predicate
             _fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-            aFetchedResultsController.delegate = self
+            _fetchedResultsController!.delegate = self
             
-            var error: NSError = nil;
-            if !self.fetchedResultsController.performFetch(&error) {
-                NSLog("Unresolved error %@, %@", error, error.userInfo)
+            var error: NSError? = nil;
+            if !_fetchedResultsController!.performFetch(&error) {
+                NSLog("Unresolved error %@, %@", error!, error!.userInfo)
                 abort()
             }
             
-            return _fetchedResultsController
+            return _fetchedResultsController!
         }
     }
     var _fetchedResultsController: NSFetchedResultsController? = nil
 
-    //#pragma mark - NSFetchedResultsControllerDelegate
     /**
      *  Begin table view updates when fetched results controller wants to change datasource.
      */
@@ -177,10 +162,12 @@ class SEPartsViewController: SEViewControllerUITableViewDelegate, UITableViewDat
      */
     func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
         switch type {
-            case .Insert:
+            case NSFetchedResultsChangeInsert:
                 self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-            case .Delete:
+            case NSFetchedResultsChangeDelete:
                 self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+            default:
+                break
         }
     }
 
@@ -191,15 +178,17 @@ class SEPartsViewController: SEViewControllerUITableViewDelegate, UITableViewDat
         var tableView = self.tableView
         
         switch type {
-            case .Insert:
+            case NSFetchedResultsChangeInsert:
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
-            case .Delete:
+            case NSFetchedResultsChangeDelete:
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            case .Update:
+            case NSFetchedResultsChangeUpdate:
                 self.configureCell(tableView.cellForRowAtIndexPath(indexPath), atIndexPath: indexPath)
-            case .Move:
+            case NSFetchedResultsChangeMove:
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            default:
+                break;
         }
     }
 
@@ -218,20 +207,19 @@ class SEPartsViewController: SEViewControllerUITableViewDelegate, UITableViewDat
      */
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
         if let productCell = cell as? SEProductTableViewCell {
-            var product = self.fetchedResultsController(objectAtIndexPath: indexPath)
+            var product = self.fetchedResultsController.objectAtIndexPath(indexPath) as SEProduct
             productCell.productName.text = product.name
             productCell.productCode.text = product.productcode
         }
     }
 
-    //#pragma mark - Navigation
     /**
      *  Set self as SEProductsScannerViewController if it's going to be displayed.
      *
      *  @param segue  segue that will occur
      *  @param sender object that begin the segue
      */
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
         if segue.identifier == SEPushModalProductCodeReaderViewControllerSegue {
             var psvc = segue.destinationViewController as SEProductsScannerViewController
             psvc.delegate = self
@@ -239,7 +227,6 @@ class SEPartsViewController: SEViewControllerUITableViewDelegate, UITableViewDat
 
     }
 
-    //#pragma mark - SEProductsScannerViewControllerDelegate
     /**
      *  Dismiss SEProductsScannerViewController if it canceled reading the codes.
      *

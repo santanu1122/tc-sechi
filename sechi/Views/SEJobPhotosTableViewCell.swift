@@ -49,9 +49,9 @@ class SEJobPhotosTableViewCell: SESwipeableTableViewCell, UICollectionViewDataSo
      *  @return collection view cell object
      */
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(SEJobPhotoCollectionViewCellIdentifier, forIndexPath: indexPath)
+        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(SEJobPhotoCollectionViewCellIdentifier, forIndexPath: indexPath) as UICollectionViewCell
         if indexPath.row == 0 {
-            var backgroundImageView = UIImageView(image: UIImage.imageNamed("btn_add_photo"))
+            var backgroundImageView = UIImageView(image: UIImage(named: "btn_add_photo"))
             backgroundImageView.contentMode = UIViewContentMode.ScaleAspectFit
             cell.backgroundView = backgroundImageView
         } else {

@@ -107,7 +107,7 @@ class SEClient: NSManagedObject {
     }
 
     class func responseMappingForManagedObjectStore(managedObjectStore: RKManagedObjectStore) -> RKEntityMapping {
-        var entityMapping = RKEntityMapping.mappingForEntityForName("SEClient", inManagedObjectStore: managedObjectStore)
+        var entityMapping = RKEntityMapping(forEntityForName: "SEClient", inManagedObjectStore: managedObjectStore)
         entityMapping.addAttributeMappingsFromDictionary(self.elementToPropertyMappings)
         entityMapping.identificationAttributes = ["identifier"]
         

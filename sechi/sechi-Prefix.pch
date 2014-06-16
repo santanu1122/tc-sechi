@@ -17,8 +17,4 @@
     #import <MobileCoreServices/MobileCoreServices.h>
     #import <RestKit/RestKit.h>
     #import <RestKit/CoreData.h>
-
-    #import "SERestClient.h"
-
-    #import "sechi-Swift.h"
 #endif

@@ -14,7 +14,7 @@ class SEGalleryViewController: SEViewController, UIPageViewControllerDataSource,
     /**
      *  Index of a first photo that should be shown.
      */
-    var startIndex: Int
+    var startIndex: Int = 0
 
     /**
      *  Array of photos that will be presented.
@@ -54,13 +54,13 @@ class SEGalleryViewController: SEViewController, UIPageViewControllerDataSource,
     /**
      *  Setup UIPageViewController, show it's view on the screen. Prepare NSLayoutConstraints.
      */
-    func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         var background = UIImageView(image: UIImage(named: "bg.png"))
         background.contentMode = .ScaleAspectFill
-        background.translatesAutoresizingMaskIntoConstraints = false
+        background.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.view.addSubview(background)
         
         self.pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
@@ -72,7 +72,7 @@ class SEGalleryViewController: SEViewController, UIPageViewControllerDataSource,
         
         self.view.addSubview(self.pageViewController.view)
         
-        self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        self.pageViewController.view.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         self.title = "SCHEDULE"
         
@@ -81,15 +81,12 @@ class SEGalleryViewController: SEViewController, UIPageViewControllerDataSource,
         self.view.addSubview(lineView)
         
         var views = ["pvc": self.pageViewController.view, "line": lineView, "bg": background]
-        self.view.addConstraints(NSLayoutConstraint(visualFormat: "H:|[bg]|", options: nil, metrics: nil, views:views))
 
-        self.view.addConstraints(NSLayoutConstraint(visualFormat: "V:|[bg]|", options: nil, metrics: nil, views:views))
-
-        self.view.addConstraints(NSLayoutConstraint(visualFormat: "H:|[pvc]|", options: nil, metrics: nil, views:views))
-
-        self.view.addConstraints(NSLayoutConstraint(visualFormat: "H:|[line]|", options: nil, metrics: nil, views:views))
-        
-        self.view.addConstraints(NSLayoutConstraint(visualFormat: "V:|-(64)-[line(==10)][pvc]|", options: nil, metrics: nil, views:views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bg]|", options: nil, metrics: nil, views:views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[bg]|", options: nil, metrics: nil, views:views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[pvc]|", options: nil, metrics: nil, views:views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[line]|", options: nil, metrics: nil, views:views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-(64)-[line(==10)][pvc]|", options: nil, metrics: nil, views:views))
         
         self.pageViewController.didMoveToParentViewController(self)
     }
@@ -107,17 +104,17 @@ class SEGalleryViewController: SEViewController, UIPageViewControllerDataSource,
         self.setupNavigationBarBackButton()
         
         if self.startIndex >= self.mediaFiles.count {
-            startIndex = 0
+            self.startIndex = 0
         }
         
-        self.pageViewController.setViewControllers([self.viewControllerAtIndex: self.startIndex], direction: .Forward, animated: false, completion: nil)
+        self.pageViewController.setViewControllers([self.viewControllerAtIndex(self.startIndex)!], direction: .Forward, animated: false, completion: nil)
     }
 
-    func shouldAutomaticallyForwardRotationMethods() -> Bool {
+    override func shouldAutomaticallyForwardRotationMethods() -> Bool {
         return true
     }
 
-    func shouldAutomaticallyForwardAppearanceMethods() -> Bool {
+    override func shouldAutomaticallyForwardAppearanceMethods() -> Bool {
         return true
     }
 
@@ -127,8 +124,8 @@ class SEGalleryViewController: SEViewController, UIPageViewControllerDataSource,
      *  @param toInterfaceOrientation
      *  @param duration
      */
-    func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        for vc in self.pageViewController.viewControllers {
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        for vc in self.pageViewController.viewControllers as UIViewController[] {
             vc.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
         }
     }
@@ -138,33 +135,34 @@ class SEGalleryViewController: SEViewController, UIPageViewControllerDataSource,
      *
      *  @param fromInterfaceOrientation
      */
-    func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         self.view.setNeedsLayout()
         self.pageViewController.view.setNeedsLayout()
         
-        for vc in self.pageViewController.viewControllers {
+        for vc in self.pageViewController.viewControllers as UIViewController[] {
             vc.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
             
             vc.view.setNeedsUpdateConstraints()
             vc.view.setNeedsLayout()
         }
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.05 * NSEC_PER_SEC), dispatch_get_main_queue(), {
-            () -> () in
-            var index = self.mediaFiles.indexOfObject((self.pageViewController.viewControllers.lastObject as SEPhotoViewController).jobPhotoInfo)
+        var interval: Int64 = Int64(0.05 * 1_000_000_000)
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, interval), dispatch_get_main_queue(), {
+            () -> Void in
+            var index = self.mediaFiles.bridgeToObjectiveC().indexOfObject((self.pageViewController.viewControllers[self.pageViewController.viewControllers.count - 1] as SEPhotoViewController).jobPhotoInfo)
             
-            self.pageViewController.setViewControllers([self.viewControllerAtIndex: index], direction: .Forward, animated: false, completion: nil)
+            self.pageViewController.setViewControllers([self.viewControllerAtIndex(index)!], direction: .Forward, animated: false, completion: nil)
         })
     }
 
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController {
-        var currentIndex = self.mediaFiles.indexOfObject((viewController as SEPhotoViewController).jobPhotoInfo)
+    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+        var currentIndex = self.mediaFiles.bridgeToObjectiveC().indexOfObject((viewController as SEPhotoViewController).jobPhotoInfo)
         
         return self.viewControllerAtIndex(currentIndex + 1)
     }
 
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController {
-        var currentIndex = self.mediaFiles.indexOfObject((viewController as SEPhotoViewController).jobPhotoInfo)
+    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+        var currentIndex = self.mediaFiles.bridgeToObjectiveC().indexOfObject((viewController as SEPhotoViewController).jobPhotoInfo)
         
         return self.viewControllerAtIndex(currentIndex - 1)
     }
@@ -172,7 +170,7 @@ class SEGalleryViewController: SEViewController, UIPageViewControllerDataSource,
     func pageViewController(pageViewController: UIPageViewController, spineLocationForInterfaceOrientation orientation: UIInterfaceOrientation) -> UIPageViewControllerSpineLocation {
         var allPageControllers = pageViewController.viewControllers
         
-        if let allPageControllers = pageViewController.viewControllers? {
+        if let allPageControllers = pageViewController.viewControllers as? UIViewController[] {
             self.pageViewController.setViewControllers(allPageControllers, direction: .Forward, animated: false, completion: nil)
         } else {
             var defaultViewController = UIViewController()

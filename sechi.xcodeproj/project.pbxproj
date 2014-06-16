@@ -20,7 +20,6 @@
 		0D6F80D5191B26F3005E7975 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6F80D4191B26F3005E7975 /* CoreGraphics.framework */; };
 		0D6F80D7191B26F3005E7975 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6F80D6191B26F3005E7975 /* UIKit.framework */; };
 		0D6F80DD191B26F3005E7975 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F80DB191B26F3005E7975 /* InfoPlist.strings */; };
-		0D6F80DF191B26F3005E7975 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F80DE191B26F3005E7975 /* main.m */; };
 		0D6F80E6191B26F3005E7975 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F80E4191B26F3005E7975 /* Main.storyboard */; };
 		0D6F80EB191B26F3005E7975 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F80EA191B26F3005E7975 /* Images.xcassets */; };
 		0D6F80F2191B26F3005E7975 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6F80F1191B26F3005E7975 /* XCTest.framework */; };
@@ -173,7 +172,6 @@
 		0D6F80D6191B26F3005E7975 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0D6F80DA191B26F3005E7975 /* sechi-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "sechi-Info.plist"; sourceTree = "<group>"; };
 		0D6F80DC191B26F3005E7975 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		0D6F80DE191B26F3005E7975 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		0D6F80E0191B26F3005E7975 /* sechi-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sechi-Prefix.pch"; sourceTree = "<group>"; };
 		0D6F80E5191B26F3005E7975 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0D6F80EA191B26F3005E7975 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -468,7 +466,6 @@
 			children = (
 				0D6F80DA191B26F3005E7975 /* sechi-Info.plist */,
 				0D6F80DB191B26F3005E7975 /* InfoPlist.strings */,
-				0D6F80DE191B26F3005E7975 /* main.m */,
 				0D6F80E0191B26F3005E7975 /* sechi-Prefix.pch */,
 				62B71C71194A7A7500EB80C7 /* sechi-Bridging-Header.h */,
 			);
@@ -825,7 +822,6 @@
 				62436600194BE35C00B212D1 /* SEJobNotesTableViewCell.swift in Sources */,
 				62C4093B194D315800298A12 /* SEJobNotesEditViewController.swift in Sources */,
 				0DC902FE191C2FC60056254A /* Model.xcdatamodeld in Sources */,
-				0D6F80DF191B26F3005E7975 /* main.m in Sources */,
 				0EAFABDD194D148000371DB3 /* SEPartsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

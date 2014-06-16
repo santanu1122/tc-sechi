@@ -37,7 +37,7 @@ class SEClientEditViewController: SEViewController, UITableViewDataSource, UITab
     /**
      *  Setup table view properties and cells that will be displayed
      */
-    func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
@@ -52,22 +52,22 @@ class SEClientEditViewController: SEViewController, UITableViewDataSource, UITab
      *  Prepare cell for each object field that's a need to be filled.
      */
     func setupCells() {
-        self.companyCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.companyCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.companyCell.label = "Company:"
         self.companyCell.key = "companyNameC"
         self.companyCell.value = self.client.companyNameC
         
-        self.contactCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.contactCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.contactCell.label = "Contact:"
         self.contactCell.key = "name"
         self.contactCell.value = self.client.name
         
-        self.phoneCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.phoneCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.phoneCell.label = "Phone:"
         self.phoneCell.key = "businessPhoneC"
         self.phoneCell.value = self.client.businessPhoneC
         
-        self.emailCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.emailCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.emailCell.label = "Email:"
         self.emailCell.key = "email"
         self.emailCell.value = self.client.email
@@ -86,8 +86,8 @@ class SEClientEditViewController: SEViewController, UITableViewDataSource, UITab
         self.setupNavigationBarBackButton()
         
         if let backBtn = self.navigationItem.leftBarButtonItem.customView as? UIButton {
-            backBtn.removeTarget(self, action: "popViewControllerAnimated", forControlEvents: UIControlEvent.TouchUpInside)
-            backBtn.addTarget(self, action: "saveAndReturn", forControlEvents: UIControlEvent.TouchUpInside)
+            backBtn.removeTarget(self, action: "popViewControllerAnimated", forControlEvents: .TouchUpInside)
+            backBtn.addTarget(self, action: "saveAndReturn", forControlEvents: .TouchUpInside)
         }
     }
 
@@ -98,8 +98,8 @@ class SEClientEditViewController: SEViewController, UITableViewDataSource, UITab
     func saveAndReturn() {
         for cell in self.datasource {
             if cell.changesWereMade && cell.valueTextView.text == "" {
-                var fieldName = cell.label.stringByReplacingOccurrencesOfString( ":", withString: "")
-                UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+                var fieldName = cell.label!.stringByReplacingOccurrencesOfString( ":", withString: "")
+                UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK").show()
                 return
             }
             
@@ -119,7 +119,7 @@ class SEClientEditViewController: SEViewController, UITableViewDataSource, UITab
         }
         
         if error {
-            UIAlertView(title: "Error", message: "Error occured while saving data: " + error.localizedDescription, delegate:nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+            UIAlertView(title: "Error", message: "Error occured while saving data: " + error!.localizedDescription, delegate:nil, cancelButtonTitle: "OK").show()
         }
         
         self.navigationController.popViewControllerAnimated(true)
@@ -149,7 +149,7 @@ class SEClientEditViewController: SEViewController, UITableViewDataSource, UITab
      */
     func textViewDidBeginEditing(textView: UITextView) {
         var cell = textView.superviewOfClass(UITableViewCell) as UITableViewCell
-        self.tableView.scrollToRowAtIndexPath(self.tableView.indexPathForCell(cell), atScrollPosition: UITableViewScroll.PositionTop, animated: true)
+        self.tableView.scrollToRowAtIndexPath(self.tableView.indexPathForCell(cell), atScrollPosition: .Top, animated: true)
     }
 
     /**

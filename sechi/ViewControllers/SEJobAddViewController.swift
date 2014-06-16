@@ -29,17 +29,17 @@ class SEJobAddViewController: SEViewController, UITableViewDataSource, UITableVi
     /**
      *  UITableViewCell objects that are displayed in table view.
      */
-    var clientCell: SETextFieldTableViewCell
-    var contactCell: SETextFieldTableViewCell
-    var phoneCell: SETextFieldTableViewCell
-    var infoCell: SETextFieldTableViewCell
-    var addressCell: SETextFieldTableViewCell
-    var notesCell: SETextFieldTableViewCell
+    var clientCell: SETextFieldTableViewCell!
+    var contactCell: SETextFieldTableViewCell!
+    var phoneCell: SETextFieldTableViewCell!
+    var infoCell: SETextFieldTableViewCell!
+    var addressCell: SETextFieldTableViewCell!
+    var notesCell: SETextFieldTableViewCell!
 
     /**
      *  Setup table view properties and cells that will be displayed
      */
-    func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
@@ -54,32 +54,32 @@ class SEJobAddViewController: SEViewController, UITableViewDataSource, UITableVi
      *  Prepare cell for each object field that's a need to be filled.
      */
     func setupCells() {
-        self.clientCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.clientCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.clientCell.label = "Client:"
         self.clientCell.key = "clientNameC"
         self.clientCell.value = self.job.clientNameC
         
-        self.contactCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.contactCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.contactCell.label = "Contact:"
         self.contactCell.key = "contactNameC"
         self.contactCell.value = self.job.contactNameC
         
-        self.phoneCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.phoneCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.phoneCell.label = "Phone:"
         self.phoneCell.key = "phoneC"
         self.phoneCell.value = self.job.phoneC
         
-        self.infoCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.infoCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.infoCell.label = "Info:"
         self.infoCell.key = "infoTextC"
         self.infoCell.value = self.job.infoTextC
         
-        self.addressCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.addressCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.addressCell.label = "Address:"
         self.addressCell.key = "jobAddressC"
         self.addressCell.value = self.job.jobAddressC
         
-        self.notesCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.notesCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.notesCell.label = "Notes:"
         self.notesCell.key = "notesC"
         self.notesCell.value = self.job.notesC
@@ -92,7 +92,7 @@ class SEJobAddViewController: SEViewController, UITableViewDataSource, UITableVi
      *
      *  @param animated
      */
-    func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController.setNavigationBarHidden(false, animated: animated)
         self.setupNavigationBarBackButton()
@@ -108,13 +108,13 @@ class SEJobAddViewController: SEViewController, UITableViewDataSource, UITableVi
      *  @param sender object that called the method
      */
     func saveButtonTouchedUpInside(sender: UIButton) {
-        self.job = NSEntityDescription.insertNewObjectForEntityForName("SEJob", inManagedObjectContext: (UIApplication.sharedApplication().delegate as SEAppDelegate).managedObjectContext)
+        self.job = NSEntityDescription.insertNewObjectForEntityForName("SEJob", inManagedObjectContext: SERestClient.instance.managedObjectContext) as SEJob
         
         for cell in self.datasource {
             if cell.valueTextView.text == "" {
                 self.job.managedObjectContext.deleteObject(self.job)
-                var fieldName = cell.label.stringByReplacingOccurrencesOfString(":", withString: "")
-                UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+                var fieldName = cell.label!.stringByReplacingOccurrencesOfString(":", withString: "")
+                UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK").show()
                 return
             }
             
@@ -138,7 +138,7 @@ class SEJobAddViewController: SEViewController, UITableViewDataSource, UITableVi
         }
         
         if error {
-            UIAlertView(title: "Error", message: "Error occured while saving data: " + error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+            UIAlertView(title: "Error", message: "Error occured while saving data: " + error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
         }
         
         self.navigationController.popViewControllerAnimated(true)

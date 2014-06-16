@@ -96,14 +96,15 @@ class SESignInViewController: SEViewController, UITextFieldDelegate {
     @IBAction func signInButtonTouchedUpInside(sender: UIButton) {
         self.setActivityIndicatorVisible(true, animated: true)
         self.setSignInControlsGroupVisible(false, animated: true) {
-            [unowned self] finished in
+            finished in
             self.usernameTextField.text = ""
             self.passwordTextField.text = ""
         }
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.5 * NSEC_PER_SEC), dispatch_get_main_queue(), {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC.value)), dispatch_get_main_queue(), {
+            () -> Void in
             self.setActivityIndicatorVisible(false, animated: true) {
-                [unowned self] finished in
+                finished in
                 self.performSegueWithIdentifier(SEPushMainMenuViewControllerSegue, sender:sender)
             }
         })
@@ -126,7 +127,7 @@ class SESignInViewController: SEViewController, UITextFieldDelegate {
      *  @param animated   should the change be animated
      *  @param completion completion block, runned after changeing view attributes
      */
-    func setSignInControlsGroupVisible(visible: Bool, animated: Bool, completion: (finished: Bool) -> ()?) {
+    func setSignInControlsGroupVisible(visible: Bool, animated: Bool, completion: ((_: Bool) -> Void)?) {
         var topMarginDelta: Float = 50.0
         var newSignInControlsGroupTopConstraintConstant = self.signInControlsGroupTopConstraint.constant
         
@@ -136,8 +137,8 @@ class SESignInViewController: SEViewController, UITextFieldDelegate {
             newSignInControlsGroupTopConstraintConstant += topMarginDelta
         }
         
-        var actionBlock = {
-            () -> () in
+        var actionsBlock = {
+            () -> Void in
             self.signInControlsGroup.alpha = visible ? 1.0 : 0.0
             self.signInControlsGroupTopConstraint.constant = newSignInControlsGroupTopConstraintConstant
             self.view.layoutIfNeeded()
@@ -147,7 +148,7 @@ class SESignInViewController: SEViewController, UITextFieldDelegate {
             UIView.animateWithDuration(visible ? 0.3 : 0.2, animations: actionsBlock, completion: completion)
         } else {
             actionsBlock()
-            if completion {
+            if completion != nil {
                 completion!(true)
             }
         }
@@ -171,7 +172,7 @@ class SESignInViewController: SEViewController, UITextFieldDelegate {
      *  @param animated   should the change be animated
      *  @param completion completion block, runned after changeing view attributes
      */
-    func setActivityIndicatorVisible(visible: Bool, animated: Bool, completion: () -> ()?) {
+    func setActivityIndicatorVisible(visible: Bool, animated: Bool, completion: ((_: Bool) -> Void)?) {
         var topMarginDelta: Float = 30.0
         var newActivityIndicatorTopConstraintConstant = self.activityIndicatorTopConstraint.constant
         
@@ -184,7 +185,7 @@ class SESignInViewController: SEViewController, UITextFieldDelegate {
         }
         
         var actionsBlock = {
-            () -> () in
+            () -> Void in
             self.activityIndicator.alpha = visible ? 1.0 : 0.0
             self.activityIndicatorTopConstraint.constant = newActivityIndicatorTopConstraintConstant
             self.view.layoutIfNeeded()
@@ -194,7 +195,7 @@ class SESignInViewController: SEViewController, UITextFieldDelegate {
             UIView.animateWithDuration(visible ? 0.3 : 0.2, animations: actionsBlock, completion: completion)
         } else {
             actionsBlock()
-            if completion {
+            if completion != nil {
                 completion!(true)
             }
         }

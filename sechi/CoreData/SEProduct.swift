@@ -89,7 +89,7 @@ class SEProduct: NSManagedObject {
     }
 
     class func responseMappingForManagedObjectStore(managedObjectStore: RKManagedObjectStore) -> RKEntityMapping {
-        var entityMapping = RKEntityMapping.mappingForEntityForName("SEProduct", inManagedObjectStore: managedObjectStore)
+        var entityMapping = RKEntityMapping(forEntityForName: "SEProduct", inManagedObjectStore: managedObjectStore)
         entityMapping.addAttributeMappingsFromDictionary(self.elementToPropertyMappings)
         entityMapping.identificationAttributes = ["identifier"]
         

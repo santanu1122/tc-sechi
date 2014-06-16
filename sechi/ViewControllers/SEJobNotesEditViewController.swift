@@ -49,7 +49,7 @@ class SEJobNotesEditViewController: SEViewController, UITableViewDataSource, UIT
      *  Prepare cell for each object field that's a need to be filled.
      */
     func setupCells() {
-        self.notesCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.notesCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.notesCell.label = "Notes:"
         self.notesCell.key = "notesC"
         self.notesCell.value = self.job.notesC
@@ -79,8 +79,9 @@ class SEJobNotesEditViewController: SEViewController, UITableViewDataSource, UIT
     func saveAndReturn() {
         for cell in self.datasource {
             if cell.changesWereMade && cell.valueTextView.text == "" {
-                var fieldName = cell.label.stringByReplacingOccurrencesOfString(":", "")
-                UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+                var fieldName = cell.label!.stringByReplacingOccurrencesOfString(":", withString: "")
+
+                UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK").show()
                 return
             }
             
@@ -100,7 +101,7 @@ class SEJobNotesEditViewController: SEViewController, UITableViewDataSource, UIT
         }
         
         if error {
-            UIAlertView(title: "Error", message: "Error occured while saving data: " + error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+            UIAlertView(title: "Error", message: "Error occured while saving data: " + error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
         }
         
         self.navigationController.popViewControllerAnimated(true)

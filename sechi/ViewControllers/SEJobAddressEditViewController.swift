@@ -49,7 +49,7 @@ class SEJobAddressEditViewController: SEViewController, UITableViewDataSource, U
      *  Prepare cell for each object field that's a need to be filled.
      */
     func setupCells() {
-        self.addressCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier)
+        self.addressCell = self.tableView.dequeueReusableCellWithIdentifier(SETextFieldTableViewCellIdentifier) as SETextFieldTableViewCell
         self.addressCell.label = "Address:"
         self.addressCell.key = "jobAddressC"
         self.addressCell.value = self.job.jobAddressC
@@ -79,8 +79,9 @@ class SEJobAddressEditViewController: SEViewController, UITableViewDataSource, U
     func saveAndReturn() {
         for cell in self.datasource {
             if cell.changesWereMade && (!cell.valueTextView?.text || cell.valueTextView?.text == "") {
-                var fieldName = cell.label.stringByReplacingOccurrencesOfString(":", "")
-                UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show();
+                var fieldName = cell.label!.stringByReplacingOccurrencesOfString(":", withString: "")
+
+                UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK").show();
                 return
             }
             
@@ -100,7 +101,7 @@ class SEJobAddressEditViewController: SEViewController, UITableViewDataSource, U
         }
         
         if error {
-            UIAlertView(title: "Error", message: "Error occured while saving data: " + error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+            UIAlertView(title: "Error", message: "Error occured while saving data: " + error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
         }
         self.navigationController.popViewControllerAnimated(true)
     }
@@ -115,7 +116,7 @@ class SEJobAddressEditViewController: SEViewController, UITableViewDataSource, U
      *  @return BOOL should change the content of the text view
      */
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        if text = "\n" {
+        if text == "\n" {
             textView.resignFirstResponder()
             return false
         }
@@ -139,7 +140,7 @@ class SEJobAddressEditViewController: SEViewController, UITableViewDataSource, U
      */
     func textViewDidChange(textView: UITextView) {
         var cell = textView.superviewOfClass(SETextFieldTableViewCell) as SETextFieldTableViewCell
-        var heightNeeded = cell(cellHeightForText:cell.valueTextView.text)
+        var heightNeeded = cell.cellHeightForText(cell.valueTextView.text)
         if cell.frame.size.height != heightNeeded {
             cell.height = heightNeeded
             self.tableView.beginUpdates()

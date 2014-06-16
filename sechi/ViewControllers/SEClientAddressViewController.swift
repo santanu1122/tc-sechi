@@ -24,7 +24,7 @@ class SEClientAddressViewController: SEViewController, UITableViewDataSource, UI
     /**
      *  Datasource array with UITableViewCell objects that needs to be displayed.
      */
-    var datasource: UITableViewCell[]!
+    var datasource: SETextFieldTableViewCell[]!
 
     /**
      *  UITableViewCell objects that are displayed in table view.
@@ -79,9 +79,9 @@ class SEClientAddressViewController: SEViewController, UITableViewDataSource, UI
      */
     func saveAndReturn() {
         for cell in self.datasource {
-            if cell.changesWereMade && !cell.valueTextView?.text || cell.valueTextView?.text == "" {
-                var fieldName = cell.label.stringByReplacingOccurrencesOfString(":", "")
-                UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+            if cell.changesWereMade && (!cell.valueTextView?.text || cell.valueTextView?.text == "") {
+                var fieldName = cell.label!.stringByReplacingOccurrencesOfString(":", withString: "")
+                UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK").show()
                 return
             }
             
@@ -101,7 +101,7 @@ class SEClientAddressViewController: SEViewController, UITableViewDataSource, UI
         }
         
         if error {
-            UIAlertView(title: "Error", message: "Error occured while saving data: " + error.localizedDescription, delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: nil).show()
+            UIAlertView(title: "Error", message: "Error occured while saving data: " + error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
         }
         
         self.navigationController.popViewControllerAnimated(true)
@@ -170,7 +170,7 @@ class SEClientAddressViewController: SEViewController, UITableViewDataSource, UI
      */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = self.datasource[indexPath.row]
-        cell.valueTextView.delegate = self
+        cell.valueTextView!.delegate = self
         return cell
     }
 
@@ -184,10 +184,7 @@ class SEClientAddressViewController: SEViewController, UITableViewDataSource, UI
      */
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> Float {
         var cell = self.datasource[indexPath.row]
-        if let seCell = cell as? SETextFieldTableViewCell {
-            return seCell.height
-        }
-        return 44.0
+        return cell.height
     }
 
 }
