@@ -9,6 +9,7 @@
 /**
  *  Move to the next screen without an animation.
  */
+@objc(SEPushNoAnimationSegue)
 class SEPushNoAnimationSegue: UIStoryboardSegue {
 
     override func perform() {

@@ -6,10 +6,12 @@
 //  Copyright (c) 2014 TopCoder. All rights reserved.
 //
 
+import UIKit
+
 /**
  *  Base view controller with methods shared for inheriting view controllers.
  */
-class SEViewController : UIViewController {
+@objc class SEViewController : UIViewController {
 
     /**
      *  Boolean indicating if keyboard is visible
@@ -103,18 +105,6 @@ class SEViewController : UIViewController {
      *  @return bottommost UIScrollView object
      */
     func getMainScrollView() -> UIScrollView? {
-        if self.valueForKeyPath("tableView.superview") is UIScrollView {
-            return self.valueForKeyPath("tableView.superview") as? UIScrollView
-        }
-        
-        if self.valueForKey("tableView") is UIScrollView {
-            return self.valueForKeyPath("tableView") as? UIScrollView
-        }
-        
-        if self.valueForKey("scrollView") is UIScrollView {
-            return self.valueForKey("scrollView") as? UIScrollView
-        }
-
         return nil
     }
 

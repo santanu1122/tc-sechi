@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 TopCoder. All rights reserved.
 //
 
-import UIKit
-
 class SETextView: UITextView {
 
     init(frame: CGRect, textContainer: NSTextContainer!) {

@@ -187,8 +187,8 @@ class SEMainMenuViewController: SEViewController {
      *  @param animated   should the change be animated or not
      *  @param completion completion handler to run after view properies change
      */
-    func setMainMenuVisible(visible: Bool, animated: Bool, completion: ((Bool) -> Void)!) {
-        var topMarginDelta = Float(50.0)
+    func setMainMenuVisible(visible: Bool, animated: Bool, completion: ((Bool) -> Void)?) {
+        var topMarginDelta: Float = 50.0
         var newMainMenuTopConstraintConstant = self.mainMenuTopMarginConstraint.constant
         
         if visible {
@@ -198,17 +198,17 @@ class SEMainMenuViewController: SEViewController {
         }
         
         var actionsBlock = {
-            () -> () in
+            () -> Void in
             self.mainMenu.alpha = visible ? 1.0 : 0.0
             self.mainMenuTopMarginConstraint.constant = newMainMenuTopConstraintConstant
             self.view.layoutIfNeeded()
         }
         
         if animated {
-            UIView.animateWithDuration(visible ? 0.3 : 0.2, animations: actionsBlock, completion:completion)
+            UIView.animateWithDuration(visible ? 0.3 : 0.2, animations: actionsBlock, completion: completion)
         } else {
             actionsBlock()
-            if completion {
+            if completion != nil {
                 completion!(true)
             }
         }

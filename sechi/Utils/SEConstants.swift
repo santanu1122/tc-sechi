@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 TopCoder. All rights reserved.
 //
 
+import CoreLocation
+
 let SEUserDefaultsUserStatusKey = "SEUserDefaultsUserStatusKey"
 let SEPushMainMenuViewControllerSegue = "SEPushMainMenuViewControllerSegue"
 let SEPushJobAddViewControllerSegue = "SEPushJobAddViewControllerSegue"
@@ -33,7 +35,7 @@ let SEPaymentInfoTableViewCellIdentifier = "SEPaymentInfoTableViewCellIdentifier
 let SETextFieldTableViewCellIdentifier = "SETextFieldTableViewCellIdentifier"
 let SEJobPhotoCollectionViewCellIdentifier = "SEJobPhotoCollectionViewCellIdentifier"
 
-let HAS_4_INCH_SCREEN = UIScreen.mainScreen().bounds.size.height == 568
+var HAS_4_INCH_SCREEN = UIScreen.mainScreen().bounds.size.height == 568
 
 let TextFieldFont = UIFont(name: "Helvetica-Light", size: 16.0)
 let NavigationBarFont = UIFont(name: "Helvetica-Light", size: 22.0)
