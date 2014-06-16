@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 TopCoder. All rights reserved.
 //
 
-import UIKit
-
 /**
  *  View controller used for signing in a user.
  */

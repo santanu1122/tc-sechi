@@ -9,6 +9,7 @@
 /**
  *  View controller used for displaying application main menu.
  */
+@objc
 class SEMainMenuViewController: SEViewController {
 
     /**
@@ -100,8 +101,12 @@ class SEMainMenuViewController: SEViewController {
         
         self.selectStatusView.addGestureRecognizer(self.selectStatusGestureRecognizer)
         
-        var userStatusRaw: Int = NSUserDefaults.standardUserDefaults().objectForKey(SEUserDefaultsUserStatusKey) as Int
-        self.setActiveStatus(SEUserStatus.fromRaw(userStatusRaw)!)
+        var userStatusRaw: Int? = NSUserDefaults.standardUserDefaults().objectForKey(SEUserDefaultsUserStatusKey) as? Int
+        if userStatusRaw? {
+            self.setActiveStatus(SEUserStatus.fromRaw(userStatusRaw!)!)
+        } else {
+            self.setActiveStatus(SEUserStatus.fromRaw(0)!)
+        }
     }
 
     /**

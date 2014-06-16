@@ -31,7 +31,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y2K-ft-91b" userLabel="View - Sign in controls">
                                         <rect key="frame" x="0.0" y="220" width="320" height="152"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A84-Kc-N7M" customClass="SETextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A84-Kc-N7M" customClass="SETextField" customModule="sechi" customModuleProvider="target">
                                                 <rect key="frame" x="35" y="0.0" width="250" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="dLC-jw-0wh"/>
@@ -39,7 +39,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fpE-t0-nvP" customClass="SETextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fpE-t0-nvP" customClass="SETextField" customModule="sechi" customModuleProvider="target">
                                                 <rect key="frame" x="35" y="60" width="250" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -103,10 +103,10 @@
                         <outlet property="activityIndicator" destination="bUj-1L-bbs" id="UUV-5C-pfe"/>
                         <outlet property="activityIndicatorTopConstraint" destination="QhG-w4-4N6" id="zZo-2t-eIt"/>
                         <outlet property="logoImageTopMarginConstraint" destination="tPY-Sd-swB" id="YEn-Wf-mvw"/>
-                        <outlet property="passwordTextField" destination="fpE-t0-nvP" id="W5e-3N-jnH"/>
+                        <outlet property="passwordTextField" destination="fpE-t0-nvP" id="vFe-eM-MQG"/>
                         <outlet property="signInControlsGroup" destination="y2K-ft-91b" id="eIo-Pl-grm"/>
                         <outlet property="signInControlsGroupTopConstraint" destination="Xgk-OC-FlL" id="hAp-bm-VOF"/>
-                        <outlet property="usernameTextField" destination="A84-Kc-N7M" id="Cg0-9z-jUL"/>
+                        <outlet property="usernameTextField" destination="A84-Kc-N7M" id="P5g-tG-6aZ"/>
                         <segue destination="78W-PT-Okm" kind="custom" identifier="SEPushMainMenuViewControllerSegue" customClass="SEPushNoAnimationSegue" id="Spz-3k-t7i"/>
                     </connections>
                 </viewController>
@@ -499,7 +499,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEJobTableViewCellIdentifier" rowHeight="70" id="7TS-9f-kxG" customClass="SEJobTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEJobTableViewCellIdentifier" rowHeight="70" id="7TS-9f-kxG" customClass="SEJobTableViewCell" customModule="sechi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="162" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7TS-9f-kxG" id="iPu-cW-p3z">

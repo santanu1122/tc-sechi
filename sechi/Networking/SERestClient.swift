@@ -95,12 +95,7 @@ class SERestClient: NSObject {
     
         self.RKFailureBlock = {
             [unowned self] (operation, error) -> Void in
-            if error? && !(error!.domain == NSURLErrorDomain && error!.code == -1009) {
-                dispatch_async(dispatch_get_main_queue(), {
-                    () -> Void in
-                    self.showError()
-                })
-            }
+            
         }
     }
     

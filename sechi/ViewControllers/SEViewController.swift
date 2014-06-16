@@ -11,7 +11,8 @@ import UIKit
 /**
  *  Base view controller with methods shared for inheriting view controllers.
  */
-@objc class SEViewController : UIViewController {
+@objc(SEViewController)
+class SEViewController : UIViewController {
 
     /**
      *  Boolean indicating if keyboard is visible

@@ -9,6 +9,7 @@
 /**
  *  View controller used for displaying list of job objects. (Schedule list)
  */
+@objc
 class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UIAlertViewDelegate, SESwipeableTableViewCellDelegate,UIGestureRecognizerDelegate {
 
     /**
@@ -21,19 +22,23 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
      */
     var fetchedResultsController: NSFetchedResultsController {
         get {
+            if _fetchedResultsController? {
+                return _fetchedResultsController!
+            }
+
             var fetchRequest = NSFetchRequest()
             var entity = NSEntityDescription.entityForName("SEJob", inManagedObjectContext: self.managedObjectContext)
             fetchRequest.entity = entity
             fetchRequest.fetchBatchSize = 20
             var sortDescriptor = NSSortDescriptor(key: "createdDate", ascending: false)
-            var deletedPredicate = NSPredicate(format: "NOT (removed LIKE %@)", "true")
+            var deletedPredicate = NSPredicate(format: "NOT (removed LIKE %@)", argumentArray: ["true"])
             fetchRequest.sortDescriptors = [sortDescriptor]
             fetchRequest.predicate = deletedPredicate
             _fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
             _fetchedResultsController!.delegate = self
             
             var error: NSError? = nil
-            if !self.fetchedResultsController.performFetch(&error) {
+            if !_fetchedResultsController!.performFetch(&error) {
                 NSLog("Unresolved error %@, %@", error!, error!.userInfo)
                 abort()
             }
@@ -236,6 +241,7 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var sectionInfo = self.fetchedResultsController.sections[section] as NSFetchedResultsSectionInfo
+        println(sectionInfo.numberOfObjects)
         return sectionInfo.numberOfObjects
     }
 

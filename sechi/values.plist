@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>SyncInterval</key>
-	<integer>0</integer>
+	<integer>60</integer>
 	<key>APIUrl</key>
 	<string>http://my-heroku-sechi.herokuapp.com/</string>
 </dict>

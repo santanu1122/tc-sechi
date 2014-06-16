@@ -9,6 +9,7 @@
 /**
  *  Custom table view cell for schedule list view screen
  */
+@objc
 class SEJobTableViewCell: SESwipeableTableViewCell {
     
     @IBOutlet var clientNameLabel: UILabel

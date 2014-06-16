@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  sechi
 //
-//  Created by TopCoder on 2014-06-13.
+//  Created by Xiaoyang Du on 2014-06-15.
 //  Copyright (c) 2014 TopCoder. All rights reserved.
 //
 

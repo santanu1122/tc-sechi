@@ -6,8 +6,7 @@
 //  Copyright (c) 2014 TopCoder. All rights reserved.
 //
 
-import CoreData
-
+@objc(SEProduct)
 class SEProduct: NSManagedObject {
     
     /**

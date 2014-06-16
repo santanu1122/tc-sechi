@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E986BA1194EC28500D3CE20 /* values.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E986BA0194EC28500D3CE20 /* values.plist */; };
 		627950D9194E900700FDB24E /* SEAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627950D8194E900700FDB24E /* SEAppDelegate.swift */; };
 		627950DE194E900700FDB24E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 627950DC194E900700FDB24E /* Main.storyboard */; };
 		627950E0194E900700FDB24E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 627950DF194E900700FDB24E /* Images.xcassets */; };
@@ -139,6 +140,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E986BA0194EC28500D3CE20 /* values.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = values.plist; sourceTree = "<group>"; };
 		627950D3194E900700FDB24E /* sechi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sechi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		627950D7194E900700FDB24E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		627950D8194E900700FDB24E /* SEAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEAppDelegate.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				627950D8194E900700FDB24E /* SEAppDelegate.swift */,
 				627950DC194E900700FDB24E /* Main.storyboard */,
 				627950DF194E900700FDB24E /* Images.xcassets */,
+				0E986BA0194EC28500D3CE20 /* values.plist */,
 				627950D6194E900700FDB24E /* Supporting Files */,
 			);
 			path = sechi;
@@ -653,6 +656,7 @@
 				62E2324C194E93D10077244C /* line_parts@2x.png in Resources */,
 				62E23236194E93D10077244C /* bg@2x.png in Resources */,
 				62E23240194E93D10077244C /* button_directions@2x.png in Resources */,
+				0E986BA1194EC28500D3CE20 /* values.plist in Resources */,
 				62E23237194E93D10077244C /* bg_content@2x.png in Resources */,
 				62E23244194E93D10077244C /* cell_bg@2x.png in Resources */,
 				62E2324B194E93D10077244C /* line_dot@2x.psd in Resources */,

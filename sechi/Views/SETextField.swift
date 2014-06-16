@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 TopCoder. All rights reserved.
 //
 
+@objc
 class SETextField: UITextField {
 
     init(frame: CGRect) {
