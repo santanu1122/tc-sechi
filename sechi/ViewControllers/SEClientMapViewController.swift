@@ -64,7 +64,6 @@ class SEClientMapViewController: SEViewController, MKMapViewDelegate, UITextView
         updateMap()
     }
 
-    //#pragma mark - UITextViewDelegate
     /**
      *  Hide keyboard on return when text view is a first responder
      *
@@ -82,7 +81,6 @@ class SEClientMapViewController: SEViewController, MKMapViewDelegate, UITextView
         return true
     }
 
-    //#pragma mark - Actions
     /**
      *  Update map pin location when map button was pressed
      *
@@ -104,7 +102,6 @@ class SEClientMapViewController: SEViewController, MKMapViewDelegate, UITextView
         })
     }
 
-    //#pragma mark - Direction actions
     /**
      *  Creates MKDirections request and displays directions on map if response is successfull.
      */
@@ -164,7 +161,6 @@ class SEClientMapViewController: SEViewController, MKMapViewDelegate, UITextView
         }
     }
 
-    //#pragma mark - Map actions
     /**
      *  Update location of pin on map to show current address.
      */

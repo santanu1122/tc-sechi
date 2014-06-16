@@ -166,7 +166,6 @@ class SEJobClientInfoEditViewController: SEViewController, UITableViewDataSource
         }
     }
 
-    //#pragma mark - UITableViewDatasource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }

@@ -107,7 +107,6 @@ class SEClientAddressViewController: SEViewController, UITableViewDataSource, UI
         self.navigationController.popViewControllerAnimated(true)
     }
 
-    //#pragma mark - UITextViewDelegate
     /**
      *  Hide keyboard on return when text view is a first responder
      *
@@ -151,7 +150,6 @@ class SEClientAddressViewController: SEViewController, UITableViewDataSource, UI
         }
     }
 
-    //#pragma mark - UITableViewDatasource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }

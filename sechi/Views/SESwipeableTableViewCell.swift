@@ -109,12 +109,10 @@ class SESwipeableTableViewCell: UITableViewCell {
         self.topCellView.addGestureRecognizer(self.panGestureRecognizer)
     }
     
-    //#pragma mark - UIGestureRecognizerDelegate
     override func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
     
-    //#pragma mark - actions
     /**
      *  Move topCellView (content) depending on gesture direction and current position of the view.
      *  This method is fired by panGestureRecognizer attached to topCellView
@@ -214,7 +212,6 @@ class SESwipeableTableViewCell: UITableViewCell {
         }
     }
     
-    //#pragma mark - public tasks
     /**
      *  Move topCellView left (open)
      *
@@ -233,7 +230,6 @@ class SESwipeableTableViewCell: UITableViewCell {
         self.resetConstraintContstantsToZero(animated, notifyDelegateDidClose: false)
     }
     
-    //#pragma mark - tasks
     /**
      *  Performs constraint transformation needed to "close the cell" and hide bottomCellView
      *

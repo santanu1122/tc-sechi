@@ -23,7 +23,6 @@ class SEJobPhotosTableViewCell: SESwipeableTableViewCell, UICollectionViewDataSo
         self.collectionView.dataSource = self
     }
     
-    //#pragma mark - UICollectionViewDelegate
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }

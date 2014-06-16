@@ -81,7 +81,6 @@ class SEViewController : UIViewController {
         self.navigationController.popViewControllerAnimated(true)
     }
 
-    //#pragma mark - Keyboard notifications
     /**
      *  Adds self as a observer for keyboard notifications
      */

@@ -202,7 +202,6 @@ class SESignInViewController: SEViewController, UITextFieldDelegate {
         }
     }
 
-    //#pragma mark - UITextFieldDelegate
     /**
      *  Hide keyboard on text field return
      *

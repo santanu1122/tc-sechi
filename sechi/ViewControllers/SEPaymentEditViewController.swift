@@ -128,7 +128,6 @@ class SEPaymentEditViewController: SEViewController, UITableViewDataSource, UITa
         self.navigationController.popViewControllerAnimated(true)
     }
 
-    //#pragma mark - UITextViewDelegate
     /**
      *  Hide keyboard on return when text view is a first responder
      *
@@ -171,7 +170,6 @@ class SEPaymentEditViewController: SEViewController, UITableViewDataSource, UITa
         }
     }
 
-    //#pragma mark - UITableViewDatasource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }

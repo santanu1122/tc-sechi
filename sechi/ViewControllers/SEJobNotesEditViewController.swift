@@ -107,7 +107,6 @@ class SEJobNotesEditViewController: SEViewController, UITableViewDataSource, UIT
         self.navigationController.popViewControllerAnimated(true)
     }
 
-    //#pragma mark - UITextViewDelegate
     /**
      *  Hide keyboard on return when text view is a first responder
      *
@@ -150,7 +149,6 @@ class SEJobNotesEditViewController: SEViewController, UITableViewDataSource, UIT
         }
     }
 
-    //#pragma mark - UITableViewDatasource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
