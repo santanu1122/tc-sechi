@@ -37,7 +37,7 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
     /**
      *  Index path of cell that began process of removing (swipe, press delete button etc).
      */
-    var indexPathToRemove: NSIndexPath?
+    var indexPathToRemove: NSIndexPath!
 
     /**
      *  Gesture recognizer used to cancel the custom edit mode of the table view.
@@ -145,7 +145,7 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
     func cellDidOpen(cell: SESwipeableTableViewCell) {
         var newIndexPathToRemove = self.tableView.indexPathForCell(cell)
         
-        if self.indexPathToRemove != newIndexPathToRemove {
+        if self.indexPathToRemove? && self.indexPathToRemove != newIndexPathToRemove {
             var oldCell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as SESwipeableTableViewCell
             oldCell.closeCellAnimated(true)
         }

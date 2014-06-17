@@ -10,7 +10,7 @@
  *  View controller used for displaying list of job objects. (Schedule list)
  */
 @objc
-class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UIAlertViewDelegate, SESwipeableTableViewCellDelegate,UIGestureRecognizerDelegate {
+class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, SESwipeableTableViewCellDelegate,UIGestureRecognizerDelegate {
 
     /**
      *  Managed object context used by fetched results controller.
@@ -56,7 +56,7 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
     /**
      *  Index path of cell that began process of removing (swipe, press delete button etc).
      */
-    var indexPathToRemove: NSIndexPath?
+    var indexPathToRemove: NSIndexPath!
 
     /**
      *  Gesture recognizer used to cancel the custom edit mode of the table view.
@@ -114,9 +114,31 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
         if let cell = sender.superviewOfClass(UITableViewCell) as? UITableViewCell {
             self.indexPathToRemove = self.tableView.indexPathForCell(cell)
             
-            var alertView = UIAlertView(title: "Confirm", message: "Do you want to delete this job?", delegate: self, cancelButtonTitle: "NO")
-            alertView.addButtonWithTitle("YES")
-            alertView.show()
+            let alertController = UIAlertController(title: "Confirm", message: "Do you want to delete this job?", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "NO", style: .Cancel) {
+                localAction in
+                var cell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as SESwipeableTableViewCell
+                cell.closeCellAnimated(true)
+                self.tableView.scrollEnabled = true
+            })
+            let action = UIAlertAction(title: "YES", style: .Default) {
+                localAction in
+                var job = self.fetchedResultsController.objectAtIndexPath(self.indexPathToRemove) as SEJob
+                job.removed = "true"
+                var error: NSError? = nil
+                job.managedObjectContext.save(&error)
+                if error {
+                    NSLog("%@", error!)
+                } else {
+                    job.managedObjectContext.saveToPersistentStore(&error)
+                    if error {
+                        NSLog("%@", error!)
+                    }
+                }
+            }
+            alertController.addAction(action)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
 
@@ -131,13 +153,15 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
      */
     func viewWasPanned(panGestureRecognizer: UIPanGestureRecognizer) {
         if panGestureRecognizer.state == .Began {
-            var cell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as SESwipeableTableViewCell
-            var beginingTouchPoint = panGestureRecognizer.locationInView(cell)
-            var xContains = beginingTouchPoint.x > 0 && beginingTouchPoint.x < cell.frame.size.width
-            var yContains = beginingTouchPoint.y > 0 && beginingTouchPoint.y < cell.frame.size.height
-            if !(xContains && yContains) {
-                cell.closeCellAnimated(true)
-                self.tableView.scrollEnabled = true
+            if self.indexPathToRemove? {
+                var cell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as SESwipeableTableViewCell
+                var beginingTouchPoint = panGestureRecognizer.locationInView(cell)
+                var xContains = beginingTouchPoint.x > 0 && beginingTouchPoint.x < cell.frame.size.width
+                var yContains = beginingTouchPoint.y > 0 && beginingTouchPoint.y < cell.frame.size.height
+                if !(xContains && yContains) {
+                    cell.closeCellAnimated(true)
+                    self.tableView.scrollEnabled = true
+                }
             }
         }
     }
@@ -185,7 +209,7 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
     func cellDidOpen(cell: SESwipeableTableViewCell) {
         var newIndexPathToRemove = self.tableView.indexPathForCell(cell)
         
-        if self.indexPathToRemove != newIndexPathToRemove {
+        if self.indexPathToRemove? && self.indexPathToRemove != newIndexPathToRemove {
             var oldCell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as SESwipeableTableViewCell
             oldCell.closeCellAnimated(true)
         }
@@ -204,35 +228,6 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
     }
 
     /**
-     *  If user confirmed delete action, row is deleted. Otherwise delete button will be hidden
-     *
-     *  @param alertView
-     *  @param buttonIndex
-     */
-    func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
-        if buttonIndex != alertView.cancelButtonIndex {
-            var job = self.fetchedResultsController.objectAtIndexPath(self.indexPathToRemove) as SEJob
-            job.removed = "true"
-            var error: NSError? = nil
-            job.managedObjectContext.save(&error)
-            if error {
-                NSLog("%@", error!)
-            } else {
-                job.managedObjectContext.saveToPersistentStore(&error)
-                if error {
-                    NSLog("%@", error!)
-                }
-            }
-            
-            self.indexPathToRemove = nil
-        } else {
-            var cell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as SESwipeableTableViewCell
-            cell.closeCellAnimated(true)
-            self.tableView.scrollEnabled = true
-        }
-    }
-
-    /**
      *  Basic setup of UITableView with NSFetchedResultsViewController
      */
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -241,7 +236,6 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var sectionInfo = self.fetchedResultsController.sections[section] as NSFetchedResultsSectionInfo
-        println(sectionInfo.numberOfObjects)
         return sectionInfo.numberOfObjects
     }
 

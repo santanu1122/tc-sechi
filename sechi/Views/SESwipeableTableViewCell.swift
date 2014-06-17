@@ -42,7 +42,7 @@ class SESwipeableTableViewCell: UITableViewCell {
     /**
      *  Propert that enables or disables swipe gesture
      */
-    var swipeEnabled = true
+    var swipeEnabled: Bool!
     
     /**
      *  Width of the cell bottom view (ie. delete button), top view (content) will be moved left on swipe gesture for this value.
@@ -100,6 +100,7 @@ class SESwipeableTableViewCell: UITableViewCell {
      *  Setup cell apperance, pan gesture recognizer, and rewrite width of bottom view to rightBottomCellViewWidth property
      */
     func setupView() {
+        self.swipeEnabled = true
         self.accessoryType = .None
         self.selectionStyle = .None
         self.editingAccessoryType = .None
