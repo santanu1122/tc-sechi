@@ -10,7 +10,7 @@
  *  View controller used to display single job object.
  */
 @objc
-class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate, SESwipeableTableViewCellDelegate, UIGestureRecognizerDelegate {
+class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SESwipeableTableViewCellDelegate, UIGestureRecognizerDelegate {
 
     /**
      *  SEJob object to display.
@@ -261,7 +261,9 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
             UIApplication.sharedApplication().openURL(callUrl)
         }
         else {
-            UIAlertView(title: "Error", message: "This function is only available on the iPhone", delegate: nil, cancelButtonTitle: "OK").show()
+            let alertController = UIAlertController(title: "Error", message: "This function is only available on the iPhone", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
 
@@ -369,32 +371,24 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
         var b = UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)
         
         if a && b {
-            var alertView = UIAlertView(title: "Add Photo", message: "Select source:", delegate: self, cancelButtonTitle: nil)
-            alertView.addButtonWithTitle("Photo library")
-            alertView.addButtonWithTitle("Camera")
-            alertView.show()
+            let alertController = UIAlertController(title: "Add Photo", message: "Select source:", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Photo library", style: .Default) {
+                localAction in
+                self.startMediaBrowserFromViewController(self, photos: true, videos: false, usingDelegate: self)
+            })
+            alertController.addAction(UIAlertAction(title: "Camera", style: .Default) {
+                localAction in
+                self.startMediaBrowserFromViewController(self, photos: true, videos: false, usingDelegate: self)
+            })
+            self.presentViewController(alertController, animated: true, completion: nil)
         } else if a && !b {
             self.startCameraControllerFromViewController(self, withCameraCaptureMode: .Photo, usingDelegate: self)
         } else if !a && b {
             self.startMediaBrowserFromViewController(self, photos: true, videos: false, usingDelegate: self)
         } else {
-            UIAlertView(title: "Error", message: "No sources available", delegate: self, cancelButtonTitle: "OK").show()
-        }
-    }
-
-    /**
-     *  Pushes selected by user view controller (image picker or camera controller)
-     *
-     *  @param alertView   alert view with question
-     *  @param buttonIndex button index that was pressed
-     */
-    func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
-        if buttonIndex != alertView.cancelButtonIndex {
-            if buttonIndex == 0 {
-                self.startMediaBrowserFromViewController(self, photos: true, videos: false, usingDelegate: self)
-            } else if buttonIndex == 1 {
-                self.startCameraControllerFromViewController(self, withCameraCaptureMode: .Photo, usingDelegate: self)
-            }
+            let alertController = UIAlertController(title: "Error", message: "No sources available", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
 
@@ -428,7 +422,9 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
         
         // error if not movie/photo is not avaliable
         if mediaTypes.count < 1 {
-            UIAlertView(title: "Error occured", message: "Cannot get access to camera.", delegate: self, cancelButtonTitle: "OK").show();
+            let alertController = UIAlertController(title: "Error occured", message: "Cannot get access to camera.", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
             return false
         }
         
@@ -512,12 +508,16 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
                 SERestClient.instance.managedObjectContext.save(&error)
                                      
                 if error {
-                    UIAlertView(title: "Error", message: "Error occured while saving to database.", delegate: nil, cancelButtonTitle: "OK").show()
+                    let alertController = UIAlertController(title: "Error", message: "Error occured while saving to database.", preferredStyle: .Alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
                 } else {
                     SERestClient.instance.managedObjectContext.saveToPersistentStore(&error)
                                          
                     if error {
-                        UIAlertView(title: "Error", message: "Error occured while saving to database.", delegate: nil, cancelButtonTitle: "OK").show()
+                        let alertController = UIAlertController(title: "Error", message: "Error occured while saving to database.", preferredStyle: .Alert)
+                        alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+                        self.presentViewController(alertController, animated: true, completion: nil)
                     }
                 }
                 
