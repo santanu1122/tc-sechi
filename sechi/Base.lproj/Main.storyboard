@@ -2211,7 +2211,7 @@ Tampa, FL 33606</string>
         <!--Clients View Controller - CLIENTS-->
         <scene sceneID="HCp-zB-pVJ">
             <objects>
-                <viewController id="PMX-4B-Ucx" customClass="SEClientsViewController" sceneMemberID="viewController">
+                <viewController id="PMX-4B-Ucx" customClass="SEClientsViewController" customModule="sechi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zUM-pX-jzb"/>
                         <viewControllerLayoutGuide type="bottom" id="tV4-DV-59W"/>
@@ -2248,7 +2248,7 @@ Tampa, FL 33606</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEClientTableViewCellIdentifier" rowHeight="70" id="jRV-ft-Ttp" customClass="SEClientTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEClientTableViewCellIdentifier" rowHeight="70" id="jRV-ft-Ttp" customClass="SEClientTableViewCell" customModule="sechi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="162" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jRV-ft-Ttp" id="5RZ-xM-xBb">
@@ -2448,7 +2448,7 @@ Tampa, FL 33606</string>
         <!--Client View Controller - CLIENTS-->
         <scene sceneID="aI8-i1-tmv">
             <objects>
-                <viewController id="GOa-EO-azf" customClass="SEClientViewController" sceneMemberID="viewController">
+                <viewController id="GOa-EO-azf" customClass="SEClientViewController" customModule="sechi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hfd-Vx-ZE1"/>
                         <viewControllerLayoutGuide type="bottom" id="mmR-sz-6Si"/>
@@ -2478,7 +2478,7 @@ Tampa, FL 33606</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEClientInfoTableViewCellIdentifier" rowHeight="105" id="jCx-Xs-n0j" customClass="SEClientInfoTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEClientInfoTableViewCellIdentifier" rowHeight="105" id="jCx-Xs-n0j" customClass="SEClientInfoTableViewCell" customModule="sechi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="105"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jCx-Xs-n0j" id="qxy-4L-CYB">
@@ -2657,7 +2657,7 @@ Tampa, FL 33606</string>
                                             <segue destination="Wui-Nv-Kxa" kind="push" identifier="SEPushJobClientInfoEditViewControllerSegue" id="hUa-hz-yG8"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEClientAddressTableViewCellIdentifier" rowHeight="63" id="zaU-7G-noR" customClass="SEClientAddressTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEClientAddressTableViewCellIdentifier" rowHeight="63" id="zaU-7G-noR" customClass="SEClientAddressTableViewCell" customModule="sechi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="197" width="320" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zaU-7G-noR" id="fTd-Tc-rqZ">
@@ -2849,7 +2849,7 @@ Tampa, FL 33606</string>
         <!--Client Edit View Controller - CLIENTS-->
         <scene sceneID="Yj2-ah-a4x">
             <objects>
-                <viewController id="Wui-Nv-Kxa" customClass="SEClientEditViewController" sceneMemberID="viewController">
+                <viewController id="Wui-Nv-Kxa" customClass="SEClientEditViewController" customModule="sechi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kiq-l8-Q1c"/>
                         <viewControllerLayoutGuide type="bottom" id="WYv-YA-LOd"/>
@@ -2879,7 +2879,7 @@ Tampa, FL 33606</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SETextFieldTableViewCellIdentifier" rowHeight="63" id="iYu-FQ-edt" customClass="SETextFieldTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SETextFieldTableViewCellIdentifier" rowHeight="63" id="iYu-FQ-edt" customClass="SETextFieldTableViewCell" customModule="sechi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iYu-FQ-edt" id="R08-16-qp4">
@@ -2898,7 +2898,7 @@ Tampa, FL 33606</string>
                                                             <color key="textColor" red="0.13488331440000001" green="0.12285370380000001" blue="0.1257971823" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5kr-Mr-JPz" customClass="SETextView">
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5kr-Mr-JPz" customClass="SETextView" customModule="sechi" customModuleProvider="target">
                                                             <rect key="frame" x="105" y="4" width="185" height="55"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -3099,7 +3099,7 @@ Tampa, FL 33606</string>
         <!--Client Address View Controller - CLIENTS-->
         <scene sceneID="dGt-7j-1ve">
             <objects>
-                <viewController id="Sxy-Q6-a6W" customClass="SEClientAddressViewController" sceneMemberID="viewController">
+                <viewController id="Sxy-Q6-a6W" customClass="SEClientAddressViewController" customModule="sechi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eHP-TH-KwX"/>
                         <viewControllerLayoutGuide type="bottom" id="jeA-no-5ux"/>
@@ -3129,7 +3129,7 @@ Tampa, FL 33606</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SETextFieldTableViewCellIdentifier" rowHeight="63" id="Mon-z1-SX2" customClass="SETextFieldTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SETextFieldTableViewCellIdentifier" rowHeight="63" id="Mon-z1-SX2" customClass="SETextFieldTableViewCell" customModule="sechi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mon-z1-SX2" id="5yj-D5-gdE">
@@ -3148,7 +3148,7 @@ Tampa, FL 33606</string>
                                                             <color key="textColor" red="0.13488331440000001" green="0.12285370380000001" blue="0.1257971823" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thc-yO-c8u" customClass="SETextView">
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thc-yO-c8u" customClass="SETextView" customModule="sechi" customModuleProvider="target">
                                                             <rect key="frame" x="105" y="4" width="185" height="55"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -3224,7 +3224,7 @@ Tampa, FL 33606</string>
         <!--Client Map View Controller - CLIENTS-->
         <scene sceneID="k0u-rS-4EK">
             <objects>
-                <viewController id="nLS-mz-V0r" customClass="SEClientMapViewController" sceneMemberID="viewController">
+                <viewController id="nLS-mz-V0r" customClass="SEClientMapViewController" customModule="sechi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Lhc-AU-Wpt"/>
                         <viewControllerLayoutGuide type="bottom" id="fjL-La-HKn"/>
@@ -3249,7 +3249,7 @@ Tampa, FL 33606</string>
                                 <color key="textColor" red="0.13488331440000001" green="0.12285370380000001" blue="0.1257971823" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="420 West Kennedy Boulevard, Tampa, FL. 33606" translatesAutoresizingMaskIntoConstraints="NO" id="zUg-rH-kiU" customClass="SETextView">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="420 West Kennedy Boulevard, Tampa, FL. 33606" translatesAutoresizingMaskIntoConstraints="NO" id="zUg-rH-kiU" customClass="SETextView" customModule="sechi" customModuleProvider="target">
                                 <rect key="frame" x="91" y="76" width="209" height="67"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>

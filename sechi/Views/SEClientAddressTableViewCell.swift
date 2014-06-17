@@ -26,10 +26,10 @@ class SEClientAddressTableViewCell: SESwipeableTableViewCell {
     
         var infoLabelHeight: Float = 0.0
         if self.addressLabel.text? {
-            infoLabelHeight = self.addressLabel.text.bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.addressLabel.frame.size.width - self.addressLabel.font.pointSize, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context: nil).size.height
+            infoLabelHeight = self.addressLabel.text.bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.addressLabel.frame.size.width, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context: nil).size.height
         }
     
-        var singleLineInfoLabelHeight = "a".bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.addressLabel.frame.size.width - self.addressLabel.font.pointSize, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context: nil)
+        var singleLineInfoLabelHeight = "a".bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.addressLabel.frame.size.width, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context: nil)
     
         var calcHeight: Float = singleLineInfoLabelHeight.size.height + infoLabelHeight + 14 + 2
     

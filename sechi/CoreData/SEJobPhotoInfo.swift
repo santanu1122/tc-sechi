@@ -12,10 +12,10 @@ class SEJobPhotoInfo: NSManagedObject {
     /**
      *  Path of the file where it was saved on the device.
      */
-    @NSManaged var filePath: String
+    @NSManaged var filePath: String!
     
     /**
      *  SEJob object which is an owner of this photo.
      */
-    @NSManaged var job: SEJob
+    @NSManaged var job: SEJob!
 }

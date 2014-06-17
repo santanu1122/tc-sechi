@@ -9,6 +9,7 @@
 /**
  *  View controller used for displaying form for editing value of the client address.
  */
+@objc
 class SEClientAddressViewController: SEViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
 
     /**
@@ -84,9 +85,8 @@ class SEClientAddressViewController: SEViewController, UITableViewDataSource, UI
                 UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK").show()
                 return
             }
-            
-            self.client.setValue(cell.valueTextView.text, forKey: cell.key)
         }
+        self.client.companyAddressC = self.addressCell.valueTextView.text
         
         var error: NSError? = nil
         self.client.managedObjectContext.save(&error)
@@ -186,10 +186,7 @@ class SEClientAddressViewController: SEViewController, UITableViewDataSource, UI
     }
 
     override func getMainScrollView() -> UIScrollView? {
-        if self.tableView.superview is UIScrollView {
-            return self.tableView.superview as UIScrollView
-        }
-        return nil
+        return self.tableView
     }
 
 }

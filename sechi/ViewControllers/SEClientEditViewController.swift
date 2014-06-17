@@ -103,9 +103,11 @@ class SEClientEditViewController: SEViewController, UITableViewDataSource, UITab
                 UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK").show()
                 return
             }
-            
-            self.client.setValue(cell.valueTextView.text, forKey: cell.key)
         }
+        self.client.companyNameC = self.companyCell.valueTextView.text
+        self.client.name = self.contactCell.valueTextView.text
+        self.client.businessPhoneC = self.phoneCell.valueTextView.text
+        self.client.email = self.emailCell.valueTextView.text
         
         var error: NSError? = nil
         self.client.managedObjectContext.save(&error)
@@ -201,6 +203,10 @@ class SEClientEditViewController: SEViewController, UITableViewDataSource, UITab
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> Float {
         var cell = self.datasource[indexPath.row]
         return cell.height
+    }
+
+    override func getMainScrollView() -> UIScrollView? {
+        return self.tableView
     }
 
 }

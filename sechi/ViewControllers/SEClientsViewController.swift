@@ -9,6 +9,7 @@
 /**
  *  View controller used for displaying list of client objects.
  */
+@objc
 class SEClientsViewController: SEViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UIAlertViewDelegate, SESwipeableTableViewCellDelegate, UIGestureRecognizerDelegate {
 
     /**
@@ -24,7 +25,7 @@ class SEClientsViewController: SEViewController, UITableViewDelegate, UITableVie
     /**
      *  Index path of cell that began process of removing (swipe, press delete button etc).
      */
-    var indexPathToRemove: NSIndexPath?
+    var indexPathToRemove: NSIndexPath!
 
     /**
      *  Gesture recognizer used to cancel the custom edit mode of the table view.
@@ -121,13 +122,15 @@ class SEClientsViewController: SEViewController, UITableViewDelegate, UITableVie
      */
     func viewWasPanned(panGestureRecognizer: UIPanGestureRecognizer) {
         if panGestureRecognizer.state == .Began {
-            if let cell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as? SESwipeableTableViewCell {
-                var beginingTouchPoint = panGestureRecognizer.locationInView(cell)
-                var xContains = beginingTouchPoint.x > 0 && beginingTouchPoint.x < cell.frame.size.width
-                var yContains = beginingTouchPoint.y > 0 && beginingTouchPoint.y < cell.frame.size.height
-                if !(xContains && yContains) {
-                    cell.closeCellAnimated(true)
-                    self.tableView.scrollEnabled = true
+            if self.indexPathToRemove? {
+                if let cell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as? SESwipeableTableViewCell {
+                    var beginingTouchPoint = panGestureRecognizer.locationInView(cell)
+                    var xContains = beginingTouchPoint.x > 0 && beginingTouchPoint.x < cell.frame.size.width
+                    var yContains = beginingTouchPoint.y > 0 && beginingTouchPoint.y < cell.frame.size.height
+                    if !(xContains && yContains) {
+                        cell.closeCellAnimated(true)
+                        self.tableView.scrollEnabled = true
+                    }
                 }
             }
         }
@@ -336,4 +339,9 @@ class SEClientsViewController: SEViewController, UITableViewDelegate, UITableVie
             }
         }
     }
+
+    override func getMainScrollView() -> UIScrollView? {
+        return self.tableView
+    }
+
 }

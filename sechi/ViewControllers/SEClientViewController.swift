@@ -9,6 +9,7 @@
 /**
  *  View controller used for displaying single client view.
  */
+@objc
 class SEClientViewController: SEViewController, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, SESwipeableTableViewCellDelegate, UIGestureRecognizerDelegate {
 
     /**
@@ -84,13 +85,15 @@ class SEClientViewController: SEViewController, UITableViewDataSource, UITableVi
      */
     func viewWasPanned(panGestureRecognizer: UIPanGestureRecognizer) {
         if panGestureRecognizer.state == .Began {
-            if let cell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as? SESwipeableTableViewCell {
-                var beginingTouchPoint = panGestureRecognizer.locationInView(cell)
-                var xContains = beginingTouchPoint.x > 0 && beginingTouchPoint.x < cell.frame.size.width
-                var yContains = beginingTouchPoint.y > 0 && beginingTouchPoint.y < cell.frame.size.height
-                if !(xContains && yContains) {
-                    cell.closeCellAnimated(true)
-                    self.tableView.scrollEnabled = true
+            if self.indexPathToRemove? {
+                if let cell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as? SESwipeableTableViewCell {
+                    var beginingTouchPoint = panGestureRecognizer.locationInView(cell)
+                    var xContains = beginingTouchPoint.x > 0 && beginingTouchPoint.x < cell.frame.size.width
+                    var yContains = beginingTouchPoint.y > 0 && beginingTouchPoint.y < cell.frame.size.height
+                    if !(xContains && yContains) {
+                        cell.closeCellAnimated(true)
+                        self.tableView.scrollEnabled = true
+                    }
                 }
             }
         }
@@ -250,6 +253,10 @@ class SEClientViewController: SEViewController, UITableViewDataSource, UITableVi
         if segue.destinationViewController.respondsToSelector("setClient:") {
             segue.destinationViewController.setValue(self.client, forKey: "client")
         }
+    }
+
+    override func getMainScrollView() -> UIScrollView? {
+        return self.tableView
     }
 
 }

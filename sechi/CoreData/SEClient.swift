@@ -12,72 +12,72 @@ class SEClient: NSManagedObject {
     /*
      * Property for saving id field returned by API for Client object.
      */
-    @NSManaged var identifier: Int
+    @NSManaged var identifier: NSNumber!
     
     /*
      * Property for saving _c5_source field returned by API for Client object.
      */
-    @NSManaged var c5Source: String
+    @NSManaged var c5Source: String!
     
     /*
      * Property for saving name field returned by API for Client object.
      */
-    @NSManaged var name: String
+    @NSManaged var name: String!
     
     /*
      * Property for saving lastmodifieddate field returned by API for Client object.
      */
-    @NSManaged var lastModifiedDate: NSDate
+    @NSManaged var lastModifiedDate: NSDate!
     
     /*
      * Property for saving isdeleted field returned by API for Client object.
      */
-    @NSManaged var removed: String
+    @NSManaged var removed: String!
     
     /*
      * Property for saving sfid field returned by API for Client object.
      */
-    @NSManaged var sfid: String
+    @NSManaged var sfid: String!
 
     /*
      * Property for saving createddate field returned by API for Client object.
      */
-    @NSManaged var createdDate: NSDate
+    @NSManaged var createdDate: NSDate!
     
     /*
      * Property for saving firstname field returned by API for Client object.
      */
-    @NSManaged var firstname: NSDate
+    @NSManaged var firstname: NSDate!
     
     /*
      * Property for saving lastname field returned by API for Client object.
      */
-    @NSManaged var lastname: String
+    @NSManaged var lastname: String!
     
     /*
      * Property for saving email field returned by API for Client object.
      */
-    @NSManaged var email: String
+    @NSManaged var email: String!
     
     /*
      * Property for saving business_phone__c field returned by API for Client object.
      */
-    @NSManaged var businessPhoneC: String
+    @NSManaged var businessPhoneC: String!
     
     /*
      * Property for saving company_address__c field returned by API for Client object.
      */
-    @NSManaged var companyAddressC: String
+    @NSManaged var companyAddressC: String!
     
     /*
      * Property for saving phone field returned by API for Client object.
      */
-    @NSManaged var phone: String
+    @NSManaged var phone: String!
     
     /*
      * Property for saving company_name__c field returned by API for Client object.
      */
-    @NSManaged var companyNameC: String
+    @NSManaged var companyNameC: String!
 
     /**
      *  Dictionary of values needed for creating RKEntityMapping
