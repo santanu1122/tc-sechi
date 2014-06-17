@@ -188,7 +188,7 @@ class SEClientMapViewController: SEViewController, MKMapViewDelegate, UITextView
         geocoder.geocodeAddressDictionary(placeDictionary) {
             (placemarks, error) -> () in
             if placemarks.count > 0 {
-                var placemark = placemarks[0] as MKPlacemark
+                var placemark = placemarks[0] as CLPlacemark
                 var location = placemark.location
                 var coordinate = location.coordinate
                 self.clientAnnotation.setCoordinate(coordinate)
