@@ -9,6 +9,7 @@
 /**
  *  View controller used for displaying a gallery of photos
  */
+@objc
 class SEGalleryViewController: SEViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
     /**

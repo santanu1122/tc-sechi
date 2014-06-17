@@ -367,19 +367,19 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
      *  Method decides to show image picker, camera view controller or if both are available ask a user what do he want to do.
      */
     func selectPhoto() {
-        var a = UIImagePickerController.isSourceTypeAvailable(.Camera)
-        var b = UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)
+        let a = UIImagePickerController.isSourceTypeAvailable(.Camera)
+        let b = UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)
         
         if a && b {
-            let alertController = UIAlertController(title: "Add Photo", message: "Select source:", preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: "Photo library", style: .Default) {
+            let alertController = UIAlertController(title: "Add Photo", message: "Select source:", preferredStyle: .ActionSheet)
+            let libraryAction = UIAlertAction(title: "Photo library", style: .Default, handler: {
                 localAction in
-                self.startMediaBrowserFromViewController(self, photos: true, videos: false, usingDelegate: self)
             })
-            alertController.addAction(UIAlertAction(title: "Camera", style: .Default) {
+            alertController.addAction(libraryAction)
+            let cameraAction = UIAlertAction(title: "Camera", style: .Default) {
                 localAction in
-                self.startMediaBrowserFromViewController(self, photos: true, videos: false, usingDelegate: self)
-            })
+            }
+            alertController.addAction(cameraAction)
             self.presentViewController(alertController, animated: true, completion: nil)
         } else if a && !b {
             self.startCameraControllerFromViewController(self, withCameraCaptureMode: .Photo, usingDelegate: self)

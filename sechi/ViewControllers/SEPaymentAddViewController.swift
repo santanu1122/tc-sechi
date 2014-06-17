@@ -9,6 +9,7 @@
 /**
  *  View controller used for displaying form to add a new payment
  */
+@objc
 class SEPaymentAddViewController: SEViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
 
     /**

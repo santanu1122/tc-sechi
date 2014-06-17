@@ -12,77 +12,77 @@ class SEPayment: NSManagedObject {
     /**
      * Property for saving id field returned from API for Payment object.
      */
-    @NSManaged var identifier: Int
+    @NSManaged var identifier: NSNumber!
     
     /**
      * Property for saving _c5_source field returned from API for Payment object.
      */
-    @NSManaged var c5Source: String
+    @NSManaged var c5Source: String!
     
     /**
      * Property for saving isdeleted field returned from API for Payment object.
      */
-    @NSManaged var removed: String
+    @NSManaged var removed: String!
     
     /**
      * Property for saving sfid field returned from API for Payment object.
      */
-    @NSManaged var sfid: String
+    @NSManaged var sfid: String!
     
     /**
      * Property for saving lastmodifieddate field returned from API for Payment object.
      */
-    @NSManaged var lastModifiedDate: NSDate
+    @NSManaged var lastModifiedDate: NSDate!
     
     /**
      * Property for saving createddate field returned from API for Payment object.
      */
-    @NSManaged var createdDate: NSDate
+    @NSManaged var createdDate: NSDate!
     
     /**
      * Property for saving name field returned from API for Payment object.
      */
-    @NSManaged var name: String
+    @NSManaged var name: String!
     
     /**
      * Property for saving svc_job__c field returned from API for Payment object.
      */
-    @NSManaged var svcJobC: String
+    @NSManaged var svcJobC: String!
     
     /**
      * Property for saving payment_notes__c field returned from API for Payment object.
      */
-    @NSManaged var paymentNotesC: String
+    @NSManaged var paymentNotesC: String!
     
     /**
      * Property for saving status__c field returned from API for Payment object.
      */
-    @NSManaged var statusC: String
+    @NSManaged var statusC: String!
     
     /**
      * Property for saving client_name__c field returned from API for Payment object.
      */
-    @NSManaged var clientNameC: String
+    @NSManaged var clientNameC: String!
     
     /**
      * Property for saving client_account__c field returned from API for Payment object.
      */
-    @NSManaged var clientAccountC: String
+    @NSManaged var clientAccountC: String!
     
     /**
      * Property for saving job_name__c field returned from API for Payment object.
      */
-    @NSManaged var jobNameC: String
+    @NSManaged var jobNameC: String!
     
     /**
      * Property for saving payment_date__c field returned from API for Payment object.
      */
-    @NSManaged var paymentDateC: NSDate
+    @NSManaged var paymentDateC: NSDate!
     
     /**
      * Property for saving payment_amount__c field returned from API for Payment object.
      */
-    @NSManaged var paymentAmountC: Int
+    @NSManaged var paymentAmountC: NSNumber!
 
     /**
      *  Dictionary of values needed for creating RKEntityMapping

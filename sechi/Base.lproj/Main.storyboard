@@ -2800,7 +2800,7 @@ Tampa, FL 33606</string>
         <!--Products Scanner View Controller-->
         <scene sceneID="duy-Sz-TrL">
             <objects>
-                <viewController id="pS2-A4-gdt" customClass="SEProductsScannerViewController" sceneMemberID="viewController">
+                <viewController id="pS2-A4-gdt" customClass="SEProductsScannerViewController" customModule="sechi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="13w-bM-Waw"/>
                         <viewControllerLayoutGuide type="bottom" id="2kP-8K-hGq"/>
@@ -3337,7 +3337,7 @@ Tampa, FL 33606</string>
         <!--Parts View Controller - PARTS-->
         <scene sceneID="Bu8-Mf-2lJ">
             <objects>
-                <viewController id="pP4-RN-ivL" customClass="SEPartsViewController" sceneMemberID="viewController">
+                <viewController id="pP4-RN-ivL" customClass="SEPartsViewController" customModule="sechi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3zB-0n-65v"/>
                         <viewControllerLayoutGuide type="bottom" id="1sC-G3-ELC"/>
@@ -3364,7 +3364,7 @@ Tampa, FL 33606</string>
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEProductTableViewCellIdentifier" rowHeight="64" id="2kp-CF-ub5" customClass="SEProductTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEProductTableViewCellIdentifier" rowHeight="64" id="2kp-CF-ub5" customClass="SEProductTableViewCell" customModule="sechi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="66" width="320" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2kp-CF-ub5" id="Xfz-Hn-Voc">
@@ -3501,7 +3501,7 @@ Tampa, FL 33606</string>
         <!--Payments View Controller - PAYMENTS-->
         <scene sceneID="Vfo-H5-WOx">
             <objects>
-                <viewController id="l00-l6-MiU" customClass="SEPaymentsViewController" sceneMemberID="viewController">
+                <viewController id="l00-l6-MiU" customClass="SEPaymentsViewController" customModule="sechi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Taf-UP-P6Q"/>
                         <viewControllerLayoutGuide type="bottom" id="BAw-wJ-Au5"/>
@@ -3530,7 +3530,7 @@ Tampa, FL 33606</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEPaymentTableViewCellIdentifier" rowHeight="75" id="9cP-nv-hvc" customClass="SEPaymentTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEPaymentTableViewCellIdentifier" rowHeight="75" id="9cP-nv-hvc" customClass="SEPaymentTableViewCell" customModule="sechi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9cP-nv-hvc" id="AN5-fy-PPU">
@@ -3712,7 +3712,7 @@ Tampa, FL 33606</string>
         <!--Payment View Controller - PAYMENTS-->
         <scene sceneID="aca-2n-d7U">
             <objects>
-                <viewController id="oXn-Uz-DlQ" customClass="SEPaymentViewController" sceneMemberID="viewController">
+                <viewController id="oXn-Uz-DlQ" customClass="SEPaymentViewController" customModule="sechi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KhS-c2-aqD"/>
                         <viewControllerLayoutGuide type="bottom" id="yPx-4B-bT1"/>
@@ -3742,7 +3742,7 @@ Tampa, FL 33606</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEPaymentInfoTableViewCellIdentifier" rowHeight="190" id="16o-h8-bqO" customClass="SEPaymentInfoTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEPaymentInfoTableViewCellIdentifier" rowHeight="190" id="16o-h8-bqO" customClass="SEPaymentInfoTableViewCell" customModule="sechi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="190"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="16o-h8-bqO" id="7iC-gk-bth">
@@ -3987,7 +3987,7 @@ Tampa, FL 33606</string>
         <!--Payment Edit View Controller - PAYMENTS-->
         <scene sceneID="bHW-A6-IUE">
             <objects>
-                <viewController id="1SJ-Hy-VFm" customClass="SEPaymentEditViewController" sceneMemberID="viewController">
+                <viewController id="1SJ-Hy-VFm" customClass="SEPaymentEditViewController" customModule="sechi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2dr-Iu-W5z"/>
                         <viewControllerLayoutGuide type="bottom" id="NuM-uj-P7r"/>
@@ -4017,7 +4017,7 @@ Tampa, FL 33606</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SETextFieldTableViewCellIdentifier" rowHeight="63" id="wmc-ne-74q" customClass="SETextFieldTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SETextFieldTableViewCellIdentifier" rowHeight="63" id="wmc-ne-74q" customClass="SETextFieldTableViewCell" customModule="sechi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wmc-ne-74q" id="gur-Rl-44c">
@@ -4036,7 +4036,7 @@ Tampa, FL 33606</string>
                                                             <color key="textColor" red="0.13488331440000001" green="0.12285370380000001" blue="0.1257971823" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vZn-C4-RbP" customClass="SETextView">
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vZn-C4-RbP" customClass="SETextView" customModule="sechi" customModuleProvider="target">
                                                             <rect key="frame" x="98" y="4" width="192" height="55"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>

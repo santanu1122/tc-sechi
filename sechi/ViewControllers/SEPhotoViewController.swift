@@ -11,6 +11,7 @@ import AVFoundation
 /**
  *  View controller used for displaying single photo in gallery's UIPageViewcontroller
  */
+@objc
 class SEPhotoViewController: SEViewController, UIScrollViewDelegate {
 
     /**

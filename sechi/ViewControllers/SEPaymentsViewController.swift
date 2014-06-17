@@ -9,7 +9,8 @@
 /**
  *  View controller used for displaying list of payment objects.
  */
-class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UIAlertViewDelegate, SESwipeableTableViewCellDelegate, UIGestureRecognizerDelegate {
+@objc
+class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, SESwipeableTableViewCellDelegate, UIGestureRecognizerDelegate {
 
     /**
      *  Managed object context used by fetched results controller.
@@ -82,9 +83,32 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
         if let cell = sender.superviewOfClass(UITableViewCell) as? UITableViewCell {
             self.indexPathToRemove = self.tableView.indexPathForCell(cell)
             
-            var alertView = UIAlertView(title: "Confirm", message: "Do you want to delete this client?", delegate: self, cancelButtonTitle: "NO")
-            alertView.addButtonWithTitle("YES")
-            alertView.show()
+            let alertController = UIAlertController(title: "Confirm", message: "Do you want to delete this payment?", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "NO", style: .Cancel) {
+                localAction in
+                var cell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as SESwipeableTableViewCell
+                cell.closeCellAnimated(true)
+                self.tableView.scrollEnabled = true
+            })
+            let action = UIAlertAction(title: "YES", style: .Default) {
+                localAction in
+                var job = self.fetchedResultsController.objectAtIndexPath(self.indexPathToRemove) as SEJob
+                job.removed = "true"
+                var error: NSError? = nil
+                job.managedObjectContext.save(&error)
+                if error {
+                    NSLog("%@", error!)
+                } else {
+                    job.managedObjectContext.saveToPersistentStore(&error)
+                    if error {
+                        NSLog("%@", error!)
+                    }
+                }
+                self.indexPathToRemove = nil
+            }
+            alertController.addAction(action)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
 
@@ -99,13 +123,15 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
      */
     func viewWasPanned(panGestureRecognizer: UIPanGestureRecognizer) {
         if panGestureRecognizer.state == .Began {
-            var cell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as SESwipeableTableViewCell
-            var beginingTouchPoint = panGestureRecognizer.locationInView(cell)
-            var xContains = beginingTouchPoint.x > 0 && beginingTouchPoint.x < cell.frame.size.width
-            var yContains = beginingTouchPoint.y > 0 && beginingTouchPoint.y < cell.frame.size.height
-            if !(xContains && yContains) {
-                cell.closeCellAnimated(true)
-                self.tableView.scrollEnabled = true
+            if self.indexPathToRemove? {
+                var cell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as SESwipeableTableViewCell
+                var beginingTouchPoint = panGestureRecognizer.locationInView(cell)
+                var xContains = beginingTouchPoint.x > 0 && beginingTouchPoint.x < cell.frame.size.width
+                var yContains = beginingTouchPoint.y > 0 && beginingTouchPoint.y < cell.frame.size.height
+                if !(xContains && yContains) {
+                    cell.closeCellAnimated(true)
+                    self.tableView.scrollEnabled = true
+                }
             }
         }
     }
@@ -153,7 +179,7 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
     func cellDidOpen(cell: SESwipeableTableViewCell) {
         var newIndexPathToRemove = self.tableView.indexPathForCell(cell)
         
-        if self.indexPathToRemove && self.indexPathToRemove! != newIndexPathToRemove {
+        if self.indexPathToRemove? && self.indexPathToRemove! != newIndexPathToRemove {
             var oldCell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as SESwipeableTableViewCell
             oldCell.closeCellAnimated(true)
         }
@@ -169,34 +195,6 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
      */
     func cellDidClose(cell: SESwipeableTableViewCell) {
         self.tableView.scrollEnabled = true
-    }
-
-    /**
-     *  Remove object from database or close opened cell if user confirmed or denied deleting of object in alert view.
-     *
-     *  @param alertView
-     *  @param buttonIndex
-     */
-    func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
-        if buttonIndex != alertView.cancelButtonIndex {
-            var payment = self.fetchedResultsController.objectAtIndexPath(self.indexPathToRemove) as SEPayment
-            payment.removed = "true"
-            var error: NSError? = nil
-            payment.managedObjectContext.save(&error)
-            if error {
-                NSLog("%@", error!)
-            } else {
-                payment.managedObjectContext.saveToPersistentStore(&error)
-                if error {
-                    NSLog("%@", error!)
-                }
-            }
-            self.indexPathToRemove = nil
-        } else {
-            var cell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as SESwipeableTableViewCell
-            cell.closeCellAnimated(true)
-            self.tableView.scrollEnabled = true
-        }
     }
 
     /**
@@ -237,7 +235,7 @@ class SEPaymentsViewController: SEViewController, UITableViewDelegate, UITableVi
             fetchRequest.entity = entity
             fetchRequest.fetchBatchSize = 20
             var sortDescriptor = NSSortDescriptor(key: "createdDate", ascending: false)
-            var deletedPredicate = NSPredicate(format: "NOT (removed LIKE %@)", "true")
+            var deletedPredicate = NSPredicate(format: "NOT (removed LIKE %@)", argumentArray: ["true"])
             fetchRequest.sortDescriptors = [sortDescriptor]
             fetchRequest.predicate = deletedPredicate
             _fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)

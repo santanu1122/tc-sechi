@@ -12,57 +12,57 @@ class SEProduct: NSManagedObject {
     /**
      * Property for saving id field returned by API for Product object.
      */
-    @NSManaged var identifier: Int
+    @NSManaged var identifier: NSNumber!
     
     /**
      * Property for saving _c5_source field returned by API for Product object.
      */
-    @NSManaged var c5Source: String
+    @NSManaged var c5Source: String!
     
     /**
      * Property for saving isdeleted field returned by API for Product object.
      */
-    @NSManaged var removed: String
+    @NSManaged var removed: String!
     
     /**
      * Property for saving sfid field returned by API for Product object.
      */
-    @NSManaged var sfid: String
+    @NSManaged var sfid: String!
     
     /**
      * Property for saving lastmodifieddate field returned by API for Product object.
      */
-    @NSManaged var lastModifiedDate: NSDate
+    @NSManaged var lastModifiedDate: NSDate!
     
     /**
      * Property for saving createddate field returned by API for Product object.
      */
-    @NSManaged var createdDate: NSDate
+    @NSManaged var createdDate: NSDate!
     
     /**
      * Property for saving name field returned by API for Product object.
      */
-    @NSManaged var name: String
+    @NSManaged var name: String!
     
     /**
      * Property for saving isactive field returned by API for Product object.
      */
-    @NSManaged var active: String
+    @NSManaged var active: String!
     
     /**
      * Property for saving desc field returned by API for Product object.
      */
-    @NSManaged var desc: String
+    @NSManaged var desc: String!
     
     /**
      * Property for saving family field returned by API for Product object.
      */
-    @NSManaged var family: String
+    @NSManaged var family: String!
     
     /**
      * Property for saving productcode field returned by API for Product object.
      */
-    @NSManaged var productcode: String
+    @NSManaged var productcode: String!
 
     /**
      *  Dictionary of values needed for creating RKEntityMapping

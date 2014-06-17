@@ -119,11 +119,15 @@ class SEJobMapViewController: SEViewController, MKMapViewDelegate, UITextViewDel
             (response, error) -> Void in
             if error {
                 if let errorMessage = messageForCLError(error)? {
-                    UIAlertView(title: "Error", message: "Error occured: " + errorMessage, delegate: nil, cancelButtonTitle: "OK").show()
+                    let alertController = UIAlertController(title: "Error", message: "Error occured: " + errorMessage, preferredStyle: .Alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
                 } else {
                     NSLog("WARNING: Error message for error %@ not found in CL errors list.", error)
                     var errorMessage = "Error occured: " + error.localizedDescription
-                    UIAlertView(title: "Error", message: errorMessage, delegate: nil, cancelButtonTitle: "OK").show()
+                    let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .Alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
                 }
             } else {
                 self.showDirections(response)
@@ -203,7 +207,9 @@ class SEJobMapViewController: SEViewController, MKMapViewDelegate, UITextViewDel
                     NSLog("WARNING: Error message for error %@ not found in CL errors list.", error!)
                     errorMessage = "Error occured: " + error.localizedDescription
                 }
-                UIAlertView(title: "Error", message: errorMessage, delegate: nil, cancelButtonTitle: "OK").show()
+                let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .Alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
             }
         }
     }

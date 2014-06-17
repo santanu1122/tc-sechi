@@ -9,7 +9,8 @@
 /**
  *  View controller used for displaying single payment view.
  */
-class SEPaymentViewController: SEViewController, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate {
+@objc
+class SEPaymentViewController: SEViewController, UITableViewDataSource, UITableViewDelegate {
 
     var payment: SEPayment!
 
@@ -135,7 +136,11 @@ class SEPaymentViewController: SEViewController, UITableViewDataSource, UITableV
                 self.tempPaymentInfoCell.clientLabel.text = self.payment.clientNameC
                 self.tempPaymentInfoCell.jobLabel.text = self.payment.jobNameC
                 self.tempPaymentInfoCell.dateLabel.text = df.stringFromDate(self.payment.paymentDateC)
-                self.tempPaymentInfoCell.notesLabel.text = self.payment.paymentNotesC
+                if self.payment.paymentNotesC? {
+                    self.tempPaymentInfoCell.notesLabel.text = self.payment.paymentNotesC
+                } else {
+                    self.tempPaymentInfoCell.notesLabel.text = ""
+                }
                 return self.tempPaymentInfoCell.cellHeightNeeded()
             default:
                 return 44.0

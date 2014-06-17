@@ -9,7 +9,8 @@
 /**
  *  View controller used for displaying form that's used for editing payment object.
  */
-class SEPaymentEditViewController: SEViewController, UITableViewDataSource, UITableViewDelegate,UITextViewDelegate {
+@objc
+class SEPaymentEditViewController: SEViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
 
     /**
      *  Pointer for object that will be edited.
@@ -96,18 +97,20 @@ class SEPaymentEditViewController: SEViewController, UITableViewDataSource, UITa
      */
     func saveAndReturn() {
         for cell in self.datasource {
-            if cell.changesWereMade && !cell.valueTextView?.text || cell.valueTextView?.text == "" {
+            if cell.changesWereMade && cell.valueTextView?.text == "" {
                 var fieldName = cell.label!.stringByReplacingOccurrencesOfString(":", withString: "")
-                UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK").show()
+                let alertController = UIAlertController(title: "Validation error", message: "\(fieldName) field cannot be empty", preferredStyle: .Alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
                 return
             }
-            
-            if cell.key == "paymentAmountC" {
-                self.payment.setValue(cell.valueTextView.text.toInt(), forKey: cell.key)
-            } else {
-                self.payment.setValue(cell.valueTextView.text, forKey: cell.key)
-            }
         }
+        self.payment.clientNameC = self.clientCell.valueTextView.text
+        self.payment.jobNameC = self.jobCell.valueTextView.text
+        self.payment.paymentNotesC = self.noteCell.valueTextView.text
+        var nf = NSNumberFormatter()
+        nf.numberStyle = .DecimalStyle
+        self.payment.paymentAmountC = nf.numberFromString(self.amountCell.valueTextView.text)
         
         var error: NSError? = nil
         self.payment.managedObjectContext.save(&error)
@@ -122,7 +125,9 @@ class SEPaymentEditViewController: SEViewController, UITableViewDataSource, UITa
         }
         
         if error {
-            UIAlertView(title: "Error", message: "Error occured while saving data: " + error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
+            let alertController = UIAlertController(title: "Error", message: "Error occured while saving data: " + error!.localizedDescription, preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
         
         self.navigationController.popViewControllerAnimated(true)

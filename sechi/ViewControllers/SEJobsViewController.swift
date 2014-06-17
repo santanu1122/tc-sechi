@@ -135,6 +135,7 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
                         NSLog("%@", error!)
                     }
                 }
+                self.indexPathToRemove = nil
             }
             alertController.addAction(action)
             

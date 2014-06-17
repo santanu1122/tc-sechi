@@ -10,7 +10,7 @@
  *  View controller used for displaying list of client objects.
  */
 @objc
-class SEClientsViewController: SEViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UIAlertViewDelegate, SESwipeableTableViewCellDelegate, UIGestureRecognizerDelegate {
+class SEClientsViewController: SEViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, SESwipeableTableViewCellDelegate, UIGestureRecognizerDelegate {
 
     /**
      *  Managed object context used by fetched results controller.
@@ -25,7 +25,7 @@ class SEClientsViewController: SEViewController, UITableViewDelegate, UITableVie
     /**
      *  Index path of cell that began process of removing (swipe, press delete button etc).
      */
-    var indexPathToRemove: NSIndexPath!
+    var indexPathToRemove: NSIndexPath?
 
     /**
      *  Gesture recognizer used to cancel the custom edit mode of the table view.
@@ -83,9 +83,33 @@ class SEClientsViewController: SEViewController, UITableViewDelegate, UITableVie
         if let cell = sender.superviewOfClass(UITableViewCell) as? UITableViewCell {
             self.indexPathToRemove = self.tableView.indexPathForCell(cell)
             
-            var alertView = UIAlertView(title: "Confirm", message: "Do you want to delete this client?", delegate: self, cancelButtonTitle: "NO")
-            alertView.addButtonWithTitle("YES")
-            alertView.show()
+            let alertController = UIAlertController(title: "Confirm", message: "Do you want to delete this client?", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "NO", style: .Cancel) {
+                localAction in
+                var cell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as SESwipeableTableViewCell
+                cell.closeCellAnimated(true)
+                self.tableView.scrollEnabled = true
+            })
+            let action = UIAlertAction(title: "YES", style: .Default) {
+                localAction in
+                var client = self.fetchedResultsController.objectAtIndexPath(self.indexPathToRemove) as SEClient
+                client.removed = "true"
+                var error: NSError? = nil
+                client.managedObjectContext.save(&error)
+                if error {
+                    NSLog("%@", error!)
+                } else {
+                    client.managedObjectContext.saveToPersistentStore(&error)
+                    if error {
+                        NSLog("%@", error!)
+                    }
+                }
+                
+                self.indexPathToRemove = nil
+            }
+            alertController.addAction(action)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
 
@@ -106,7 +130,9 @@ class SEClientsViewController: SEViewController, UITableViewDelegate, UITableVie
             if UIApplication.sharedApplication().canOpenURL(callUrl) {
                 UIApplication.sharedApplication().openURL(callUrl)
             } else {
-                UIAlertView(title: "Error", message: "This function is only available on the iPhone", delegate: nil, cancelButtonTitle: "OK").show()
+                let alertController = UIAlertController(title: "Error", message: "This function is only available on the iPhone", preferredStyle: .Alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
             }
         }
     }
@@ -180,7 +206,7 @@ class SEClientsViewController: SEViewController, UITableViewDelegate, UITableVie
      */
     func cellDidOpen(cell: SESwipeableTableViewCell) {
         if let newIndexPathToRemove = self.tableView.indexPathForCell(cell) {
-            if self.indexPathToRemove == newIndexPathToRemove {
+            if self.indexPathToRemove? && self.indexPathToRemove == newIndexPathToRemove {
                 if let oldCell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as? SESwipeableTableViewCell {
                     oldCell.closeCellAnimated(true)
                 }
@@ -197,35 +223,6 @@ class SEClientsViewController: SEViewController, UITableViewDelegate, UITableVie
      */
     func cellDidClose(cell: SESwipeableTableViewCell) {
         self.tableView.scrollEnabled = true
-    }
-
-    /**
-     *  Remove object from database or close opened cell if user confirmed or denied deleting of object in alert view.
-     *
-     *  @param alertView
-     *  @param buttonIndex
-     */
-    func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
-        if buttonIndex != alertView.cancelButtonIndex {
-            var client = self.fetchedResultsController.objectAtIndexPath(self.indexPathToRemove) as SEClient
-            client.removed = "true"
-            var error: NSError? = nil
-            client.managedObjectContext.save(&error)
-            if error {
-                NSLog("%@", error!)
-            } else {
-                client.managedObjectContext.saveToPersistentStore(&error)
-                if error {
-                    NSLog("%@", error!)
-                }
-            }
-            
-            self.indexPathToRemove = nil
-        } else {
-            var cell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as SESwipeableTableViewCell
-            cell.closeCellAnimated(true)
-            self.tableView.scrollEnabled = true
-        }
     }
 
     /**
@@ -261,7 +258,7 @@ class SEClientsViewController: SEViewController, UITableViewDelegate, UITableVie
             fetchRequest.entity = entity
             fetchRequest.fetchBatchSize = 20
             var sortDescriptor = NSSortDescriptor(key: "createdDate", ascending: false)
-            var deletedPredicate = NSPredicate(format: "NOT (removed LIKE %@)", "true")
+            var deletedPredicate = NSPredicate(format: "NOT (removed LIKE %@)", argumentArray: ["true"])
             fetchRequest.sortDescriptors = [sortDescriptor]
             fetchRequest.predicate = deletedPredicate
             _fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
@@ -294,6 +291,27 @@ class SEClientsViewController: SEViewController, UITableViewDelegate, UITableVie
                 self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
             case NSFetchedResultsChangeDelete:
                 self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+            default:
+                break
+        }
+    }
+
+    /**
+     *  Change content of table view when fetched results controller is making changes to the datasource.
+     */
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {
+        var tableView = self.tableView;
+        
+        switch type {
+            case NSFetchedResultsChangeInsert:
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            case NSFetchedResultsChangeDelete:
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            case NSFetchedResultsChangeUpdate:
+                self.configureCell(tableView.cellForRowAtIndexPath(indexPath), atIndexPath: indexPath)
+            case NSFetchedResultsChangeMove:
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
             default:
                 break
         }

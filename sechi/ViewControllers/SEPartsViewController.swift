@@ -9,7 +9,8 @@
 /**
  *  View controller used for displaying list of part objects (products).
  */
-class SEPartsViewController: SEViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UIAlertViewDelegate, UISearchBarDelegate, SEProductsScannerViewControllerDelegate {
+@objc
+class SEPartsViewController: SEViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UISearchBarDelegate, SEProductsScannerViewControllerDelegate {
 
     /**
      *  Managed object context used by fetched results controller.
@@ -24,7 +25,7 @@ class SEPartsViewController: SEViewController, UITableViewDelegate, UITableViewD
     /**
      *  Index path of cell that began process of removing (swipe, press delete button etc).
      */
-    var indexPathToRemove: NSIndexPath?
+    var indexPathToRemove: NSIndexPath!
 
     /**
      *  Gesture recognizer used to cancel the custom edit mode of the table view.

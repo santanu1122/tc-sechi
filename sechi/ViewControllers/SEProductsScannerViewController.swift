@@ -33,6 +33,7 @@ import AVFoundation
 /**
  *  View controller used for displaying a code scanner used in SEProductsListViewController
  */
+@objc
 class SEProductsScannerViewController: SEViewController, AVCaptureMetadataOutputObjectsDelegate {
 
     /**

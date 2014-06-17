@@ -10,7 +10,7 @@
  *  View controller used for displaying single client view.
  */
 @objc
-class SEClientViewController: SEViewController, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, SESwipeableTableViewCellDelegate, UIGestureRecognizerDelegate {
+class SEClientViewController: SEViewController, UITableViewDataSource, UITableViewDelegate, SESwipeableTableViewCellDelegate, UIGestureRecognizerDelegate {
 
     /**
      *  SEClient object that will be displayed.
@@ -219,7 +219,9 @@ class SEClientViewController: SEViewController, UITableViewDataSource, UITableVi
         if UIApplication.sharedApplication().canOpenURL(callUrl) {
             UIApplication.sharedApplication().openURL(callUrl)
         } else {
-            UIAlertView(title: "Error", message: "This function is only available on the iPhone", delegate: nil, cancelButtonTitle: "OK").show()
+            let alertController = UIAlertController(title: "Error", message: "This function is only available on iPhone", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
 
