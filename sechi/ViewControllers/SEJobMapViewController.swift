@@ -11,6 +11,7 @@ import MapKit
 /**
  *  View controller used for displaying a map with marked job address and option to show directions to it.
  */
+@objc
 class SEJobMapViewController: SEViewController, MKMapViewDelegate, UITextViewDelegate {
 
     /**

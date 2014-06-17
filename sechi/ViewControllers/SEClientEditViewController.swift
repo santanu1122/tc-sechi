@@ -9,6 +9,7 @@
 /**
  *  View controller used for displaying form to edit a client.
  */
+@objc
 class SEClientEditViewController: SEViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
 
     /**

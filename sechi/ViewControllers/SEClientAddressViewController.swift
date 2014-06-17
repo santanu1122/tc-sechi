@@ -185,4 +185,11 @@ class SEClientAddressViewController: SEViewController, UITableViewDataSource, UI
         return cell.height
     }
 
+    override func getMainScrollView() -> UIScrollView? {
+        if self.tableView.superview is UIScrollView {
+            return self.tableView.superview as UIScrollView
+        }
+        return nil
+    }
+
 }

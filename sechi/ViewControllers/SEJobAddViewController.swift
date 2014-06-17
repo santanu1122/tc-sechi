@@ -9,6 +9,7 @@
 /**
  *  View controller used for displaying form to add new job.
  */
+@objc
 class SEJobAddViewController: SEViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     
     /**

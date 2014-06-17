@@ -79,14 +79,13 @@ class SEJobAddressEditViewController: SEViewController, UITableViewDataSource, U
     func saveAndReturn() {
         for cell in self.datasource {
             if cell.changesWereMade && (!cell.valueTextView?.text || cell.valueTextView?.text == "") {
-                var fieldName = cell.label!.stringByReplacingOccurrencesOfString(":", withString: "")
+                var fieldName = cell.label!.bridgeToObjectiveC().stringByReplacingOccurrencesOfString(":", withString: "")
 
                 UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK").show();
                 return
             }
-            
-            self.job.setValue(cell.valueTextView.text, forKey: cell.key)
         }
+        self.job.jobAddressC = self.addressCell.valueTextView.text
         
         var error: NSError? = nil
         self.job.managedObjectContext.save(&error)
@@ -181,6 +180,10 @@ class SEJobAddressEditViewController: SEViewController, UITableViewDataSource, U
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> Float {
         var cell = self.datasource[indexPath.row]
         return cell.height
+    }
+
+    override func getMainScrollView() -> UIScrollView? {
+        return self.tableView
     }
 
 }

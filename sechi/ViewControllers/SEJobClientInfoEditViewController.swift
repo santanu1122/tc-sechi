@@ -9,6 +9,7 @@
 /**
  *  View controller used to display client info from the job object.
  */
+@objc
 class SEJobClientInfoEditViewController: SEViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
 
     /**
@@ -97,13 +98,15 @@ class SEJobClientInfoEditViewController: SEViewController, UITableViewDataSource
     func saveAndReturn() {
         for cell in self.datasource {
             if cell.changesWereMade && cell.valueTextView.text == "" {
-                var fieldName = cell.label!.stringByReplacingOccurrencesOfString(":", withString: "")
+                var fieldName = cell.label!.bridgeToObjectiveC().stringByReplacingOccurrencesOfString(":", withString: "")
                 UIAlertView(title: "Validation error", message: "\(fieldName) field cannot be empty", delegate: nil, cancelButtonTitle: "OK").show()
                 return
             }
-            
-            self.job.setValue(cell.valueTextView.text, forKey: cell.key)
         }
+        self.job.clientNameC = self.clientCell.valueTextView.text
+        self.job.contactNameC = self.contactCell.valueTextView.text
+        self.job.phoneC = self.phoneCell.valueTextView.text
+        self.job.infoTextC = self.infoCell.valueTextView.text
         
         var error: NSError? = nil
         self.job.managedObjectContext.save(&error)
@@ -199,6 +202,10 @@ class SEJobClientInfoEditViewController: SEViewController, UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> Float {
         var cell = self.datasource[indexPath.row]
         return cell.height
+    }
+
+    override func getMainScrollView() -> UIScrollView? {
+        return self.tableView
     }
 
 }

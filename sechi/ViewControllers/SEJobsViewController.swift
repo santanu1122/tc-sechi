@@ -347,4 +347,8 @@ class SEJobsViewController: SEViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
+    override func getMainScrollView() -> UIScrollView? {
+        return self.tableView
+    }
+
 }

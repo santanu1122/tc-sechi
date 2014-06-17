@@ -569,9 +569,23 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
      *  @param sender object that initiated the segue
      */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
-        if segue.destinationViewController.respondsToSelector("setJob") {
-            segue.destinationViewController.setValue(self.job, forKey: "job")
+        var vc = segue.destinationViewController
+        if vc is SEJobClientInfoEditViewController {
+            (vc as SEJobClientInfoEditViewController).job = self.job
         }
+        if vc is SEJobAddressEditViewController {
+            (vc as SEJobAddressEditViewController).job = self.job
+        }
+        if vc is SEJobNotesEditViewController {
+            (vc as SEJobNotesEditViewController).job = self.job
+        }
+        if vc is SEJobMapViewController {
+            (vc as SEJobMapViewController).job = self.job
+        }
+    }
+
+    override func getMainScrollView() -> UIScrollView? {
+        return self.tableView
     }
 
 }
