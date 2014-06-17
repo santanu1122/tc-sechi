@@ -9,6 +9,7 @@
 /**
  *  View controller used to display single job object.
  */
+@objc
 class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate, SESwipeableTableViewCellDelegate, UIGestureRecognizerDelegate {
 
     /**
@@ -88,13 +89,15 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
      */
     func viewWasPanned(panGestureRecognizer: UIPanGestureRecognizer) {
         if panGestureRecognizer.state == .Began {
-            var cell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as SESwipeableTableViewCell
-            var beginingTouchPoint = panGestureRecognizer.locationInView(cell)
-            var xContains = beginingTouchPoint.x > 0 && beginingTouchPoint.x < cell.frame.size.width
-            var yContains = beginingTouchPoint.y > 0 && beginingTouchPoint.y < cell.frame.size.height
-            if !(xContains && yContains) {
-                cell.closeCellAnimated(true)
-                self.tableView.scrollEnabled = true
+            if self.indexPathToRemove? {
+                var cell = self.tableView.cellForRowAtIndexPath(self.indexPathToRemove) as SESwipeableTableViewCell
+                var beginingTouchPoint = panGestureRecognizer.locationInView(cell)
+                var xContains = beginingTouchPoint.x > 0 && beginingTouchPoint.x < cell.frame.size.width
+                var yContains = beginingTouchPoint.y > 0 && beginingTouchPoint.y < cell.frame.size.height
+                if !(xContains && yContains) {
+                    cell.closeCellAnimated(true)
+                    self.tableView.scrollEnabled = true
+                }
             }
         }
     }
@@ -343,7 +346,11 @@ class SEJobViewController: SEViewController, UITableViewDataSource, UITableViewD
                 self.tempAddressInfoCell.addressLabel.text = self.job.jobAddressC
                 return self.tempAddressInfoCell.cellHeightNeeded()
             case 2:
-                self.tempNotesInfoCell.notesLabel.text = self.job.notesC
+                if self.job.notesC? {
+                    self.tempNotesInfoCell.notesLabel.text = self.job.notesC
+                } else {
+                    self.tempNotesInfoCell.notesLabel.text = ""
+                }
                 return self.tempNotesInfoCell.cellHeightNeeded()
             case 3:
                 return 63.0

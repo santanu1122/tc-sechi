@@ -9,6 +9,7 @@
 /**
  *  Custom table view cell for single schedule view screen (photos part specifically)
  */
+@objc
 class SEJobPhotosTableViewCell: SESwipeableTableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var datasource = SEJobPhotoInfo[]()

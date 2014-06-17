@@ -9,6 +9,7 @@
 /**
  *  Custom table view cell for single schedule view screen
  */
+@objc
 class SEJobClientInfoTableViewCell: SESwipeableTableViewCell {
     
     @IBOutlet var clientLabel: UILabel
@@ -30,9 +31,9 @@ class SEJobClientInfoTableViewCell: SESwipeableTableViewCell {
         
         var clientLabelHeight = self.clientLabel.text.bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.clientLabel.frame.size.width, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: self.clientLabel.font], context:nil)
         
-        var infoLabelHeight = self.infoTextView.text.bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.infoTextView.frame.size.width - self.infoTextView.font.pointSize, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context:nil)
+        var infoLabelHeight = self.infoTextView.text.bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.infoTextView.frame.size.width, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context:nil)
         
-        var singleLineInfoLabelHeight = "a".bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.infoTextView.frame.size.width - self.infoTextView.font.pointSize, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context:nil)
+        var singleLineInfoLabelHeight = "a".bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.infoTextView.frame.size.width, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context:nil)
         
         var calcHeight: Float = ((clientLabelHeight.size.height + 4) * 3) + 4 + singleLineInfoLabelHeight.size.height + infoLabelHeight.size.height + 9 + 2
         

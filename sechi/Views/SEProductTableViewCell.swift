@@ -9,6 +9,7 @@
 /**
  *  Custom table view cell for product list view
  */
+@objc
 class SEProductTableViewCell: SESwipeableTableViewCell {
     
     @IBOutlet var productName: UILabel

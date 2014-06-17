@@ -9,6 +9,7 @@
 /**
  *  Custom table view cell for single schedule view (specifically hours part)
  */
+@objc
 class SEJobHoursTableViewCell: SESwipeableTableViewCell {
     
     @IBOutlet var hoursLabel: UILabel

@@ -31,6 +31,7 @@
     
 }
 
+@objc
 class SESwipeableTableViewCell: UITableViewCell {
     
     /**

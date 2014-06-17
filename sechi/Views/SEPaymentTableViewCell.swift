@@ -9,6 +9,7 @@
 /**
  *  Custom table view cell for payments list screen
  */
+@objc
 class SEPaymentTableViewCell: SESwipeableTableViewCell {
     
     @IBOutlet var paymentStatusImage: UIImageView

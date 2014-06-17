@@ -12,112 +12,112 @@ class SEJob: NSManagedObject {
     /**
      * Property for saving _c5_source field returned from API for job object.
      */
-    @NSManaged var c5Source: String
+    @NSManaged var c5Source: String!
     
     /**
      * Property for saving client_account__c field returned from API for job object.
      */
-    @NSManaged var clientAccountC: String
+    @NSManaged var clientAccountC: String!
     
     /**
      * Property for saving client_contact__c field returned from API for job object.
      */
-    @NSManaged var clientContactC: String
+    @NSManaged var clientContactC: String!
     
     /**
      * Property for saving client_name__c field returned from API for job object.
      */
-    @NSManaged var clientNameC: String
+    @NSManaged var clientNameC: String!
     
     /**
      * Property for saving contact_name__c field returned from API for job object.
      */
-    @NSManaged var contactNameC: String
+    @NSManaged var contactNameC: String!
     
     /**
      * Property for saving createddate field returned from API for job object.
      */
-    @NSManaged var createdDate: NSDate
+    @NSManaged var createdDate: NSDate!
     
     /**
      * Property for saving id field returned from API for job object.
      */
-    @NSManaged var identifier: Int
+    @NSManaged var identifier: NSNumber!
     
     /**
      * Property for saving info_text__c field returned from API for job object.
      */
-    @NSManaged var infoTextC: String
+    @NSManaged var infoTextC: String!
     
     /**
      * Property for saving isdeleted field returned from API for job object.
      */
-    @NSManaged var removed:String
+    @NSManaged var removed: String!
     
     /**
      * Property for saving job_address__c field returned from API for job object.
      */
-    @NSManaged var jobAddressC: String
+    @NSManaged var jobAddressC: String!
     
     /**
      * Property for saving job_end_time__c field returned from API for job object.
      */
-    @NSManaged var jobEndTimeC: NSDate
+    @NSManaged var jobEndTimeC: NSDate!
     
     /**
      * Property for saving job_name__c field returned from API for job object.
      */
-    @NSManaged var jobNameC: String
+    @NSManaged var jobNameC: String!
     
     /**
      * Property for saving job_start_time__c field returned from API for job object.
      */
-    @NSManaged var jobStartTimeC: NSDate
+    @NSManaged var jobStartTimeC: NSDate!
     
     /**
      * Property for saving lastmodifieddate field returned from API for job object.
      */
-    @NSManaged var lastModifiedDate: NSDate
+    @NSManaged var lastModifiedDate: NSDate!
     
     /**
      * Property for saving latitude__c field returned from API for job object.
      */
-    @NSManaged var latitudeC: Float
+    @NSManaged var latitudeC: NSNumber!
     
     /**
      * Property for saving longitude__c field returned from API for job object.
      */
-    @NSManaged var longitudeC: Float
+    @NSManaged var longitudeC: NSNumber!
     
     /**
      * Property for saving name field returned from API for job object.
      */
-    @NSManaged var name: String
+    @NSManaged var name: String!
     
     /**
      * Property for saving notes__c field returned from API for job object.
      */
-    @NSManaged var notesC: String
+    @NSManaged var notesC: String!
     
     /**
      * Property for saving phone__c field returned from API for job object.
      */
-    @NSManaged var phoneC: String
+    @NSManaged var phoneC: String!
     
     /**
      * Property for saving sfid field returned from API for job object.
      */
-    @NSManaged var sfid: String
+    @NSManaged var sfid: String!
     
     /**
      * Property for saving status__c field returned from API for job object.
      */
-    @NSManaged var statusC: String
+    @NSManaged var statusC: String!
     
     /**
      * Property for saving job photos
      */
-    @NSManaged var photos: Array<SEJobPhotoInfo>
+    @NSManaged var photos: SEJobPhotoInfo[]!
 
     /**
      *  Dictionary of values needed for creating RKEntityMapping

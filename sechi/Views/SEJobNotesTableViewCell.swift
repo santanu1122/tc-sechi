@@ -9,6 +9,7 @@
 /**
  *  Custom table view cell for single schedule view screen (notes part specifically)
  */
+@objc
 class SEJobNotesTableViewCell: SESwipeableTableViewCell {
     
     @IBOutlet var notesLabel: UITextView
@@ -24,11 +25,14 @@ class SEJobNotesTableViewCell: SESwipeableTableViewCell {
         var paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = .ByWordWrapping
         
-        var infoLabelHeight = self.notesLabel.text.bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.notesLabel.frame.size.width - self.notesLabel.font.pointSize, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context: nil)
+        var infoLabelHeight: Float = 0.0
+        if self.notesLabel.text? {
+            infoLabelHeight = self.notesLabel.text.bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.notesLabel.frame.size.width, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context: nil).size.height
+        }
         
-        var singleLineInfoLabelHeight = "a".bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.notesLabel.frame.size.width - self.notesLabel.font.pointSize, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context: nil)
+        var singleLineInfoLabelHeight = "a".bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.notesLabel.frame.size.width, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context: nil)
         
-        var calcHeight: Float = singleLineInfoLabelHeight.size.height + infoLabelHeight.size.height + 4 + 2
+        var calcHeight: Float = singleLineInfoLabelHeight.size.height + infoLabelHeight + 4 + 2
         
         if calcHeight < minimumHeight {
             return minimumHeight

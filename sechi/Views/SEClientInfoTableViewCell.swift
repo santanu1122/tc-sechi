@@ -9,6 +9,7 @@
 /**
  *  Custom table view cell for single client view screen
  */
+@objc
 class SEClientInfoTableViewCell: SESwipeableTableViewCell {
     
     @IBOutlet var clientLabel: UILabel

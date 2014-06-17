@@ -9,6 +9,7 @@
 /**
  *  Custom table view cell for single payment view screen
  */
+@objc
 class SEPaymentInfoTableViewCell: SESwipeableTableViewCell {
     
     @IBOutlet var amountLabel: UILabel
@@ -32,9 +33,9 @@ class SEPaymentInfoTableViewCell: SESwipeableTableViewCell {
         
         var clientLabelHeight = self.clientLabel.text.bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.clientLabel.frame.size.width, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: self.clientLabel.font], context: nil)
         
-        var infoLabelHeight = self.notesLabel.text.bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.notesLabel.frame.size.width - self.notesLabel.font.pointSize, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context: nil)
+        var infoLabelHeight = self.notesLabel.text.bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.notesLabel.frame.size.width, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context: nil)
         
-        var singleLineInfoLabelHeight = "a".bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.notesLabel.frame.size.width - self.notesLabel.font.pointSize, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context: nil)
+        var singleLineInfoLabelHeight = "a".bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.notesLabel.frame.size.width, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context: nil)
         
         var calcHeight: Float = ((clientLabelHeight.size.height + 4) * 4) + 4 + singleLineInfoLabelHeight.size.height + infoLabelHeight.size.height + 9 + 2 + 70
         

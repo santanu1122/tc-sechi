@@ -9,6 +9,7 @@
 /**
 *  Custom table view cell for single schedule view screen (address part specifically)
 */
+@objc
 class SEJobAddressTableViewCell: SESwipeableTableViewCell {
     
     @IBOutlet var addressLabel: UITextView
@@ -26,9 +27,9 @@ class SEJobAddressTableViewCell: SESwipeableTableViewCell {
         var paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = .ByWordWrapping
         
-        var infoLabelHeight = self.addressLabel.text.bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.addressLabel.frame.size.width - self.addressLabel.font.pointSize, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context: nil)
+        var infoLabelHeight = self.addressLabel.text.bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.addressLabel.frame.size.width, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context: nil)
         
-        var singleLineInfoLabelHeight = "a".bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.addressLabel.frame.size.width - self.addressLabel.font.pointSize, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context: nil)
+        var singleLineInfoLabelHeight = "a".bridgeToObjectiveC().boundingRectWithSize(CGSizeMake(self.addressLabel.frame.size.width, CGFLOAT_MAX), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TextFieldFont, NSParagraphStyleAttributeName: paragraphStyle], context: nil)
         
         var calcHeight: Float = singleLineInfoLabelHeight.size.height + infoLabelHeight.size.height + 14 + 2
         

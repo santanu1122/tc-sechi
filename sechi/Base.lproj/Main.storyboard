@@ -692,7 +692,7 @@
         <!--Job View Controller - SCHEDULE-->
         <scene sceneID="fgq-Ik-kS4">
             <objects>
-                <viewController id="2cX-j0-3yv" customClass="SEJobViewController" sceneMemberID="viewController">
+                <viewController id="2cX-j0-3yv" customClass="SEJobViewController" customModule="sechi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lod-RA-I9U"/>
                         <viewControllerLayoutGuide type="bottom" id="nJ3-iB-SS9"/>
@@ -722,7 +722,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEJobClientInfoTableViewCellIdentifier" rowHeight="145" id="MwW-6q-29j" customClass="SEJobClientInfoTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEJobClientInfoTableViewCellIdentifier" rowHeight="145" id="MwW-6q-29j" customClass="SEJobClientInfoTableViewCell" customModule="sechi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="145"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MwW-6q-29j" id="NzE-Bi-ZIc">
@@ -900,7 +900,7 @@
                                             <segue destination="fC3-N2-7Qm" kind="push" identifier="SEPushJobClientInfoEditViewControllerSegue" id="Wfv-tB-TKw"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEJobAddressTableViewCellIdentifier" rowHeight="63" id="wZW-I3-Yqf" customClass="SEJobAddressTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEJobAddressTableViewCellIdentifier" rowHeight="63" id="wZW-I3-Yqf" customClass="SEJobAddressTableViewCell" customModule="sechi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="237" width="320" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wZW-I3-Yqf" id="BPH-N8-Iu0">
@@ -1011,7 +1011,7 @@ Tampa, FL 33606</string>
                                             <segue destination="yYI-7H-MHo" kind="push" id="pCn-2f-2Yn"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEJobNotesTableViewCellIdentifier" rowHeight="63" id="7Y7-Bi-JrD" customClass="SEJobNotesTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEJobNotesTableViewCellIdentifier" rowHeight="63" id="7Y7-Bi-JrD" customClass="SEJobNotesTableViewCell" customModule="sechi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="300" width="320" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Y7-Bi-JrD" id="pWP-QW-GhL">
@@ -1107,7 +1107,7 @@ Tampa, FL 33606</string>
                                             <segue destination="vBw-q1-Rct" kind="push" id="64y-WS-oOg"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEJobPhotosTableViewCellIdentifier" rowHeight="63" id="PN2-Uu-WEH" customClass="SEJobPhotosTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEJobPhotosTableViewCellIdentifier" rowHeight="63" id="PN2-Uu-WEH" customClass="SEJobPhotosTableViewCell" customModule="sechi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="363" width="320" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PN2-Uu-WEH" id="E8D-9h-Qnw">
@@ -1206,7 +1206,7 @@ Tampa, FL 33606</string>
                                             <outlet property="topCellViewRightConstraint" destination="Jfu-VO-K7Z" id="Av6-Oe-Xuv"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEJobHoursTableViewCellIdentifier" rowHeight="100" id="kKa-q6-XxH" customClass="SEJobHoursTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SEJobHoursTableViewCellIdentifier" rowHeight="100" id="kKa-q6-XxH" customClass="SEJobHoursTableViewCell" customModule="sechi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="426" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kKa-q6-XxH" id="oJh-er-M9Y">

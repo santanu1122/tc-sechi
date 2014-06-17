@@ -9,6 +9,7 @@
 /**
  *  Custom table view cell for clients list screen
  */
+@objc
 class SEClientTableViewCell: SESwipeableTableViewCell {
     
     @IBOutlet var clientNameLabel: UILabel
